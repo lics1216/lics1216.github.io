@@ -1,6 +1,7 @@
 title: hexo 搭建自己的blog
 date: 2018/8/18
 categories:
+
 - 基础
 - blog
 tags:
@@ -93,7 +94,7 @@ git push -u hexo  hexo
 3. 设置 hexo 为默认分支
     - 点击博客仓库下的setting/Branches
     - 设置默认分支为 hexo
-    - 这样以后就默认 clone 该分支
+    - 这样以后就默认 clone 该分支，clone下来后，再进入blog根目录 npm install安装依赖
 
 注意，git add -A 时可能目录themes/next 无法被add，这是因为next目录是你clone下来的主题，被另外一个.git/ 管理。我采用简单粗暴方法是在next/ 打开 git bash
 ```
