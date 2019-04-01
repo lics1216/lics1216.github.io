@@ -177,29 +177,33 @@ comments: true
     ```
 12. js 可以获取浏览器提供的很多对象，获得浏览器的属性
 13. html 文档被浏览器解析后是dom 结构，js操作dom，改变页面结构。Ajax/JQuery 都有了解，
-14. Promise, 使得发送请求的逻辑和处理返回的结果分开为异步。因为一般来说js 代码是单线程的，必须等待请求返回结果处理好再执行 todo2 
-    - success和fail 会在 todo1和todo2 结束再执行
+14. promise
+    - 只关心自身逻辑，不关心结果处理。没有promise 你必须把网络请求success/fail 处理函数写在请求里面，反之，你可以把处理程序写在.then/.catch里面
+    - 返回带有 网络请求结果的promise 对象
+    - new promise().then() 会返回一个promise 对象，return 和 resolve 差不多一样效果，resovle 是执行成功的返回结果。
     ```
-    xxxxx todo1
-    
-    function put(url, data) {
-        return new Promise(function(resolve, reject) {
-            request({
-                url: url,
-                method: 'PUT',
-                data: data,
-                success: function(res) {
-                    resolve(res.data)
-                },
-                fail: function(err) {
-                    reject(err)
-                }
-            })
+
+    let a = return http.post(`/api/refresh.php`, data, true).then(res => {
+            console.log("reflesh")
+            console.log(res.data)
+            console.log("reflesh")
+            return res.data;
         })
-    }
-    
-    xx todo2
-    
+
+    a.then(res =>{
+       // res 就是上面的res.data
+    })
+
+    <!--若改为-->
+
+    let a = return http.post(`/api/refresh.php`, data, true).then(res => {
+            return new Promise(function(resolve, reject){
+                resolve('lcs')
+            });
+        })
+
+    a.then(res)
+
     ```
 
 
