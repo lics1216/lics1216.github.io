@@ -5,7 +5,7 @@ categories:
 - 前端
 - css
 tags:
-- css
+- 伪类
 comments: true
 ---
 
@@ -90,7 +90,7 @@ css 代码应该这样写，
     height: 100%;
 }
 ```
-注意，img-activity 宽高设置为 100%，是指子元素 内容宽高==父元素 内容宽高，至于内存宽高指什么，是由box-sizing 值确定的（默认值 content-box)。
+注意，img-activity 宽高设置为 100%，是指子元素 内容宽高==父元素 内容宽高，至于内容宽高指什么，是由box-sizing 值确定的（默认值 content-box)。
 1. box-sizing: border-box     设置的width/height == 内容宽高 + padding + border 
 2. box-sizing: content-box    设置的width/height == 内容宽高
 

@@ -1,10 +1,11 @@
 title: python datetime模块
 date: 2018/9/16
 categories:
+
 - python
 - 常用模块
 tags:
-- python
+- datetime
 comments: true
 ---
 当大家用到时间属性去分析数据时，难免会对时间做各种的转化；步骤虽然不难，代码一 google也能得到。但如果不明白其中原理，每次搜索得到的代码会比较繁杂。
@@ -86,8 +87,9 @@ comments: true
     from datetime import timedelta
     datetime.now() + timedelta(days=1)
     out：datetime.datetime(2018, 9, 19, 21, 2, 9, 887597) 
- 
- 
+    ```
+
+
     datetime.now() + timedelta(days=1)
     out： datetime.datetime(2018, 9, 17, 21, 2, 23, 40349)
     

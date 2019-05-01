@@ -21,7 +21,7 @@ comments: true
 3. position，标签在页面位置原本是从上到下排列，但可以改变
 
 比如，下面代码
-```
+```html
 <div class='border-show'>
     div 
 </div>

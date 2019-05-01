@@ -19,7 +19,7 @@ comments: true
     - 微信小程序的page 对象也是这种写法
 4. java是静态的，js是动态的。可以动态给对象添加属性和函数，甚至给内置的函数重新指向新函数。
     - 动态指定属性, 假如你想实现一个简单的对象双向指向
-    ```
+    ```js
      var a = ['a', 'b', 'c'];
      a.name = 'lcs';
      
@@ -29,7 +29,7 @@ comments: true
      b.objectA = a;
     ```
     - 你想实现函数的重载，**用于调试**或者比如，简单统计一下该函数调用次数, parseInt 是window对象的方法
-    ```
+    ```js
     var count = 0;
     var oldParseInt = parseInt;
     
@@ -48,7 +48,7 @@ comments: true
     - 返回函数 或者函数内再定义函数，这两种情况都很容易引发this坑
     - var that = this/apply
     - 箭头函数(常用)，this和词法作用域绑定，即外层调用者
-    ```
+    ```js
     var obj = {
         birth: 1990,
         getAge: function () {
@@ -66,7 +66,7 @@ comments: true
     - map在Array 里面，对Array每一个元素做同样处理，但一般需求是不同处理
     - reduce，感觉不常用，可用来求和
     - filter, 过滤Array 元素, return true 保留，否则删除
-    ```
+    ```js
     var a = ['a', 'b', 'c'];
     a.filter(function(element, index, self){
         // element  a b c
@@ -77,7 +77,7 @@ comments: true
     ```
     - sort 默认把Aarry 元素转换为string 再比较大小
         - 高阶函数，函数传入函数
-        ```
+        ```js
         var a = [{
                   age: 12,
                   ts:'12121232'
@@ -98,11 +98,10 @@ comments: true
     - 函数fun1里面可以再定义一个函数fun2，若fun2使用了fun1的变量，通过调用fun1返回fun2，以后延迟再fun2()，变量没有出问题了。这就是闭包
     - 闭包的功能，返回一个函数然后延迟执行
 8. js/python 的生成器功能类似
-9. js/python 装饰器
 10. 面向对象编程，js 除了用{ }来定义对象外，也可以用new 关键字来实现。但是在es6之前不像c++/java 语言定义对象有class 关键字，定义对象和对象的继承都必须要求正确实现原型链，继承是原型链的继承。
     - 创建对象
     - 为了实现创建多个对象，共用一个hello函数，在原型链上做调整
-    ```
+    ```js
     function Student(name) {
         this.name = name;
         this.hello = function () {
@@ -129,7 +128,7 @@ comments: true
     ```
     - 继承，没有class 关键字，思路是在原型上实现继承，代码量大
     - es6 Class 继承，对原型继承实现了封装，es6封装了原型
-    ```
+    ```js
     class Student {
         constructor(name) {
             this.name = name;
@@ -154,58 +153,6 @@ comments: true
         }
     }
     ```
-    - js 的面向对象编程应用还有待体会
-11. js 对不存在的属性返回 undefined
-    - 利用||赋值是常用方法
-    ```
-    let lcs = 1 || 2 ;          // lcs = 1;
-    let lcs = undefined || 2;   // lcs = 2
-    ```
-    - null/undefined if判断没有问题
-    ```
-    if(undefined){
-      console.log('undefined if')
-    }else{
-      console.log('undefined else')
-    }
-    
-    if(null){
-      console.log('null if')
-    }else{
-      console.log('null else')
-    }
-    ```
-12. js 可以获取浏览器提供的很多对象，获得浏览器的属性
-13. html 文档被浏览器解析后是dom 结构，js操作dom，改变页面结构。Ajax/JQuery 都有了解，
-14. promise
-    - 只关心自身逻辑，不关心结果处理。没有promise 你必须把网络请求success/fail 处理函数写在请求里面，反之，你可以把处理程序写在.then/.catch里面
-    - 返回带有 网络请求结果的promise 对象
-    - new promise().then() 会返回一个promise 对象，return 和 resolve 差不多一样效果，resovle 是执行成功的返回结果。
-    ```
-
-    let a = return http.post(`/api/refresh.php`, data, true).then(res => {
-            console.log("reflesh")
-            console.log(res.data)
-            console.log("reflesh")
-            return res.data;
-        })
-
-    a.then(res =>{
-       // res 就是上面的res.data
-    })
-
-    <!--若改为-->
-
-    let a = return http.post(`/api/refresh.php`, data, true).then(res => {
-            return new Promise(function(resolve, reject){
-                resolve('lcs')
-            });
-        })
-
-    a.then(res)
-
-    ```
-
 
 参考文章
 >1. [js教程--by 廖雪峰](https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000)
