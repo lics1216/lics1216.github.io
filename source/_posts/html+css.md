@@ -3,7 +3,7 @@ date: 2018/9/25
 categories:
 
 - 前端
-- html/css
+- css
 tags:
 - css
 comments: true
