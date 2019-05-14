@@ -19,7 +19,7 @@ comments: true
 
 #### secureCRT 连接
 
-[安装 secureCRT]()，设置好自己习惯的操作方式，如选中复制，右键粘贴，背景色等。连接
+[安装 secureCRT，提取码：q9wb](https://pan.baidu.com/s/1sfA3-9WxuR7f-aRJGQtntw)，设置好自己习惯的操作方式，如选中复制，右键粘贴，背景色等。连接
 1. 生成私秘钥，Tools-->Create Public Key --> key type: RSA ---> OpenSSH Key format
 2. centos 生成私秘钥文件
 ```bash
