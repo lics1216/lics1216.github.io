@@ -208,6 +208,21 @@ id:3:initdefault:
 /etc/init.d/php7-fpm start
 ```
 
+#### 同步网络时间
+```
+# 安装ntpdate工具
+yum -y install ntp ntpdate
+
+# 设置系统时间与网络时间同步
+ntpdate cn.pool.ntp.org
+
+# 将系统时间写入硬件时间
+hwclock --systohc
+
+# 开机启动校对
+echo "ntpdate -u ntp.api.bz && clock -w" >> /etc/profile
+```
+
 #### 用户群主概念、账号管理
 1. UID/GID，比如用户 lcs，在/etc/passwd 里面对应 lcs---UID 500
 ```
