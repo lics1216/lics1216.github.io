@@ -147,6 +147,79 @@ rpm -ql 包名 // 列出包安装文件
 rpm -qf 文件绝对路径 //查看该文件由那个包安装
 ```
 
+#### 文本处理技巧
+1. vim
+2. tail
+```
+# 跟踪打印输出文件
+tailf xx.log
+
+# 倒数10行
+tail -10 xx.log
+```
+3. grep 用于文本内容的查找
+```
+ls -lh xx | grep xx
+
+ps aux | grep mysql
+
+netstat -tlnp | grep redis
+```
+4. [sed 用于文本内容的编辑，常用于文本替换]()
+```bash
+# sed [option] 'command' filename
+
+# option
+-n：使用安静(silent)模式。
+    在一般sed的用法中，所有来自stdin的数据一般都会被列出到终端上。
+    但如果加上-n参数后，则只有经过sed特殊处理的那一行(或者动作)才会被列出来。
+-e：直接在命令列模式上进行sed的动作编辑。
+-i：直接修改读取的文件内容，而不是输出到终端。直接修改真实文本
+
+# command
+a：追加，a的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)
+i：插入，i的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)
+d：以行为单位的删除
+c：以行为单位的替换，c的后面可以接字串
+s：在行中搜寻并替换
+p：以行为单位的显示，通常p会与参数sed -n一起运行
+
+# 比如
+```
+5. [awk 用于对文本进行分析](http://www.ruanyifeng.com/blog/2018/11/awk.html)，当要对处理的数据生成报告，或者数据是按照列进行处理时，使用awk 更方便
+```bash
+# 输出第一列 
+awk '{print $0}' demo.txt
+
+# 用冒号分割每行文本 
+awk -F ':' '{ print $1 }' demo.txt
+
+# ....
+```
+6. 数据流重定向
+```bash
+# 将ls -l 输出的信息重定向到 /data/tmp/rootfile
+ls -l > /data/tmp/rootfile
+
+# 追加
+ls-l >> /data/tmp/rootfile
+
+# cat 创建文件
+cat > catfile 
+xx
+xx
+按ctrl+d 离开
+
+# 输入 eof 结束
+cat > catfile << 'eof'
+xx
+xx
+eof 
+
+# 用文件代替手动输入
+cat > catfile < filename
+```
+
 #### 查看进程和端口号
 [ps aux 查看运行程序](http://cn.linux.vbird.org/linux_basic/0440processcontrol_3.php#ps)
 
