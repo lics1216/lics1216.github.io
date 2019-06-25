@@ -220,6 +220,37 @@ eof
 cat > catfile < filename
 ```
 
+#### shell script
+[学习shell script](http://cn.linux.vbird.org/linux_basic/0340bashshell-scripts.php)
+1. shell script有助于弄清楚 linux的来龙去脉，linux 很多处利用shell script
+2. shell script 用在系统管理很好的工具，但不擅长大量数值运算上（调用外部函数库，耗cpu）
+
+shell script文件运行须知
+1. xx.sh 文件具备rx 权限
+```
+# 命令运行顺序（重要）
+1. 以相对/绝对路径运行命令，例如『 /bin/ls 』或『 ./ls 』；
+2. 由 alias 找到该命令来运行；
+3. 由 bash 内建的 (builtin) 命令来运行；
+4. 透过 $PATH 这个变量的顺序搜寻到的第一个命令来运行。
+```
+2. bash 是shell 的一种，所以script 第一行必须写明利用那种shell
+```
+#!/bin/bash
+# Program:
+#       This program shows "Hello World!" in your screen.
+# History:
+# 2019/06/24	lcs	First release
+```
+3. [变量使用](http://cn.linux.vbird.org/linux_basic/0320bash.php#variable)
+4. 写一个连接 mysql 的脚本文件
+```
+# 连接 mysql
+exec mysql -uroot -p$(cat /data/save/mysql_root) "$@"
+
+# 三种shell脚本调用方法(fork, exec, source) ?
+```
+
 #### 查看进程和端口号
 [ps aux 查看运行程序](http://cn.linux.vbird.org/linux_basic/0440processcontrol_3.php#ps)
 
