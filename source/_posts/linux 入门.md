@@ -146,6 +146,29 @@ rpm -qi 包名 // 查询指定包信息
 rpm -ql 包名 // 列出包安装文件
 rpm -qf 文件绝对路径 //查看该文件由那个包安装
 ```
+4. **源码编译安装**，比如 [centos 安装 git 工具](https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)，[源码下载](https://mirrors.edge.kernel.org/pub/software/scm/git/)
+```
+# 解压 .tar.xz 或者 .tar.gz
+tar -Jxvf git-2.9.5.xz -C .
+
+# 源码安装 先配置安装目录，有助后期卸载、迁移
+./configure prefix=/usr/local/git-2.9.5
+
+# 编译 
+make
+
+# 安装 一般两个命令一起写 make && make install 
+make install 
+
+# 一般再设置一个git 软连接，安装软件的习惯
+ln -s git-2.9.5 git 
+
+# 添加环境变量
+vim /etc/profile
+export PATH=/usr/local/git/bin:$PATH
+
+source /etc/profile
+```
 
 #### 文本处理技巧
 1. vim
