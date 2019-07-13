@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lcs&#39;s Notes">
 <meta property="og:description" content="linux 是后端项目运行的环境，很多开发者都是在windows 下编写代码，后部署到linux 上运行。所以linux 是很重要的基础，是开发人员需要了解的。学习资料参考   建议用centos—下载 bin-DVD1 鸟哥私房菜第三版 安装可参考   linux 起源概念性了解，零散的笔记  Unix、GUN、Linux起源， 追求：先求有且能运行，再求进一步改善 linux 的版本是指内核版">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T11:59:47.664Z">
+<meta property="og:updated_time" content="2019-06-25T13:55:27.345Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux 入门">
 <meta name="twitter:description" content="linux 是后端项目运行的环境，很多开发者都是在windows 下编写代码，后部署到linux 上运行。所以linux 是很重要的基础，是开发人员需要了解的。学习资料参考   建议用centos—下载 bin-DVD1 鸟哥私房菜第三版 安装可参考   linux 起源概念性了解，零散的笔记  Unix、GUN、Linux起源， 追求：先求有且能运行，再求进一步改善 linux 的版本是指内核版">
@@ -320,7 +320,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-25T21:55:27+08:00">
+                2019-06-25
+              </time>
             
           </span>
 
@@ -374,17 +386,6 @@
           
 
           
-          
-             <span id="/2018/10/16/linux 入门/" class="leancloud_visitors" data-flag-title="linux 入门">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -505,6 +506,24 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将ls -l 输出的信息重定向到 /data/tmp/rootfile</span></span><br><span class="line">ls -l &gt; /data/tmp/rootfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 追加</span></span><br><span class="line">ls<span class="_">-l</span> &gt;&gt; /data/tmp/rootfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># cat 创建文件</span></span><br><span class="line">cat &gt; catfile </span><br><span class="line">xx</span><br><span class="line">xx</span><br><span class="line">按ctrl+d 离开</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入 eof 结束</span></span><br><span class="line">cat &gt; catfile &lt;&lt; <span class="string">'eof'</span></span><br><span class="line">xx</span><br><span class="line">xx</span><br><span class="line">eof </span><br><span class="line"></span><br><span class="line"><span class="comment"># 用文件代替手动输入</span></span><br><span class="line">cat &gt; catfile &lt; filename</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h4 id="shell-script"><a href="#shell-script" class="headerlink" title="shell script"></a>shell script</h4><p><a href="http://cn.linux.vbird.org/linux_basic/0340bashshell-scripts.php" target="_blank" rel="noopener">学习shell script</a></p>
+<ol>
+<li>shell script有助于弄清楚 linux的来龙去脉，linux 很多处利用shell script</li>
+<li>shell script 用在系统管理很好的工具，但不擅长大量数值运算上（调用外部函数库，耗cpu）</li>
+</ol>
+<p>shell script文件运行须知</p>
+<ol>
+<li><p>xx.sh 文件具备rx 权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 命令运行顺序（重要）</span><br><span class="line">1. 以相对/绝对路径运行命令，例如『 /bin/ls 』或『 ./ls 』；</span><br><span class="line">2. 由 alias 找到该命令来运行；</span><br><span class="line">3. 由 bash 内建的 (builtin) 命令来运行；</span><br><span class="line">4. 透过 $PATH 这个变量的顺序搜寻到的第一个命令来运行。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>bash 是shell 的一种，所以script 第一行必须写明利用那种shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># Program:</span><br><span class="line">#       This program shows &quot;Hello World!&quot; in your screen.</span><br><span class="line"># History:</span><br><span class="line"># 2019/06/24	lcs	First release</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="http://cn.linux.vbird.org/linux_basic/0320bash.php#variable" target="_blank" rel="noopener">变量使用</a></p>
+</li>
+<li>写一个连接 mysql 的脚本文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 连接 mysql</span><br><span class="line">exec mysql -uroot -p$(cat /data/save/mysql_root) &quot;$@&quot;</span><br><span class="line"></span><br><span class="line"># 三种shell脚本调用方法(fork, exec, source) ?</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h4 id="查看进程和端口号"><a href="#查看进程和端口号" class="headerlink" title="查看进程和端口号"></a>查看进程和端口号</h4><p><a href="http://cn.linux.vbird.org/linux_basic/0440processcontrol_3.php#ps" target="_blank" rel="noopener">ps aux 查看运行程序</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a 不与 terminal 有关的所有 process </span></span><br><span class="line"><span class="comment"># u 有效使用者 (effective user) 相关的 process </span></span><br><span class="line"><span class="comment"># x 通常与 a 这个参数一起使用，可列出较完整资讯。</span></span><br><span class="line"></span><br><span class="line">ps aux</span><br><span class="line"></span><br><span class="line"><span class="comment"># USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span></span><br><span class="line">root          1  0.0  0.0  19232  1508 ?        Ss   18:55   0:03 /sbin/init</span><br><span class="line"></span><br><span class="line"><span class="comment"># user process 属于的用户 </span></span><br><span class="line"><span class="comment"># PID  识别码</span></span><br><span class="line"><span class="comment"># %CPU 使用的CPU 资源占比</span></span><br><span class="line"><span class="comment"># %MEM 内存百分比</span></span><br></pre></td></tr></table></figure>
 <p><a href="http://cn.linux.vbird.org/linux_basic/0440processcontrol_3.php#netstat" target="_blank" rel="noopener">netstat -tlnp 网络联机状态</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -a  ：将目前系统上所有的连线、监听、Socket 数据都列出来</span></span><br><span class="line"><span class="comment"># -t  ：列出 tcp 网络封包的数据</span></span><br><span class="line"><span class="comment"># -u  ：列出 udp 网络封包的数据</span></span><br><span class="line"><span class="comment"># -n  ：不以程序的服务名称，以埠号 (port number) 来显示；</span></span><br><span class="line"><span class="comment"># -l  ：列出目前正在网络监听 (listen) 的服务；</span></span><br><span class="line"><span class="comment"># -p  ：列出该网络服务的程序 PID </span></span><br><span class="line"></span><br><span class="line">netstat -tlnp</span><br><span class="line"></span><br><span class="line"><span class="comment"># Proto Recv-Q Send-Q Local Address             Foreign Address             State       PID/Program name   </span></span><br><span class="line">tcp        0      0 0.0.0.0:80                  0.0.0.0:*                   LISTEN      1996/nginx</span><br></pre></td></tr></table></figure></p>
@@ -602,8 +621,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/15/小程序相册授权再次询问/" rel="next" title="小程序 相册授权再次询问">
-                <i class="fa fa-chevron-left"></i> 小程序 相册授权再次询问
+              <a href="/2018/10/16/小程序笔记/" rel="next" title="小程序笔记">
+                <i class="fa fa-chevron-left"></i> 小程序笔记
               </a>
             
           </div>
@@ -612,8 +631,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/16/小程序笔记/" rel="prev" title="小程序笔记">
-                小程序笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/17/小程序自定义组件/" rel="prev" title="小程序 自定义组件">
+                小程序 自定义组件 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -767,7 +786,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-起源"><span class="nav-number">1.</span> <span class="nav-text">linux 起源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件权限"><span class="nav-number">2.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目录规范和操作"><span class="nav-number">3.</span> <span class="nav-text">目录规范和操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的查找"><span class="nav-number">4.</span> <span class="nav-text">文件的查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的压缩与打包"><span class="nav-number">5.</span> <span class="nav-text">文件的压缩与打包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-正确的关机方法"><span class="nav-number">6.</span> <span class="nav-text">linux 正确的关机方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装软件"><span class="nav-number">7.</span> <span class="nav-text">安装软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文本处理技巧"><span class="nav-number">8.</span> <span class="nav-text">文本处理技巧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看进程和端口号"><span class="nav-number">9.</span> <span class="nav-text">查看进程和端口号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-启动流程"><span class="nav-number">10.</span> <span class="nav-text">linux 启动流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步网络时间"><span class="nav-number">11.</span> <span class="nav-text">同步网络时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户群主概念、账号管理"><span class="nav-number">12.</span> <span class="nav-text">用户群主概念、账号管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩充linux-根目录"><span class="nav-number">13.</span> <span class="nav-text">扩充linux 根目录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-起源"><span class="nav-number">1.</span> <span class="nav-text">linux 起源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件权限"><span class="nav-number">2.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目录规范和操作"><span class="nav-number">3.</span> <span class="nav-text">目录规范和操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的查找"><span class="nav-number">4.</span> <span class="nav-text">文件的查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的压缩与打包"><span class="nav-number">5.</span> <span class="nav-text">文件的压缩与打包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-正确的关机方法"><span class="nav-number">6.</span> <span class="nav-text">linux 正确的关机方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装软件"><span class="nav-number">7.</span> <span class="nav-text">安装软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文本处理技巧"><span class="nav-number">8.</span> <span class="nav-text">文本处理技巧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-script"><span class="nav-number">9.</span> <span class="nav-text">shell script</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看进程和端口号"><span class="nav-number">10.</span> <span class="nav-text">查看进程和端口号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-启动流程"><span class="nav-number">11.</span> <span class="nav-text">linux 启动流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步网络时间"><span class="nav-number">12.</span> <span class="nav-text">同步网络时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户群主概念、账号管理"><span class="nav-number">13.</span> <span class="nav-text">用户群主概念、账号管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩充linux-根目录"><span class="nav-number">14.</span> <span class="nav-text">扩充linux 根目录</span></a></li></ol></div>
             
 
           </div>
@@ -1304,113 +1323,6 @@
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("ntlAvDXzYVgJmMbEytDJc6U2-gzGzoHsz", "nbMDVxcDOJ910Pe8KBpx9mPg");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 
