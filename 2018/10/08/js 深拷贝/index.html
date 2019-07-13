@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="深拷贝,">
+  <meta name="keywords" content="深拷贝,promise,">
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="js 深拷贝js 里面很多东西都是对象，很容易出现引用问题。引用相同的对象多次，且修改时特别注意js 的深拷贝问题，  下面是我写的错误代码一部分， 123456789101112131415161718pId = &amp;#123;    12: [&amp;#123;xx:&apos;7&apos;, ...&amp;#125;],    21: [&amp;#123;xx:&apos;6&apos;, ...&amp;#125;],    31: [&amp;#123;xx:">
-<meta name="keywords" content="深拷贝">
+<meta name="keywords" content="深拷贝,promise">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js  深拷贝问题">
 <meta property="og:url" content="https://lics1216.github.io/2018/10/08/js 深拷贝/index.html">
 <meta property="og:site_name" content="Lcs&#39;s Notes">
 <meta property="og:description" content="js 深拷贝js 里面很多东西都是对象，很容易出现引用问题。引用相同的对象多次，且修改时特别注意js 的深拷贝问题，  下面是我写的错误代码一部分， 123456789101112131415161718pId = &amp;#123;    12: [&amp;#123;xx:&apos;7&apos;, ...&amp;#125;],    21: [&amp;#123;xx:&apos;6&apos;, ...&amp;#125;],    31: [&amp;#123;xx:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T11:59:47.664Z">
+<meta property="og:updated_time" content="2019-07-13T12:54:56.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js  深拷贝问题">
 <meta name="twitter:description" content="js 深拷贝js 里面很多东西都是对象，很容易出现引用问题。引用相同的对象多次，且修改时特别注意js 的深拷贝问题，  下面是我写的错误代码一部分， 123456789101112131415161718pId = &amp;#123;    12: [&amp;#123;xx:&apos;7&apos;, ...&amp;#125;],    21: [&amp;#123;xx:&apos;6&apos;, ...&amp;#125;],    31: [&amp;#123;xx:">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-24T19:59:47+08:00">
-                2019-06-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-13T20:54:56+08:00">
+                2019-07-13
               </time>
             
           </span>
@@ -425,6 +425,24 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">aa = &#123;</span><br><span class="line">    name: <span class="string">'lcs'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bb = &#123;</span><br><span class="line">    gender: <span class="string">'boy'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Object</span>.assign(aa, bb);</span><br><span class="line"></span><br><span class="line">aa = &#123;</span><br><span class="line">    name: <span class="string">'lcs'</span>,</span><br><span class="line">    gender: <span class="string">'boy'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h4 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h4><p>promise 只关心自身逻辑，不关心结果处理。没有promise 你必须把网络请求success/fail 处理函数写在请求里面，反之，你可以把处理程序写在.then/.catch里面。这样把网络请求和处理请求结果的逻辑分开，使代码结构更清晰。比如，</p>
+<ol>
+<li><p>模拟请求代码，下面是一个向服务端发起请求的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> timeOut = <span class="built_in">Math</span>.random() * <span class="number">2</span>;</span><br><span class="line">    log(<span class="string">'set timeout to: '</span> + timeOut + <span class="string">' seconds.'</span>);</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (timeOut &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            log(<span class="string">'请求成功...'</span>);</span><br><span class="line">            resolve(<span class="string">'200 OK'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            log(<span class="string">'请求失败...'</span>);</span><br><span class="line">            reject(<span class="string">'timeout in '</span> + timeOut + <span class="string">' seconds.'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, timeOut * <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>处理请求结果的逻辑，可以和请求函数分开</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(test);</span><br><span class="line"><span class="keyword">var</span> p2 = p1.then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'成功：'</span> + result);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> p3 = p2.catch(<span class="function"><span class="keyword">function</span> (<span class="params">reason</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'失败：'</span> + reason);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意的是，</p>
+<ol>
+<li><p>下面代码返回的是，带有网络请求结果的promise 对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    xxx</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>new promise().then() 会返回一个promise 对象，return 和 resolve 差不多一样效果，resovle 是执行成功的返回结果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">return</span> http.post(<span class="string">`/api/refresh.php`</span>, data, <span class="literal">true</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res.data;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">a.then(<span class="function"><span class="params">res</span> =&gt;</span>&#123;</span><br><span class="line">   <span class="comment">// res 就是上面的res.data</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;!--若改为--&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">return</span> http.post(<span class="string">`/api/refresh.php`</span>, data, <span class="literal">true</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">            resolve(<span class="string">'lcs'</span>)</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">a.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// res 还是一个Promise 对象</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
 
       
@@ -481,6 +499,8 @@
           
             <a href="/tags/深拷贝/" rel="tag"># 深拷贝</a>
           
+            <a href="/tags/promise/" rel="tag"># promise</a>
+          
         </div>
       
 
@@ -492,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/01/css 给元素加边框和蒙版/" rel="next" title="css 给元素加边框和蒙版">
-                <i class="fa fa-chevron-left"></i> css 给元素加边框和蒙版
+              <a href="/2018/09/29/vue 学习笔记（二）/" rel="next" title="vue 学习笔记（二）">
+                <i class="fa fa-chevron-left"></i> vue 学习笔记（二）
               </a>
             
           </div>
@@ -502,8 +522,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/15/小程序相册授权再次询问/" rel="prev" title="小程序 相册授权再次询问">
-                小程序 相册授权再次询问 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/16/小程序笔记/" rel="prev" title="小程序笔记">
+                小程序笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -586,7 +606,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -608,7 +628,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -657,7 +677,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#js-深拷贝"><span class="nav-number">1.</span> <span class="nav-text">js 深拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js-修改对象"><span class="nav-number">2.</span> <span class="nav-text">js 修改对象</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#js-深拷贝"><span class="nav-number">1.</span> <span class="nav-text">js 深拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js-修改对象"><span class="nav-number">2.</span> <span class="nav-text">js 修改对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#promise"><span class="nav-number">3.</span> <span class="nav-text">promise</span></a></li></ol></div>
             
 
           </div>

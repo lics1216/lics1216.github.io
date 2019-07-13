@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lcs&#39;s Notes">
 <meta property="og:description" content="小程序中如果一个页面UI太过复杂，亦或者某个UI组件复用次数多，可以考虑抽取出自定组件。抽离组件可以  分而治之，使代码结构更清晰，也是重构的目的。 复用，使逻辑出现在唯一出  自定义组件页面中的网络头像有加载过程，可以在加载过程中给图像一个占位图。而这复用率很高，可以考虑抽取组件  头像图片未加载成功之前显示占位图，利用bindload方法 123456789101112131415161718">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T11:59:47.667Z">
+<meta property="og:updated_time" content="2019-07-13T13:06:37.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序 自定义组件">
 <meta name="twitter:description" content="小程序中如果一个页面UI太过复杂，亦或者某个UI组件复用次数多，可以考虑抽取出自定组件。抽离组件可以  分而治之，使代码结构更清晰，也是重构的目的。 复用，使逻辑出现在唯一出  自定义组件页面中的网络头像有加载过程，可以在加载过程中给图像一个占位图。而这复用率很高，可以考虑抽取组件  头像图片未加载成功之前显示占位图，利用bindload方法 123456789101112131415161718">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-24T19:59:47+08:00">
-                2019-06-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-13T21:06:37+08:00">
+                2019-07-13
               </time>
             
           </span>
@@ -421,6 +421,11 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引用组件的页面.wxml</span></span><br><span class="line">&lt;profile bindXXX=<span class="string">'xxx'</span>  imgSrc=<span class="string">'&#123;&#123;xxx&#125;&#125;'</span> data-xx=<span class="string">"&#123;&#123;xxx&#125;&#125;"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--profile.js--&gt;</span><br><span class="line">_event: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.triggerEvent(<span class="string">'XXX'</span>) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h4 id="相册授权"><a href="#相册授权" class="headerlink" title="相册授权"></a>相册授权</h4><p>小程序中将图片或者视频，下载后保存到用户本地相册需要用户授权。若用户首次拒绝授权，再次下载时，得再次弹出询问授权按钮，否则图片无法下载。</p>
+<ol>
+<li>保存到相册，首次拒绝授权，第二次保存失败，再次询问 wx.openSetting<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">wx.saveVideoToPhotosAlbum(&#123;</span><br><span class="line">    filePath: res.tempFilePath,</span><br><span class="line">    success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.showMsg(<span class="string">'视频已保存到相册~~'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    fail: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.getPhotoAuthorize();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">getPhotoAuthorize: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    wx.showModal(&#123;</span><br><span class="line">        title: <span class="string">'提示'</span>,</span><br><span class="line">        confirmText: <span class="string">'去授权'</span>,</span><br><span class="line">        content: <span class="string">'授权后才能保存到相册噢'</span>,</span><br><span class="line">        success: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (res.confirm) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'用户点击授权'</span>)</span><br><span class="line">                wx.openSetting(&#123;</span><br><span class="line">                    success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">                        <span class="keyword">if</span> (!res.authSetting[<span class="string">"scope.writePhotosAlbum"</span>]) &#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(<span class="string">'重新授权成功'</span>)</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
 
       
@@ -498,8 +503,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/18/css 动画/" rel="prev" title="css 动画">
-                css 动画 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/20/vmware 安装centos 虚拟机/" rel="prev" title="VMware 安装centos6.5 虚拟机">
+                VMware 安装centos6.5 虚拟机 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -582,7 +587,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -604,7 +609,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -653,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义组件"><span class="nav-number">1.</span> <span class="nav-text">自定义组件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义组件"><span class="nav-number">1.</span> <span class="nav-text">自定义组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相册授权"><span class="nav-number">2.</span> <span class="nav-text">相册授权</span></a></li></ol></div>
             
 
           </div>
