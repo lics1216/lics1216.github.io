@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://lics1216.github.io/images/20181206/decorate3.png">
 <meta property="og:image" content="https://lics1216.github.io/images/20181206/decorate4.png">
 <meta property="og:image" content="https://lics1216.github.io/images/20181206/decorate5.png">
-<meta property="og:updated_time" content="2019-07-13T10:31:09.073Z">
+<meta property="og:updated_time" content="2019-07-20T09:06:36.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="装饰者模式">
 <meta name="twitter:description" content="装饰者模式现在有一家咖啡连锁店，咖啡如A、B、C、D多种，配料更是有蒸奶（Milk）、豆浆（Soy）、摩卡（Mocha）、奶泡（whip）等，咖啡店会根据加入的配料收取不同的费用。那怎样设计其中的单订系统呢，起初是这样设计的。看类图  其中  Beverage 是各饮料的基类，里面包含变量 描述，各个配料的布尔值，cost 计算配料的价格（该方法是具体的） 子类饮料 BeverageA，设置加入制">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-13T18:31:09+08:00">
-                2019-07-13
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-20T17:06:36+08:00">
+                2019-07-20
               </time>
             
           </span>
@@ -443,7 +443,7 @@
 <p>就是这样实现装饰者模式的，接下来我们测试一下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Beverage beverage = <span class="keyword">new</span> BeverageA();</span><br><span class="line">        <span class="comment">// 加入调料 摩卡（mocha）</span></span><br><span class="line">        beverage = <span class="keyword">new</span> Mocha(beverage);</span><br><span class="line">        <span class="comment">// 双倍 摩卡（mocha） 哈哈！</span></span><br><span class="line">        beverage = <span class="keyword">new</span> Mocha(beverage);</span><br><span class="line">        <span class="comment">// 加入 蒸奶（Milk）</span></span><br><span class="line">        beverage = <span class="keyword">new</span> Milk(beverage);</span><br><span class="line">        System.out.println(beverage.getDescription() + <span class="string">'价格,'</span> + beverage.cost());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>以上就是装饰者模式的全部实现了，其定义是，<strong>装饰者模式动态地将责任附加到对象上，若要扩展功能，装饰者提供了比继承共有弹性的替代方案。</strong></p>
 <h5 id="装饰者模式在-java-io-类的利用"><a href="#装饰者模式在-java-io-类的利用" class="headerlink" title="装饰者模式在 java.io 类的利用"></a>装饰者模式在 java.io 类的利用</h5><p><img src="/images/20181206/decorate4.png" alt="duck1"></p>
-<p>图中</p>
+<p>java.io 包内的类太多了，其中很多类都是装饰者，如图用装饰者将功能结合起来以读取文件数据，</p>
 <ol>
 <li>BufferedInputStream 是一个具体的装饰者，加入缓冲输入改进性能；用realine() 一次读取一行文件增强接口</li>
 <li>LineNumberInputStream 也是一个具体的装饰者，加上了计算行数的能力。</li>
@@ -526,6 +526,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/12/10/工厂模式和单件模式/" rel="prev" title="工厂模式和单件模式">
+                工厂模式和单件模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -606,7 +610,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -628,7 +632,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
