@@ -15,18 +15,15 @@ linux 是后端项目运行的环境，很多开发者都是在windows 下编写
 > 3. [安装可参考](/2018/10/20/vmware%20安装centos%20虚拟机/#more)
 
 #### linux 起源
-概念性了解，零散的笔记
-1. Unix、GUN、Linux起源， 追求：先求有且能运行，再求进一步改善
-2. linux 的版本是指内核版本。linux 版本分为两类，一种使用RPM 方式安装软件系统，包括Red Hat、Fedora、SuSE、CentOS; 另外一种 dpkg 方式安装软件，包括 Debian、Ubuntu、B2D
-3. linux 多用户、多任务，与Windows系统不同。文件的属性可分为可读，可写，可执行，属性可分为文件拥有者、文件所属用户组、其他非拥有者与用户组者。
-4. 缺点，没有特定的支持厂商，游戏支持度不够、专业软件的支持度不够（如：绘图软件）
+* Unix、GUN、Linux起源， 追求：先求有且能运行，再求进一步改善
+* linux 的版本是指内核版本。linux 版本分为两类，一种使用RPM 方式安装软件系统，包括Red Hat、Fedora、SuSE、CentOS; 另外一种 dpkg 方式安装软件，包括 Debian、Ubuntu、B2D
+* linux 多用户、多任务，与Windows系统不同。文件的属性可分为可读，可写，可执行，属性可分为文件拥有者、文件所属用户组、其他非拥有者与用户组者。
+* 缺点，没有特定的支持厂商，游戏支持度不够、专业软件的支持度不够（如：绘图软件）
 
 #### 文件权限
-1. linux 是多人多任务的， 用户的配置信息在etc/xx 下面
-2. [进入文件夹要x 权限，r 只能查看文件夹的文件列表](http://cn.linux.vbird.org/linux_basic/0210filepermission_2.php)
-   * 添加用户，组
-3. linux 下面全部都是文件，文件没有后缀，也有一些常见的 .sh、 .tar.gz ...
-4. [linux 各个目录存放的规范](http://cn.linux.vbird.org/linux_basic/0210filepermission_3.php)
+* linux 是多人多任务的， 用户的配置信息在etc/xx 下面。[进入文件夹要x 权限，r 只能查看文件夹的文件列表](http://cn.linux.vbird.org/linux_basic/0210filepermission_2.php)
+* linux 下面全部都是文件，文件没有后缀，也有一些常见的 .sh、 .tar.gz 只是为了启动见名知义
+* [linux 各个目录存放的规范](http://cn.linux.vbird.org/linux_basic/0210filepermission_3.php)
    * 安装软件一般放在，usr/local 或者 opt
 
 #### 目录规范和操作
@@ -40,7 +37,8 @@ linux 是后端项目运行的环境，很多开发者都是在windows 下编写
    * mv
    * cp/cp -r
    * scp
-   * rm/rm -r/rm dir
+   * rm -rf xx
+   * rm -rf xx/*
 4. 目录、文件权限，umask, 可以通过umask 提前设定要创建目录的权限值，文件默认权限 666，目录默认权限 777
 ```bash
     umask 
@@ -91,8 +89,8 @@ sync //把内存数据写到硬盘，上面两个命令包含了这个
 ```
 
 #### [**安装软件**](https://blog.51cto.com/zero01/1972444)
-1. [yum install 原理](http://www.firefoxbug.com/index.php/archives/2777/)
-2. **yum install 安装rpm 软件包**
+在linux 下安装软件是必须掌握的技能，安装方式一般有yum install，直接安装rmp包，编译安装源码包等方式。
+* [yum install 原理](http://www.firefoxbug.com/index.php/archives/2777/)，**yum install 安装rpm 软件包**
 ```bash
 # 列出可用的 rpm 包
 yum list | grep 包名
@@ -125,7 +123,7 @@ yum groupremove -y Desktop
 # 
 id:3:initdefault:
 ```
-3. **直接安装 rpm 包**
+* **直接安装 rpm 包**
 ```bash
 # 查询是否安装
 rpm -q 包名 
@@ -146,7 +144,7 @@ rpm -qi 包名 // 查询指定包信息
 rpm -ql 包名 // 列出包安装文件
 rpm -qf 文件绝对路径 //查看该文件由那个包安装
 ```
-4. **源码编译安装**，比如 [centos 安装 git 工具](https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)，[源码下载](https://mirrors.edge.kernel.org/pub/software/scm/git/)
+* **源码编译安装**，比如 [centos 安装 git 工具](https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)，[源码下载](https://mirrors.edge.kernel.org/pub/software/scm/git/)
 ```
 # 解压 .tar.xz 或者 .tar.gz
 tar -Jxvf git-2.9.5.xz -C .
@@ -171,16 +169,25 @@ source /etc/profile
 ```
 
 #### 文本处理技巧
-1. vim
-2. tail
-```
+在linux 编辑文本是很常见的操作，比如修改配置文件、查看项目日志、处理文件数据、编写shell script 等等，这些都要用文本处理。
+*  编写文本一般用vim 编辑器
+*  查看文本内容的几种方法
+```bash
+# 打印文件所有内
+cat filename 容
+
 # 跟踪打印输出文件
 tailf xx.log
 
-# 倒数10行
-tail -10 xx.log
+# 打印文件最后10行的数据
+tail -n 10 
+# 打印文件第10行开始以后的内容
+tail -n +10 
+
+# 打印前10的内容
+head -n 10
 ```
-3. grep 用于文本内容的查找
+*  grep 用于文本内容的查找，文本三剑客之一，常配合管道使用
 ```
 ls -lh xx | grep xx
 
@@ -188,7 +195,7 @@ ps aux | grep mysql
 
 netstat -tlnp | grep redis
 ```
-4. [sed 用于文本内容的编辑，常用于文本替换]()
+* [sed 用于文本内容的编辑，常用于文本替换]()
 ```bash
 # sed [option] 'command' filename
 
@@ -206,20 +213,16 @@ d：以行为单位的删除
 c：以行为单位的替换，c的后面可以接字串
 s：在行中搜寻并替换
 p：以行为单位的显示，通常p会与参数sed -n一起运行
-
-# 比如
 ```
-5. [awk 用于对文本进行分析](http://www.ruanyifeng.com/blog/2018/11/awk.html)，当要对处理的数据生成报告，或者数据是按照列进行处理时，使用awk 更方便
+* [awk 用于对文本进行分析](http://www.ruanyifeng.com/blog/2018/11/awk.html)，当要对处理的数据生成报告，或者数据是按照列进行处理时，使用awk 更方便
 ```bash
 # 输出第一列 
 awk '{print $0}' demo.txt
 
 # 用冒号分割每行文本 
 awk -F ':' '{ print $1 }' demo.txt
-
-# ....
 ```
-6. 数据流重定向
+* 数据流重定向
 ```bash
 # 将ls -l 输出的信息重定向到 /data/tmp/rootfile
 ls -l > /data/tmp/rootfile
@@ -243,39 +246,8 @@ eof
 cat > catfile < filename
 ```
 
-#### shell script
-[学习shell script](http://cn.linux.vbird.org/linux_basic/0340bashshell-scripts.php)
-1. shell script有助于弄清楚 linux的来龙去脉，linux 很多处利用shell script
-2. shell script 用在系统管理很好的工具，但不擅长大量数值运算上（调用外部函数库，耗cpu）
-
-shell script文件运行须知
-1. xx.sh 文件具备rx 权限
-```
-# 命令运行顺序（重要）
-1. 以相对/绝对路径运行命令，例如『 /bin/ls 』或『 ./ls 』；
-2. 由 alias 找到该命令来运行；
-3. 由 bash 内建的 (builtin) 命令来运行；
-4. 透过 $PATH 这个变量的顺序搜寻到的第一个命令来运行。
-```
-2. bash 是shell 的一种，所以script 第一行必须写明利用那种shell
-```
-#!/bin/bash
-# Program:
-#       This program shows "Hello World!" in your screen.
-# History:
-# 2019/06/24	lcs	First release
-```
-3. [变量使用](http://cn.linux.vbird.org/linux_basic/0320bash.php#variable)
-4. 写一个连接 mysql 的脚本文件
-```
-# 连接 mysql
-exec mysql -uroot -p$(cat /data/save/mysql_root) "$@"
-
-# 三种shell脚本调用方法(fork, exec, source) ?
-```
-
 #### 查看进程和端口号
-[ps aux 查看运行程序](http://cn.linux.vbird.org/linux_basic/0440processcontrol_3.php#ps)
+* [ps aux 查看运行程序](http://cn.linux.vbird.org/linux_basic/0440processcontrol_3.php#ps)
 
 ```bash
 # a 不与 terminal 有关的所有 process 
@@ -292,7 +264,7 @@ root          1  0.0  0.0  19232  1508 ?        Ss   18:55   0:03 /sbin/init
 # %CPU 使用的CPU 资源占比
 # %MEM 内存百分比
 ```
-[netstat -tlnp 网络联机状态](http://cn.linux.vbird.org/linux_basic/0440processcontrol_3.php#netstat)
+* [netstat -tlnp 网络联机状态](http://cn.linux.vbird.org/linux_basic/0440processcontrol_3.php#netstat)
 ```bash
 # -a  ：将目前系统上所有的连线、监听、Socket 数据都列出来
 # -t  ：列出 tcp 网络封包的数据
@@ -308,7 +280,8 @@ tcp        0      0 0.0.0.0:80                  0.0.0.0:*                   LIST
 ```
 
 #### [linux 启动流程](http://cn.linux.vbird.org/linux_basic/0510osloader_1.php)
-理解linux启动时都做什么可以完成一些设置，比如完成 卸载桌面
+理解linux启动时都做什么可以完成一些设置
+* 比如完成 卸载桌面
 ```
 <!-- 比如下载桌面 -->
 yum grouplist | grep Desktop
@@ -326,7 +299,7 @@ yum groupremove -y Desktop
 # 
 id:3:initdefault:
 ```
-比如，设置服务在开机时自启动
+* 设置服务在开机时自启动
 ```
 # 在 /etc/rc.d/rc.local 添加 
 
@@ -346,7 +319,7 @@ ntpdate cn.pool.ntp.org
 # 将系统时间写入硬件时间
 hwclock --systohc
 
-# 开机启动校对
+# 开机启动校对 也可以写到crontab 定时同步网络时间
 echo "ntpdate -u ntp.api.bz && clock -w" >> /etc/profile
 ```
 
@@ -381,9 +354,6 @@ groups
 
 ```
 4. 可以切换lcs 用户的有效群组，涉及/etc/gshadow
-5. 账号管理概念和实践
-   * useradd lcs
-   * passwd lcs
 
 #### 扩充linux 根目录 
 下面链接都可以完成扩容，计算机里面一个磁盘显示的是 /dev/sda，两个显示/dev/sdb，利用 fdisk对磁盘进行分区。理解 pv/vg/lv 对完成扩容有帮助
