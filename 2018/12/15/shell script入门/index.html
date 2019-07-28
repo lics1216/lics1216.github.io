@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="为什么学shell操作系统其实是一组软件，控制整个计算机硬件如cpu调度，内存、磁盘存储输入输出的就是操作系统的是内核（Kernel）。通常这组软件是不允许被没有管理能力的终端用户随便使用的，但总是需要让用户操作系统的，用户可以通过壳程序（shell）来达到目的。壳程序是提供给用户去操作系统的一个接口，像ls、mkdir这些常用的命令都是封装好的独立应用程序，它可以通过壳程序去操作系统。 linu">
+<meta name="description" content="为什么学shell操作系统其实是一组软件，控制整个计算机硬件如cpu调度，内存、磁盘存储输入输出是操作系统的内核（Kernel）。通常这组软件是不允许被没有管理能力的终端用户随便使用的，但总是需要让用户操作系统的，用户可以通过壳程序（shell）来达到目的。壳程序是提供给用户去操作系统的一个接口，像ls、mkdir这些常用的命令都是封装好的独立应用程序，它们可以利用壳程序再通过内核去操作系统。 l">
 <meta name="keywords" content="shell script">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell script 入门">
 <meta property="og:url" content="https://lics1216.github.io/2018/12/15/shell script入门/index.html">
 <meta property="og:site_name" content="Lcs&#39;s Notes">
-<meta property="og:description" content="为什么学shell操作系统其实是一组软件，控制整个计算机硬件如cpu调度，内存、磁盘存储输入输出的就是操作系统的是内核（Kernel）。通常这组软件是不允许被没有管理能力的终端用户随便使用的，但总是需要让用户操作系统的，用户可以通过壳程序（shell）来达到目的。壳程序是提供给用户去操作系统的一个接口，像ls、mkdir这些常用的命令都是封装好的独立应用程序，它可以通过壳程序去操作系统。 linu">
+<meta property="og:description" content="为什么学shell操作系统其实是一组软件，控制整个计算机硬件如cpu调度，内存、磁盘存储输入输出是操作系统的内核（Kernel）。通常这组软件是不允许被没有管理能力的终端用户随便使用的，但总是需要让用户操作系统的，用户可以通过壳程序（shell）来达到目的。壳程序是提供给用户去操作系统的一个接口，像ls、mkdir这些常用的命令都是封装好的独立应用程序，它们可以利用壳程序再通过内核去操作系统。 l">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lics1216.github.io/images/20181215/bash1.png">
-<meta property="og:updated_time" content="2019-07-28T08:18:28.429Z">
+<meta property="og:updated_time" content="2019-07-28T09:04:52.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell script 入门">
-<meta name="twitter:description" content="为什么学shell操作系统其实是一组软件，控制整个计算机硬件如cpu调度，内存、磁盘存储输入输出的就是操作系统的是内核（Kernel）。通常这组软件是不允许被没有管理能力的终端用户随便使用的，但总是需要让用户操作系统的，用户可以通过壳程序（shell）来达到目的。壳程序是提供给用户去操作系统的一个接口，像ls、mkdir这些常用的命令都是封装好的独立应用程序，它可以通过壳程序去操作系统。 linu">
+<meta name="twitter:description" content="为什么学shell操作系统其实是一组软件，控制整个计算机硬件如cpu调度，内存、磁盘存储输入输出是操作系统的内核（Kernel）。通常这组软件是不允许被没有管理能力的终端用户随便使用的，但总是需要让用户操作系统的，用户可以通过壳程序（shell）来达到目的。壳程序是提供给用户去操作系统的一个接口，像ls、mkdir这些常用的命令都是封装好的独立应用程序，它们可以利用壳程序再通过内核去操作系统。 l">
 <meta name="twitter:image" content="https://lics1216.github.io/images/20181215/bash1.png">
 
 
@@ -332,7 +332,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-28T16:18:28+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-28T17:04:52+08:00">
                 2019-07-28
               </time>
             
@@ -409,49 +409,49 @@
       
 
       
-        <h4 id="为什么学shell"><a href="#为什么学shell" class="headerlink" title="为什么学shell"></a>为什么学shell</h4><p>操作系统其实是一组软件，控制整个计算机硬件如cpu调度，内存、磁盘存储输入输出的就是操作系统的是内核（Kernel）。通常这组软件是不允许被没有管理能力的终端用户随便使用的，但总是需要让用户操作系统的，用户可以通过壳程序（shell）来达到目的。壳程序是提供给用户去操作系统的一个接口，像ls、mkdir这些常用的命令都是封装好的独立应用程序，它可以通过壳程序去操作系统。</p>
-<p>linux 很多处都利用了shell script，shell 在系统管理是很好的工具，服务的启动关闭就是通过它来控制的。所以学习shell 有助于弄清楚linux的来龙去脉，是进一步理解linux的方式。</p>
+        <h4 id="为什么学shell"><a href="#为什么学shell" class="headerlink" title="为什么学shell"></a>为什么学shell</h4><p>操作系统其实是一组软件，控制整个计算机硬件如cpu调度，内存、磁盘存储输入输出是操作系统的内核（Kernel）。通常这组软件是不允许被没有管理能力的终端用户随便使用的，但总是需要让用户操作系统的，用户可以通过壳程序（shell）来达到目的。<strong>壳程序是提供给用户去操作系统的一个接口</strong>，像ls、mkdir这些常用的命令都是封装好的独立应用程序，它们可以<strong>利用壳程序再通过内核</strong>去操作系统。</p>
+<p>linux 很多地方都利用了shell script，shell 在系统管理是很好的工具，服务的启动关闭就是通过它来控制的。所以学习shell 有助于弄清楚linux的来龙去脉，是进一步理解linux的方式。</p>
 <p>但是shell script 不擅长大量数值运算，它调用外部函数库耗cpu。linux 默认的shell 是bash，它规范了接口的语法。学习shell 可以参考</p>
 <ol>
 <li><a href="http://cn.linux.vbird.org/linux_basic/0320bash.php#variable" target="_blank" rel="noopener">认识和学习bash</a></li>
 <li><a href="http://cn.linux.vbird.org/linux_basic/0340bashshell-scripts.php#script" target="_blank" rel="noopener">学习shell scripts</a></li>
 </ol>
-<h4 id="shell-操作环境"><a href="#shell-操作环境" class="headerlink" title="shell 操作环境"></a>shell 操作环境</h4><p>利用系统提供的命令如，ls/mkdir/rm/mv 等，或者通过./xx.sh 执行已写好的可执行脚本。必须先搞清楚系统<strong>查询执行这些命令的顺序</strong>，所以在当前目录执行脚本文件时要加 ./ 代表相对，否则出错。</p>
+<h4 id="shell-操作环境"><a href="#shell-操作环境" class="headerlink" title="shell 操作环境"></a>shell 操作环境</h4><p>利用系统提供的命令如，ls/mkdir/rm/mv 等，或者通过./xx.sh 执行已写好的可执行脚本。必须先搞清楚系统<strong>查询执行这些命令的顺序</strong>，所以在当前目录执行脚本文件时要加 ./ 代表相对，否则报找不到文件错误</p>
 <ol>
 <li>以相对/绝对路径运行命令，例如『 /bin/ls 』或『 ./ls 』；</li>
 <li>由 alias 找到该命令来运行；</li>
 <li>由 bash 内建的 (builtin) 命令来运行；</li>
 <li>透过 $PATH 这个变量的顺序搜寻到的第一个命令来运行。</li>
 </ol>
-<p>我们一登入linux 进入shell 之后，能使用一堆有用的变量，这是因为系统有一些环境配置文件的存在。bash 在启动时直接就读取这些配置文件，以规划好bash 的操作环境。配置文件有分全体系统的配置文件以及用户个人偏好设置文件。</p>
+<p>我们一登入linux 进入shell 之后，能使用一堆有用的变量，这是因为系统有一些环境配置文件的存在。<strong>bash 在启动时直接就读取这些配置文件，以规划好bash 的操作环境</strong>。配置文件有分全体系统的配置文件以及用户个人偏好设置文件。</p>
 <ul>
 <li>/etc/profile 系统整体的配置</li>
 <li>~/.bash_profile  ~/.bash_login ~/.profile 属于使用者个人配置</li>
 </ul>
 <p>同时也必须理解login shell 和 non-login shell 的概念，因为通过这两种进入的bash 环境，读取配置文件的顺序不同。</p>
 <ul>
-<li>login shell，取得bash 需要完整的登录流程，比如通过secureCRT ssh 方式得到的bash 环境。</li>
-<li>non-login shell，取得bash 接口的方法不需要重复的登陆举动，比如你在原本的bash 环境再次下达bash 命令，没有输入账号密码，那第二个bash 子程序也是non-login shell。所以在写脚本命令前一般都会配置环境变量</li>
+<li>login shell，<strong>取得bash 需要完整的登录流程</strong>，比如通过secureCRT ssh 方式得到的bash 环境。</li>
+<li>non-login shell，<strong>取得bash 接口的方法不需要重复的登陆举动</strong>，比如你在原本的bash 环境再次下达bash 命令，没有输入账号密码，那第二个bash 子程序也是non-login shell。所以在<strong>写脚本命令前一般都会配置环境变量</strong></li>
 </ul>
-<p>下面是这两种方式读取配置文件的顺序，图来自鸟哥书籍。实线是主线流程，虚线是被调用的配置文件。图中是login shell 完整顺序图，而non-login shell 只读 ~/.bashrc</p>
+<p>下面是这两种方式读取配置文件的顺序，图来自鸟哥书籍。实线是主线流程，虚线是被调用的配置文件。图中是<strong>login shell 完整顺序图，而non-login shell 只读 ~/.bashrc</strong></p>
 <p><img src="/images/20181215/bash1.png" alt="duck1"></p>
 <h4 id="简单-shell-script"><a href="#简单-shell-script" class="headerlink" title="简单 shell script"></a>简单 shell script</h4><p>下面是简单shell script 的格式，<strong>PATH 很重要</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># Program:</span><br><span class="line">#       This program is a easy shell script</span><br><span class="line"># History:</span><br><span class="line"># 2019/07/23    lics    First release</span><br><span class="line">PATH=/usr/local/php/bin:/usr/local/node/bin:/usr/local</span><br><span class="line">export PATH</span><br><span class="line"></span><br><span class="line"># 文件名</span><br><span class="line">date=$(date +%Y%m%d)</span><br><span class="line">file=$&#123;date&#125;</span><br><span class="line"></span><br><span class="line"># file 加不加&#123;&#125;只是习惯问题</span><br><span class="line">touch &quot;$file&quot;</span><br></pre></td></tr></table></figure></p>
 <h4 id="shell-script-运行区别"><a href="#shell-script-运行区别" class="headerlink" title="shell script 运行区别"></a>shell script 运行区别</h4><ul>
-<li>sh script 或者 ./script ，利用直接运行的方式运行script，该script 都会使用一个新的bash 环境来运行脚本内的命令。script 是指子程序的bash 内运行的！注意的是，在子程序的各项变量或者动作将会结束而不会回到父程序中。</li>
-<li>source script ，在父程序中运行脚本，script 的各项动作都会在父程序中生效。所以我们修改了/etc/profile 里面的环境变量时，都会运行source /etc/profile 使其有效，否则要重新登入才行。</li>
-<li>exec </li>
+<li>sh script 或者 ./script ，利用直接运行的方式运行script，<strong>该script 都会使用一个新的bash 环境来运行脚本内的命令</strong>。script 是指子程序的bash 内运行的！注意的是，在子程序的各项变量或者动作将会结束而不会回到父程序中。</li>
+<li>source script ，在父程序中运行脚本，<strong>script 的各项动作都会在父程序中生效</strong>。所以我们修改了/etc/profile 里面的环境变量时，都会<strong>运行source /etc/profile 使其有效</strong>，否则要重新登入才行。</li>
+<li>exec 方式</li>
 </ul>
 <h4 id="bash-语法"><a href="#bash-语法" class="headerlink" title="bash 语法"></a>bash 语法</h4><p>在了解shell 的作用，操作环境，运行方式之后，可以进一步学习bash的基本语法。比如</p>
 <ul>
 <li>bash 变量</li>
 <li><a href="http://cn.linux.vbird.org/linux_basic/0320bash.php#settings_wildcard" target="_blank" rel="noopener">bash 通配符和特殊符号</a><ul>
-<li>()代表中间为子shell 的起始和结束</li>
+<li>()代表中间为<strong>子shell 的起始和结束</strong></li>
 </ul>
 </li>
 <li>判断式，关于文件类型，文件权限，整数，字符串</li>
 <li><a href="http://cn.linux.vbird.org/linux_basic/0340bashshell-scripts.php#dis3" target="_blank" rel="noopener">shell script 的默认变量 $0，$1</a><ul>
 <li>$# ：代表后接的参数『个数』，以上表为例这里显示为『 4 』；</li>
-<li>$@ ：代表『 “$1” “$2” “$3” “$4” 』之意，每个变量是独立的(用双引号括起来)；</li>
+<li>$@ ：代表『 “$1” “$2” “$3” “$4” 』之意</li>
 <li>$* ：代表『 “$1c$2c$3c$4” 』，其中 c 为分隔字节，默认为空白键 </li>
 </ul>
 </li>
@@ -463,19 +463,19 @@
 <li><p>和网络时间同步</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装ntpdate工具</span></span><br><span class="line">yum -y install ntp ntpdate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置系统时间与网络时间同步</span></span><br><span class="line">ntpdate cn.pool.ntp.org</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将系统时间写入硬件时间</span></span><br><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>定时同步，利用crontab 来执行定时脚本</p>
+<li><p><strong>定时同步，利用crontab 来执行定时脚本</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 编辑crontab</span><br><span class="line">vim /etc/crontab</span><br><span class="line"></span><br><span class="line"># 添加定时任务，每6分钟同步一次</span><br><span class="line">*/10 * * * * ntpdate -u ntp.api.bz &amp;&amp; clock -w</span><br><span class="line"></span><br><span class="line">service crond reload</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4 id="自动连接mysql"><a href="#自动连接mysql" class="headerlink" title="自动连接mysql"></a>自动连接mysql</h4><p>每次都要通过输入密码连接数据库，难免烦躁，可以把数据库密码放在每个文件中，然后写script 连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建con_mysql脚本文件，密码在/data/save/mysql_root 内</span></span><br><span class="line"><span class="built_in">exec</span> mysql -uroot -p$(cat /data/save/mysql_root) </span><br><span class="line"></span><br><span class="line"><span class="comment"># 把con_mysql 所在目录添置PATH</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="数据自动入库"><a href="#数据自动入库" class="headerlink" title="数据自动入库"></a>数据自动入库</h4><p>假如现在有很多.sql 和txt 文件数据要录入数据库中，我们可以写一个只要提供数据库名、文件所在目录名就可以完成目的的shell script。运行方式 [script] db_name  [sql所在目录绝对路径]<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">database=<span class="variable">$1</span></span><br><span class="line">backup_dir=<span class="variable">$2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$database</span>"</span> == <span class="string">""</span> -o <span class="string">"<span class="variable">$backup_dir</span>"</span> == <span class="string">""</span>  ] ; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"eg:bash <span class="variable">$0</span> db_name data_dir"</span></span><br><span class="line">  <span class="built_in">exit</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">mysql -uroot -p`cat /data/save/mysql_root` -e <span class="string">"CREATE DATABASE IF NOT EXISTS <span class="variable">$&#123;database&#125;</span>;"</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$&#123;backup_dir&#125;</span></span><br><span class="line">SQL_LIST=$(ls <span class="variable">$&#123;backup_dir&#125;</span> | /bin/grep sql)</span><br><span class="line"><span class="keyword">for</span> sql_file <span class="keyword">in</span> <span class="variable">$&#123;SQL_LIST&#125;</span>; <span class="keyword">do</span></span><br><span class="line">    mysql -uroot -p`cat /data/save/mysql_root` <span class="variable">$&#123;database&#125;</span> &lt; <span class="variable">$&#123;sql_file&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">mysqlimport --<span class="built_in">local</span> -uroot -p`cat /data/save/mysql_root` <span class="variable">$&#123;database&#125;</span> *.txt</span><br></pre></td></tr></table></figure></p>
+<h4 id="自动连接mysql"><a href="#自动连接mysql" class="headerlink" title="自动连接mysql"></a>自动连接mysql</h4><p>每次都要通过输入密码连接数据库，难免烦躁，可以把数据库密码放在每个文件中，然后写script 连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建con_mysql脚本文件，密码在/data/save/mysql_root 内</span></span><br><span class="line"><span class="built_in">exec</span> mysql -uroot -p$(cat /data/save/mysql_root) </span><br><span class="line"></span><br><span class="line"><span class="comment"># 把con_mysql 所在目录添置PATH，在任何目录执行</span></span><br><span class="line">con_mysql</span><br></pre></td></tr></table></figure></p>
+<h4 id="数据自动入库"><a href="#数据自动入库" class="headerlink" title="数据自动入库"></a>数据自动入库</h4><p>假如现在有很多.sql 和txt 文件数据要录入数据库中，我们可以写一个只要提供数据库名、文件所在目录名就可以完成目的的shell script。<strong>运行方式 [script] db_name  [sql所在目录绝对路径]</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">database=<span class="variable">$1</span></span><br><span class="line">backup_dir=<span class="variable">$2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$database</span>"</span> == <span class="string">""</span> -o <span class="string">"<span class="variable">$backup_dir</span>"</span> == <span class="string">""</span>  ] ; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"eg:bash <span class="variable">$0</span> db_name data_dir"</span></span><br><span class="line">  <span class="built_in">exit</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">mysql -uroot -p`cat /data/save/mysql_root` -e <span class="string">"CREATE DATABASE IF NOT EXISTS <span class="variable">$&#123;database&#125;</span>;"</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$&#123;backup_dir&#125;</span></span><br><span class="line">SQL_LIST=$(ls <span class="variable">$&#123;backup_dir&#125;</span> | /bin/grep sql)</span><br><span class="line"><span class="keyword">for</span> sql_file <span class="keyword">in</span> <span class="variable">$&#123;SQL_LIST&#125;</span>; <span class="keyword">do</span></span><br><span class="line">    mysql -uroot -p`cat /data/save/mysql_root` <span class="variable">$&#123;database&#125;</span> &lt; <span class="variable">$&#123;sql_file&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">mysqlimport --<span class="built_in">local</span> -uroot -p`cat /data/save/mysql_root` <span class="variable">$&#123;database&#125;</span> *.txt</span><br></pre></td></tr></table></figure></p>
 <h4 id="script-更新项目版本"><a href="#script-更新项目版本" class="headerlink" title="script 更新项目版本"></a>script 更新项目版本</h4><p>在项目开发中，项目版本更新过程一般如下</p>
 <ol>
 <li>本地环境完成，自测无误</li>
 <li>将代码push github </li>
 <li>在内测机器pull 项目，进行测试</li>
 </ol>
-<p>在我们push 仓库后，每次都要手动去更新内测机器的代码，难免烦躁。可以写一个可视化操作界面，只需点击一个按钮，利用shell script 来完成git pull 和更新到内测机器相应项目目录的步骤。</p>
+<p>在我们push 仓库后，每次都要手动去更新内测机器的代码，难免烦躁。可以写一个可视化操作界面，只需点击一个按钮，利用<strong>shell script 来完成git pull 和更新到内测机器相应项目目录的步骤</strong></p>
 <p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
 
       
