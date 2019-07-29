@@ -309,7 +309,7 @@ id:3:initdefault:
 ```
 
 #### 同步网络时间
-```
+```bash
 # 安装ntpdate工具
 yum -y install ntp ntpdate
 
@@ -319,8 +319,13 @@ ntpdate cn.pool.ntp.org
 # 将系统时间写入硬件时间
 hwclock --systohc
 
-# 开机启动校对 也可以写到crontab 定时同步网络时间
-echo "ntpdate -u ntp.api.bz && clock -w" >> /etc/profile
+# 或者写到crontab 定时同步网络时间
+vim /etc/crontab
+
+PATH=/usr/sbin:/sbin
+export PATH
+# 每分钟同步一次
+* * * * * ntpdate cn.pool.ntp.org && hwclock --systohc
 ```
 
 #### 用户群主概念、账号管理
