@@ -136,5 +136,62 @@ mysqlimport --local -uroot -p`cat /data/save/mysql_root` ${database} *.txt
 
 在我们push 仓库后，每次都要手动去更新内测机器的代码，难免烦躁。可以写一个可视化操作界面，只需点击一个按钮，利用**shell script 来完成git pull 和更新到内测机器相应项目目录的步骤**
 
+#### bash 常见用法
+在学习bash shell 脚本的过程中，如遇陌生语法可以在 [学习bash](http://cn.linux.vbird.org/linux_basic/0320bash.php#xargs)、[学习shell script](http://cn.linux.vbird.org/linux_basic/0340bashshell-scripts.php#debug)这里，利用CTRL+F 查找学习。
+1. awk 处理文件
+```bash
+# 根据匹配规则[@=] 列分割文件内容，并且输出第一列数据
+$(echo ${NAME}|awk -F '[@=]' '{print $1}')
+```
+2. 查看linux 命令是否存在
+```bash
+# 将type composer的结果信息写到 垃圾桶黑洞装置/deb/null
+# 2> 代表将执行命令结果的错误信息 写到文件
+# &1 代表和前一个文件相同
+# || 如果左边命令不报错，则不执行右边
+type composer >/dev/null 2>&1 || {
+            echo "require composer but it's not installed.  Aborting";
+            exit;
+        }
+```
+3. cp 一系列目录
+```
+NEED_UPDATE_FILE = 'www scripts update deps'；
+ /bin/cp -rf ${NEED_UPDATE_FILE} release；
+```
+4. 删除目录下的部分文件
+```
+# find release 目录下文件且文件名为 *.svn*匹配
+# xargs 代表 rm -rf 的命令参数
+find release -type d -name "*.svn*" | xargs rm -rf
+```
+5. 代表一系列目录，且去除目录下部分目录
+```bash
+# 生成文件名，date xxx 是函数调用 xxx 是传参
+Date=`date "+%Y-%m-%d-%H%M%S"`
+TAR_FILE=web.oa.$Date.tar.gz
+
+# 打包文件，www/upload 除外
+NEED_UPDATE_FILE = 'www scripts update deps'；
+tar cfz $TAR_FILE ${NEED_UPDATE_FILE} --exclude=www/upload
+```
+6. 执行远程命令
+```
+# 连接远程机器，并执行命令
+ssh -p22 $PUBLISH_USER@$IP "sudo mkdir -p $SERVER_DIR"
+# $? 代表了执行命令的结果，0代表成功，127是失败
+if [ $? -gt 0 ] ; then
+    echo "远程创建目录失败"
+    exit
+else
+    scp -P 22 $TAR_FILE $PUBLISH_USER@$IP:/data/tmp
+fi
+```
+7. 执行远程一系列命令
+```
+# 通过这种方式
+ssh -p22 $PUBLISH_USER@$IP "sudo mv /data/tmp/${TAR_FILE} ${SERVER_DIR};cd ${SERVER_DIR};xxx;xxx"
+```
+
 
 欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！
