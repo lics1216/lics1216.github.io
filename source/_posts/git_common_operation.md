@@ -112,6 +112,24 @@ git log  // 查看历史 commitId
 git log --pretty=oneline // 查看当前所在commitId
 
 git reset --hard <commitId>
+
+# git tag 命令
+git tag
+git tag 0.0.1
+git tag -a 0.0.1 -m "version 0.1 released" 
+git tag -a 0.0.1 -m "version 0.1 released" 1094adb
+git show 0.0.1
+
+# 删除本地tag
+git tag -d 0.0.1
+
+# push tag
+git push origin 0.0.1
+git push origin --tags
+
+# 删除远程tag
+git tag -d 0.0.1
+git push origin :refs/tags/0.0.1
 ```
 
 这就是一些常用的git 管理项目的流程，欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！
