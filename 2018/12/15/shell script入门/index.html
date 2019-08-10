@@ -88,7 +88,7 @@
 <meta property="og:description" content="为什么学shell操作系统其实是一组软件，控制整个计算机硬件如cpu调度，内存、磁盘存储输入输出是操作系统的内核（Kernel）。通常这组软件是不允许被没有管理能力的终端用户随便使用的，但总是需要让用户操作系统的，用户可以通过壳程序（shell）来达到目的。壳程序是提供给用户去操作系统的一个接口，像ls、mkdir这些常用的命令都是封装好的独立应用程序，它们可以利用壳程序再通过内核去操作系统。 l">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lics1216.github.io/images/20181215/bash1.png">
-<meta property="og:updated_time" content="2019-07-28T09:04:52.106Z">
+<meta property="og:updated_time" content="2019-08-07T14:23:30.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell script 入门">
 <meta name="twitter:description" content="为什么学shell操作系统其实是一组软件，控制整个计算机硬件如cpu调度，内存、磁盘存储输入输出是操作系统的内核（Kernel）。通常这组软件是不允许被没有管理能力的终端用户随便使用的，但总是需要让用户操作系统的，用户可以通过壳程序（shell）来达到目的。壳程序是提供给用户去操作系统的一个接口，像ls、mkdir这些常用的命令都是封装好的独立应用程序，它们可以利用壳程序再通过内核去操作系统。 l">
@@ -332,8 +332,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-28T17:04:52+08:00">
-                2019-07-28
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-07T22:23:30+08:00">
+                2019-08-07
               </time>
             
           </span>
@@ -476,6 +476,30 @@
 <li>在内测机器pull 项目，进行测试</li>
 </ol>
 <p>在我们push 仓库后，每次都要手动去更新内测机器的代码，难免烦躁。可以写一个可视化操作界面，只需点击一个按钮，利用<strong>shell script 来完成git pull 和更新到内测机器相应项目目录的步骤</strong></p>
+<h4 id="bash-常见用法"><a href="#bash-常见用法" class="headerlink" title="bash 常见用法"></a>bash 常见用法</h4><p>在学习bash shell 脚本的过程中，如遇陌生语法可以在 <a href="http://cn.linux.vbird.org/linux_basic/0320bash.php#xargs" target="_blank" rel="noopener">学习bash</a>、<a href="http://cn.linux.vbird.org/linux_basic/0340bashshell-scripts.php#debug" target="_blank" rel="noopener">学习shell script</a>这里，利用CTRL+F 查找学习。</p>
+<ol>
+<li><p>awk 处理文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根据匹配规则[@=] 列分割文件内容，并且输出第一列数据</span></span><br><span class="line">$(<span class="built_in">echo</span> <span class="variable">$&#123;NAME&#125;</span>|awk -F <span class="string">'[@=]'</span> <span class="string">'&#123;print $1&#125;'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看linux 命令是否存在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将type composer的结果信息写到 垃圾桶黑洞装置/deb/null</span></span><br><span class="line"><span class="comment"># 2&gt; 代表将执行命令结果的错误信息 写到文件</span></span><br><span class="line"><span class="comment"># &amp;1 代表和前一个文件相同</span></span><br><span class="line"><span class="comment"># || 如果左边命令不报错，则不执行右边</span></span><br><span class="line"><span class="built_in">type</span> composer &gt;/dev/null 2&gt;&amp;1 || &#123;</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"require composer but it's not installed.  Aborting"</span>;</span><br><span class="line">            <span class="built_in">exit</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>cp 一系列目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NEED_UPDATE_FILE = &apos;www scripts update deps&apos;；</span><br><span class="line"> /bin/cp -rf $&#123;NEED_UPDATE_FILE&#125; release；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除目录下的部分文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># find release 目录下文件且文件名为 *.svn*匹配</span><br><span class="line"># xargs 代表 rm -rf 的命令参数</span><br><span class="line">find release -type d -name &quot;*.svn*&quot; | xargs rm -rf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代表一系列目录，且去除目录下部分目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成文件名，date xxx 是函数调用 xxx 是传参</span></span><br><span class="line">Date=`date <span class="string">"+%Y-%m-%d-%H%M%S"</span>`</span><br><span class="line">TAR_FILE=web.oa.<span class="variable">$Date</span>.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打包文件，www/upload 除外</span></span><br><span class="line">NEED_UPDATE_FILE = <span class="string">'www scripts update deps'</span>；</span><br><span class="line">tar cfz <span class="variable">$TAR_FILE</span> <span class="variable">$&#123;NEED_UPDATE_FILE&#125;</span> --exclude=www/upload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行远程命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 连接远程机器，并执行命令</span><br><span class="line">ssh -p22 $PUBLISH_USER@$IP &quot;sudo mkdir -p $SERVER_DIR&quot;</span><br><span class="line"># $? 代表了执行命令的结果，0代表成功，127是失败</span><br><span class="line">if [ $? -gt 0 ] ; then</span><br><span class="line">    echo &quot;远程创建目录失败&quot;</span><br><span class="line">    exit</span><br><span class="line">else</span><br><span class="line">    scp -P 22 $TAR_FILE $PUBLISH_USER@$IP:/data/tmp</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行远程一系列命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 通过这种方式</span><br><span class="line">ssh -p22 $PUBLISH_USER@$IP &quot;sudo mv /data/tmp/$&#123;TAR_FILE&#125; $&#123;SERVER_DIR&#125;;cd $&#123;SERVER_DIR&#125;;xxx;xxx&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
 
       
@@ -552,6 +576,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/18/代理和复合模式/" rel="prev" title="代理模式和复合模式">
+                代理模式和复合模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -633,7 +661,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -655,7 +683,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -704,7 +732,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么学shell"><span class="nav-number">1.</span> <span class="nav-text">为什么学shell</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-操作环境"><span class="nav-number">2.</span> <span class="nav-text">shell 操作环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单-shell-script"><span class="nav-number">3.</span> <span class="nav-text">简单 shell script</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-script-运行区别"><span class="nav-number">4.</span> <span class="nav-text">shell script 运行区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bash-语法"><span class="nav-number">5.</span> <span class="nav-text">bash 语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定时服务器脚本"><span class="nav-number">6.</span> <span class="nav-text">定时服务器脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动连接mysql"><span class="nav-number">7.</span> <span class="nav-text">自动连接mysql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据自动入库"><span class="nav-number">8.</span> <span class="nav-text">数据自动入库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#script-更新项目版本"><span class="nav-number">9.</span> <span class="nav-text">script 更新项目版本</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么学shell"><span class="nav-number">1.</span> <span class="nav-text">为什么学shell</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-操作环境"><span class="nav-number">2.</span> <span class="nav-text">shell 操作环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单-shell-script"><span class="nav-number">3.</span> <span class="nav-text">简单 shell script</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-script-运行区别"><span class="nav-number">4.</span> <span class="nav-text">shell script 运行区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bash-语法"><span class="nav-number">5.</span> <span class="nav-text">bash 语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定时服务器脚本"><span class="nav-number">6.</span> <span class="nav-text">定时服务器脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动连接mysql"><span class="nav-number">7.</span> <span class="nav-text">自动连接mysql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据自动入库"><span class="nav-number">8.</span> <span class="nav-text">数据自动入库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#script-更新项目版本"><span class="nav-number">9.</span> <span class="nav-text">script 更新项目版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bash-常见用法"><span class="nav-number">10.</span> <span class="nav-text">bash 常见用法</span></a></li></ol></div>
             
 
           </div>
