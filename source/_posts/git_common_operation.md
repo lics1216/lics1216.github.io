@@ -8,7 +8,7 @@ tags:
 - git
 comments: true
 ---
-Git是流行的分布式项目版本管理系统，利用git flow这个优秀的分支模型可以实现多人合作开发项目；在 githbu上也可以学习其他优秀项目！在这里结合自己使用习惯，总结一下git的常用操作。但以下步骤仅涉及个人开发，并未介绍git flow多人合作。想详细了解git的开发人员可以参考
+Git是流行的分布式项目版本管理系统，利用git flow这个优秀的分支模型可以实现多人合作开发项目；在 githbu上也可以学习其他优秀项目！在这里结合自己使用习惯，总结一下git的常用操作。想详细了解git的开发人员可以参考
 > 1. [廖雪峰git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
 #### git安装
@@ -131,5 +131,26 @@ git push origin --tags
 git tag -d 0.0.1
 git push origin :refs/tags/0.0.1
 ```
+
+#### [git flow](https://www.cnblogs.com/cnblogsfans/p/5075073.html) 
+一个人开发时，master/develop 两个分支就可以满足要求。项目组合作就不同了，会出现各种问题。比如
+* 不可能只在develop 开发，今天你在develop 完成需求A，需求B 开发到一半，要求发版本怎么办？
+* 从develop 迁出分支完需求，怎样分类、明确分支功能。如feature/bugfix
+* 怎样发版本，打tag，线上版本处理bug 怎样快速修复
+
+git flow 该分支模型就是用来解决多人合作开发遇到的问题，[理解 gitflow](https://www.cnblogs.com/cnblogsfans/p/5075073.html)
+
+#### git GUI
+刚开始我一点也不喜欢git 的图形化界面操作，认为用命令行操作很酷。但是部门项目开发、测试流程繁琐，并且依赖人工记忆。一般项目环境分为，其中部署可用shell script 做成可视化操作
+1. 本地开发
+2. 内网测试
+3. 外网部署，可能有个外测
+
+由于在内网测试的功能，有时不会一定部署到正式环境，所以部门还添加了一个pre-develop 分支，完成需求流程如下
+1. develop 迁出 feature，完成需求，合并到pre-develop 
+2. 自己将 pre-develop 部署到内网，找验收需求方测试
+3. 测试通过，就把feature finish 到 develp，部署外网。这一步还利用了code review 的步骤，开发人员通过 pull request 提交合并，再由检查你代码写得是否规范的同事完成合并。
+
+如果测试有问题需要修改，你必须来回切换分支，因为流程不可以出错。万一把代码写在错的分支就悲剧了。所以 [git GUI sourceTree](https://www.sourcetreeapp.com/) 是自己首选，多出时间完成自己的todo，学习其他技术，锻炼身体，哈哈！
 
 这就是一些常用的git 管理项目的流程，欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！
