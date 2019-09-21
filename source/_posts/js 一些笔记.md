@@ -1,7 +1,7 @@
 title: js 一些笔记（一）
 date: 2018/9/26
 categories:
-- 前端
+- web
 - js
 tags:
 - js

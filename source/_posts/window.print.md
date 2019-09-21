@@ -1,7 +1,7 @@
 title: window.print() 的打印功能
 date: 2018/12/25
 categories:
-- 前端
+- web
 - js
 tags:
 - window.print

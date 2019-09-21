@@ -1,7 +1,7 @@
 title: vue 学习笔记（一）
 date: 2018/9/27
 categories:
-- 前端
+- web
 - vue
 tags:
 - vue

@@ -2,7 +2,7 @@ title: html/css 写页面
 date: 2018/9/25
 categories:
 
-- 前端
+- web
 - css
 tags:
 - css

@@ -2,7 +2,7 @@ title: css 应用总结
 date: 2018/9/29
 categories:
 
-- 前端
+- web
 - css
 tags:
 - 伪类

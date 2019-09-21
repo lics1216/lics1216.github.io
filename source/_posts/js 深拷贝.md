@@ -1,7 +1,7 @@
 title: js  深拷贝问题
 date: 2018/10/08
 categories:
-- 前端
+- web
 - js
 tags:
 - 深拷贝
@@ -35,34 +35,6 @@ pId = {
 2. Activity 实际上是多次引用了starInfos.7，并且对他进行修改，导致Activities 第1/3 元素相同，修改如下：
 ```js
 let Activity = JSON.parse(JSON.stringify(starInfos[posts[pId][0].xx]))));
-```
-
-#### js 修改对象
-下面是我遇到修改对象的情况， [修改js 对象，合并对象](http://www.cnblogs.com/penghuwan/p/7359026.html)
-1. 修改对象
-```js
-let a = 'gender';
-let b = {
-    name: 'lcs'
-}
-
-b[a] = 'boy'
-```
-2. 利用 Object.assign(target, source1, source2)
-```js
-aa = {
-    name: 'lcs'
-}
-
-bb = {
-    gender: 'boy'
-}
-Object.assign(aa, bb);
-
-aa = {
-    name: 'lcs',
-    gender: 'boy'
-}
 ```
 
 #### promise
