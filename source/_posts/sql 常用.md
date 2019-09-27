@@ -12,13 +12,13 @@ sql 常用理解
 
 #### groupby / having
 sql 分组查询使用格式
-```
+```sql
 # A/B 是分组的列，f 为聚合函数，having 后面跟聚合函数
 select A, B, f(C) from table where [xx] groupby A, B having xxx
 ```
 
-sql 语句先执行条件筛选where，再根据A/B 分组，分组之后的中间结果相当于下面那样这样，再执行having、select。所以select、having 后面不能直接选择分组以外的列。但是表里面根本不存在以下形式，只是便于理解这样写的！
-```
+sql 语句先执行条件筛选where，再根据A/B 分组，分组之后的中间结果相当于下面那样这样，再执行having、select。所以select、having 后面不能直接选择分组以外的列。但是表里面根本不存在以下形式，只是便于理解才这样写的！
+```mysql
 ColumA = A1, A2 A3
 groupby A
 ---------
@@ -45,7 +45,7 @@ A3 c6+c8+c1+c0
 ```
 
 lavarel 查询构造器实现分组
-```
+```php
 # laravel 查询构造器， Eloquent ORM语法
  self::selectRaw('mtime, count(*) as retention_role_total')
         ->where($where)->groupBy('mtime')
@@ -56,7 +56,7 @@ lavarel 查询构造器实现分组
 * 内连接，包括等值连接，不等值连接，自然连连接
 * 外连接，左连接，右连接，全连接
 * 交叉连接
-```
+```mysql
 mysql> select * from game;  
 +-----+--------------+----------+
 | gid | gameName     | playerId |
@@ -77,7 +77,7 @@ mysql> select * from player;
 +----------+------------+-----+
 ```
 内连接
-```
+```mysql
 select * from game as a inner join player as b on a.playerId = b.playerId 
 +-----+--------------+----------+----------+------------+-----+
 | gid | gameName     | playerId | playerId | playerName | gid |
@@ -87,7 +87,7 @@ select * from game as a inner join player as b on a.playerId = b.playerId
 +-----+--------------+----------+----------+------------+-----+
 ```
 左连接
-```
+```mysql
 select * from game as a left join player as b on a.playerId = b.playerId
 +-----+--------------+----------+----------+------------+------+
 | gid | gameName     | playerId | playerId | playerName | gid  |
@@ -99,7 +99,7 @@ select * from game as a left join player as b on a.playerId = b.playerId
 +-----+--------------+----------+----------+------------+------+
 ```
 右连接
-```
+```mysql
 select * from game as a right join player as b on a.playerId = b.playerId
 +------+--------------+----------+----------+------------+-----+
 | gid  | gameName     | playerId | playerId | playerName | gid |
@@ -110,12 +110,12 @@ select * from game as a right join player as b on a.playerId = b.playerId
 +------+--------------+----------+----------+------------+-----+
 ```
 全连接
-```
+```sql
 # mysql 里面没有full join
 select * from game as a full outer join player as b on a.playerId = b.playerId
 ```
 交叉连接
-```
+```mysql
 select * from game as a cross join player as b order by a.playerId;
 +-----+--------------+----------+----------+------------+-----+
 | gid | gameName     | playerId | playerId | playerName | gid |
@@ -135,7 +135,7 @@ select * from game as a cross join player as b order by a.playerId;
 +-----+--------------+----------+----------+------------+-----+
 ```
 
-laravel 实现等值连连接
+laravel 实现等值连接
 ```php
 public static  function getData($params, $page, $pageSize){
     $joinWhere = [
