@@ -32,9 +32,9 @@ doc 是用来展示开发人员写的项目文档的服务，现在要添加一�
 参考浏览器的思路，先把md 转成html 标签，再人为赋予它md css，这样md 文件就变成html 文件了，再利用wxhtmltox 转成pdf。 
 1. [md格式 转成html 标签可以参考这个]( https://github.com/michelf/php-markdown)
 2. 需要给上面的html 标签加上css 样式，[md csss 戳这里](   https://github.com/zhangjikai/markdown-css)
-3. [wkthtmltox 的php 扩展] (https://github.com/mikehaertl/phpwkhtmltopdf)
+3. [wkthtmltox 的php 扩展](https://github.com/mikehaertl/phpwkhtmltopdf)
 
-wkhtmltopdf 本身是没有问题的，可能有的扩展不好用，使用扩展遇到问题，可以在issue 中查找解决方法。记得设置css 页面大小A4 纸，否则一旦超出宽度 pdf 显示不全哦！
+wkhtmltopdf 本身是没有问题的，可能有的扩展不好用，使用扩展遇到问题，可以在issue 中查找解决方法。**记得设置css 页面大小A4 纸，否则一旦超出宽度 pdf 显示不全哦！**
 
 理解浏览器显示md 文件是把md 转成 html 标签，再加上样式。引擎也是起到同样得作用，明白这一点就可以避开安装引擎这个坑！
 
