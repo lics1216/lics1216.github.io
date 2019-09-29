@@ -69,13 +69,13 @@ $html = $meta.$mdCSS.$content;
 // 开始转 pdf
 $pdf = new Pdf($html);
 $pdf->setOptions([
-'binary' => config('mcdoc.wkhtmltopdfPath'),
+    'binary' => config('mcdoc.wkhtmltopdfPath'),
 ]);
 if (!$pdf->saveAs($pathPDF)) {
     $error = $pdf->getError();
     return [
-    'res' => 1,
-    'msg' => $error
+        'res' => 1,
+        'msg' => $error
     ];
 }
 
