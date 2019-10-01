@@ -1,4 +1,4 @@
-title: css 应用总结
+title: web 安全
 date: 2019/01/29
 categories:
 
@@ -9,8 +9,33 @@ tags:
 comments: true
 ---
 
-#### web 安全
-下面是自己使用过 伪类的几种场景
+web 安全一直是个话题，常见的包括防范crsf攻击、sql注入，对存储服务器的敏感数据如用户信息进行加密处理；防止程序攻网络资源，使用验证码进行识别；对于垃圾信息，敏感信息进行过滤在存储等。
+#### crsf 防范
+对crsf 不太清楚的同学可以[戳这里](https://www.jianshu.com/p/e825e67fcf28)，laravel 的解决方式是，
+
+#### api 认证
+很多时候我们发送请求都是b2s，就是客户端给服务端发送请求，但有时也需要在后端请求另外一个服即s2s。比如利用php guzzlehttp/guzzle http客户端，这必定涉及api 验证。这里我用的方式是
+1. 双方先约定加密key 值，请求方携带参数、对参数加密的sign
+2. 接收方对参数重新加密一次，再对比sign，检查参数是否被篡改
+
+在php 中是这样实现的，
+```php
+# 利用 hash_hmac sha256 算法，返回 params 加密后 的sign 字符串
+private function makeSign($params = [])
+{
+    ksort($params);
+    $str = '';
+    foreach ($params as $k => $v) {
+        if(!is_null($v)) {
+        	$str .= '#' . $k . '|' . $v;
+        }
+    }
+    // appkey 是加密时用的key
+    return hash_hmac("sha256", $str, $this->appkey);
+}
+```
+
+小程序开发请求微信服务端api，也是要先获取请求的调用凭证 accessToken，获取这个凭证需要提供该小程序的appid、appAppSecret，凭证也是有时限性的。微信也对用户的信息进行加密后返回，比如运动步数，开发者必须请求加密密钥才能把信息解密。
 
 
 
