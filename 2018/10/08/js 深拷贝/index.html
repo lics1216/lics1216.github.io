@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lcs&#39;s Notes">
 <meta property="og:description" content="js 深拷贝js 里面很多东西都是对象，很容易出现引用问题。引用相同的对象多次，且修改时特别注意js 的深拷贝问题，  下面是我写的错误代码一部分， 123456789101112131415161718pId = &amp;#123;    12: [&amp;#123;xx:&apos;7&apos;, ...&amp;#125;],    21: [&amp;#123;xx:&apos;6&apos;, ...&amp;#125;],    31: [&amp;#123;xx:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-13T12:54:56.488Z">
+<meta property="og:updated_time" content="2019-09-21T13:21:39.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js  深拷贝问题">
 <meta name="twitter:description" content="js 深拷贝js 里面很多东西都是对象，很容易出现引用问题。引用相同的对象多次，且修改时特别注意js 的深拷贝问题，  下面是我写的错误代码一部分， 123456789101112131415161718pId = &amp;#123;    12: [&amp;#123;xx:&apos;7&apos;, ...&amp;#125;],    21: [&amp;#123;xx:&apos;6&apos;, ...&amp;#125;],    31: [&amp;#123;xx:">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-13T20:54:56+08:00">
-                2019-07-13
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-21T21:21:39+08:00">
+                2019-09-21
               </time>
             
           </span>
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
                   </a>
                 </span>
 
@@ -360,7 +360,7 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/js/" itemprop="url" rel="index">
+                  <a href="/categories/web/js/" itemprop="url" rel="index">
                     <span itemprop="name">js</span>
                   </a>
                 </span>
@@ -414,15 +414,6 @@
 </li>
 <li><p>Activity 实际上是多次引用了starInfos.7，并且对他进行修改，导致Activities 第1/3 元素相同，修改如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> Activity = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(starInfos[posts[pId][<span class="number">0</span>].xx]))));</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="js-修改对象"><a href="#js-修改对象" class="headerlink" title="js 修改对象"></a>js 修改对象</h4><p>下面是我遇到修改对象的情况， <a href="http://www.cnblogs.com/penghuwan/p/7359026.html" target="_blank" rel="noopener">修改js 对象，合并对象</a></p>
-<ol>
-<li><p>修改对象</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">'gender'</span>;</span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">    name: <span class="string">'lcs'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b[a] = <span class="string">'boy'</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>利用 Object.assign(target, source1, source2)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">aa = &#123;</span><br><span class="line">    name: <span class="string">'lcs'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bb = &#123;</span><br><span class="line">    gender: <span class="string">'boy'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Object</span>.assign(aa, bb);</span><br><span class="line"></span><br><span class="line">aa = &#123;</span><br><span class="line">    name: <span class="string">'lcs'</span>,</span><br><span class="line">    gender: <span class="string">'boy'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h4><p>promise 只关心自身逻辑，不关心结果处理。没有promise 你必须把网络请求success/fail 处理函数写在请求里面，反之，你可以把处理程序写在.then/.catch里面。这样把网络请求和处理请求结果的逻辑分开，使代码结构更清晰。比如，</p>
@@ -606,7 +597,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -617,7 +608,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -628,7 +619,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -677,7 +668,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#js-深拷贝"><span class="nav-number">1.</span> <span class="nav-text">js 深拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js-修改对象"><span class="nav-number">2.</span> <span class="nav-text">js 修改对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#promise"><span class="nav-number">3.</span> <span class="nav-text">promise</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#js-深拷贝"><span class="nav-number">1.</span> <span class="nav-text">js 深拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#promise"><span class="nav-number">2.</span> <span class="nav-text">promise</span></a></li></ol></div>
             
 
           </div>
