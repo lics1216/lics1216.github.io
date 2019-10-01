@@ -13,18 +13,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[laravel 利用redis 的发布订阅保持数据一致性]]></title>
-    <url>%2F2019%2F01%2F20%2Flaravel%20%E5%88%A9%E7%94%A8redis%20%E7%9A%84%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E4%BF%9D%E6%8C%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%2F</url>
-    <content type="text"><![CDATA[保持数据一致性项目服务之间共用配置信息可以存储在远程的redis，怎样保存数据的一致性是个问题。可以使用redis 的发布订阅功能及时同步数据，思路 数据有变化的服务更新远程redis，并publish key 值到频道 订阅了数据的服务就会收到信息并去同步数据 可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravle 这样实现123456789101112131415161718192021222324252627282930313233# controller public function updateConfig(Request $request)&#123; // 其他逻辑... // 分发任务到队列 cacheJob::dispatch('setCacheData', $request-&gt;all());&#125;# 命令创建任务 php artisan make:job cacheJobclass cacheJob implements ShouldQueue&#123; public function __construct($callback, $arguments) &#123; $this-&gt;callback =$callback; $this-&gt;arguments =$arguments; &#125; public function handle() &#123; call_user_func($this-&gt;callback, $this-&gt;arguments); &#125; # setCacheData public function setCacheData($params) &#123; // set.... $value = $params['data']; $this-&gt;redis = $this-&gt;getRedis(); $this-&gt;redis-&gt;set('dataKey', $value); // publish 比如频道名test $this-&gt;redis-&gt;publish('test', 'dataKey'); &#125; &#125; 接下来再启动php artisan queue:work 去处理队列里面的任务。可以用supervisor 管理该进程，设置随系统启动，启动的进程个数。 那些订阅远程redis test 频道的客户端就会收到同步信息，可以在需要订阅数据的服务所在机器上简单建一个订阅服务，一旦收到信息就同步。如下图 subscribe/publish 在同一台机器上，可以是不相关的两个服务。在subscribe 利用laravel构建自定义命令，别忘记在Console/Kernel.php 添加命令类。同样利用surpvisor 管理订阅进程，这样就可以保持数据一致性了！1234567891011# php artisan make command subscribeTestclass subscribeTest extends Command&#123; public function handle() &#123; $this-&gt;redis = $this-&gt;getRedis(); $this-&gt;redis-&gt;subscribe(['test'], function ($message) &#123; // 获取数据.... $this-&gt;getData($message); &#125;); &#125;&#125; 欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！]]></content>
-      <categories>
-        <category>web</category>
-        <category>redis</category>
-      </categories>
-      <tags>
-        <tag>发布订阅</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[规范代码]]></title>
     <url>%2F2019%2F01%2F20%2F%E8%A7%84%E8%8C%83%E4%BB%A3%E7%A0%81%2F</url>
     <content type="text"><![CDATA[返回结果处理返回结果有，后端向其他服务请求、后台给前端返回结果12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849# 后台向其他服务请求$result = curlGet($url);if ($result) &#123; $rs = json_decode($result, true); return $rs;&#125; else &#123; return false;&#125;# 后台给前端返回public function returnResult($res)&#123; if ($res) &#123; if ($res['ret'] == 0) &#123; // 0 返回成功，返回data，携带 msg 默认是"success" return returnData($res['data']); &#125; // 1 返回失败，携带msg return returnError($res['data']); &#125; return returnError('请求其他服务接口失败');&#125;# 返回结果封装function returnError($msg = 'error', $ret = 1, $status = 200, $type = 0)&#123; return buildResponse($ret, $msg, $status, $type);&#125;function returnData($data, $ret = 0, $msg = 'success', $type = 0)&#123; return buildResponse($ret, $msg, 200, $type, $data);&#125;function buildResponse($ret = 0, $msg = '', $status = 200, $type, $data = array())&#123; $info = array( 'ret' =&gt; $ret, 'msg' =&gt; $msg ); if ($data) &#123; $info['data'] = $data; &#125; if ($type) &#123; return response(json_encode($info, $type), $status)-&gt;header('Content-Type', 'application/json'); &#125; else &#123; return response(json_encode($info), $status)-&gt;header('Content-Type', 'application/json'); &#125;&#125; controller/model 职责明确controller处理请求携带的参数，model返回的数据库数据。在model 就是直接利用参数，对数据库的操作。比如1234567# controller 判断参数timesif (!isset($params['times']) || count($params['times']) != 2 || $params['times'][0] &gt; $params['times'][1]) &#123; return '时间选择错误';&#125; # 毫秒转秒 millisecondToSecond = 1000$params['times'][0] = intval($params['times'][0] / config('constants.millisecondToSecond')); 有时还在controller/model 中间再加一层，在Repositories 目录文件中对model 取出的数据进一步处理。其他controller 要使用，就先在Providers 绑定interface—&gt;实现类, laravel会通过controller 构造函数注入给它。 欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！]]></content>
@@ -34,6 +22,18 @@
       </categories>
       <tags>
         <tag>规范代码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[laravel 利用redis 的发布订阅保持数据一致性]]></title>
+    <url>%2F2019%2F01%2F20%2Flaravel%20%E5%88%A9%E7%94%A8redis%20%E7%9A%84%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E4%BF%9D%E6%8C%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%2F</url>
+    <content type="text"><![CDATA[保持数据一致性项目服务之间共用配置信息可以存储在远程的redis，怎样保存数据的一致性是个问题。可以使用redis 的发布订阅功能及时同步数据，思路 数据有变化的服务更新远程redis，并publish key 值到频道 订阅了数据的服务就会收到信息并去同步数据 可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravle 这样实现123456789101112131415161718192021222324252627282930313233# controller public function updateConfig(Request $request)&#123; // 其他逻辑... // 分发任务到队列 cacheJob::dispatch('setCacheData', $request-&gt;all());&#125;# 命令创建任务 php artisan make:job cacheJobclass cacheJob implements ShouldQueue&#123; public function __construct($callback, $arguments) &#123; $this-&gt;callback =$callback; $this-&gt;arguments =$arguments; &#125; public function handle() &#123; call_user_func($this-&gt;callback, $this-&gt;arguments); &#125; # setCacheData public function setCacheData($params) &#123; // set.... $value = $params['data']; $this-&gt;redis = $this-&gt;getRedis(); $this-&gt;redis-&gt;set('dataKey', $value); // publish 比如频道名test $this-&gt;redis-&gt;publish('test', 'dataKey'); &#125; &#125; 接下来再启动php artisan queue:work 去处理队列里面的任务。可以用supervisor 管理该进程，设置随系统启动，启动的进程个数。 那些订阅远程redis test 频道的客户端就会收到同步信息，可以在需要订阅数据的服务所在机器上简单建一个订阅服务，一旦收到信息就同步。如下图 subscribe/publish 在同一台机器上，可以是不相关的两个服务。在subscribe 利用laravel构建自定义命令，别忘记在Console/Kernel.php 添加命令类。同样利用surpvisor 管理订阅进程，这样就可以保持数据一致性了！1234567891011# php artisan make command subscribeTestclass subscribeTest extends Command&#123; public function handle() &#123; $this-&gt;redis = $this-&gt;getRedis(); $this-&gt;redis-&gt;subscribe(['test'], function ($message) &#123; // 获取数据.... $this-&gt;getData($message); &#125;); &#125;&#125; 欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！]]></content>
+      <categories>
+        <category>web</category>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>发布订阅</tag>
       </tags>
   </entry>
   <entry>
