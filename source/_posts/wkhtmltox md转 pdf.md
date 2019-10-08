@@ -83,9 +83,11 @@ $res = MdDocHelper::getInstance()->getFileContent($app, $md);
 $content = MarkdownExtra::defaultTransform($res['data']);
 $content = str_replace('<pre>', '<pre class="prettyprint linenums">', $content);
 $content = str_replace('<a href=', '<a target="_blank" href=', $content);
-$meta = "<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">";
+$meta = "<meta http-equiv=\"content-type\"         
+$divStart = "<div class=\"page\">";
 $mdCSS = config('mdcss');
-$html = $meta.$mdCSS.$content;
+$divEnd = "</div>";
+$html = $meta.$mdCSS.$divStart.$content.$divEnd;
 
 // 开始转 pdf
 $pdf = new Pdf($html);
