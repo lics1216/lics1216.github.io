@@ -13,7 +13,7 @@ comments: true
 1. 数据有变化的服务更新远程redis，并publish key 值到频道
 2. 订阅了数据的服务就会收到信息并去同步数据
 
-可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravle 这样实现
+可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravel 这样实现
 ```php
 # controller 
 public function updateConfig(Request $request)
