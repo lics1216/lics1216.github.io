@@ -156,6 +156,14 @@ public static  function getData($params, $page, $pageSize){
 ```
 
 #### 索引
+我们都知道给表加上索引之后，查询速度会变快。为了在不同的数据库引擎下使用好索引，花时间理解了一下索引背后的原理，与之前学过的计算机基础知识联系起来。
+
+可以阅读下面文章对数据库索引有比较深入的理解
+1. [比较简单的讲解了数据库索引的作用](https://zhuanlan.zhihu.com/p/23624390)
+2. [**比较底层解释数据库引擎采用的索引结构**](https://blog.csdn.net/suifeng3051/article/details/52669644)
+3. [**【联系底层】计算机组成原理的理解**](https://juejin.im/post/5b1b3b60e51d4506c556b00a)
+4. [**mysql 的实际索引实际应用**](https://blog.csdn.net/u014745069/article/details/80466917)
+
 
 #### 数据库权限
 
