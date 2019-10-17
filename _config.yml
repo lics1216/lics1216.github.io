@@ -75,7 +75,15 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
-  
+
+# mathjax
+math:
+  engine: 'mathjax' # or 'katex'
+  mathjax:
+    # src: custom_mathjax_source
+    config:
+      # MathJax config
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
