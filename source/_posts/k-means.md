@@ -47,7 +47,11 @@ k-means的算法核心是
 
 ![duck1](/images/20181119/k-means1.png)
 
-#### 二分 K-Means 
+#### 二分 k-means 
+二分k-means 是对k-meas 的改进
 
+
+参考文章
+>[ K-Means（K-均值）聚类算法](https://github.com/apachecn/AiLearning/blob/master/docs/ml/10.k-means%E8%81%9A%E7%B1%BB.md)
 
 欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！
