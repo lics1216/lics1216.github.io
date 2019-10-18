@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="Logistic回归  描述：  分类算法，回归是对一些数据点进行拟合，该拟合过程称为回归，这样的思想是用来做预测的。为什么能用来分类呢？ 假设有一个这样的函数，f(z) = 1/(1 + e^(-z)), 显然随着z 增大 f(z)的值逼于1; 随着z的减小，f(z) = 0。 如果把自变量Z的值范围扩大到，如-20 到 20， f(z)就是一条突变的0到1的很陡曲线。 结合机器学习 数据集(">
+<meta name="description" content="Logistic回归回归是对一些数据点进行拟合，该拟合过程称为回归，这样的思想是用来做预测的。为什么能用来分类呢？假设有一个这样的函数，名称为Sigmoid$$f(z) = {1 \over 1 + e^{-z}}$$ 该函数显然随着z 增大$ f(z)$的值逼于1; 随着z的减小，$f(z)$等于 0。 如果把自变量Z的值范围扩大到，如-20 到 20， f(z)就是一条突变的0到1的很陡曲线。">
 <meta name="keywords" content="Logistic回归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logistic回归">
 <meta property="og:url" content="https://lics1216.github.io/2018/11/13/logistic回归/index.html">
 <meta property="og:site_name" content="Lcs&#39;s Notes">
-<meta property="og:description" content="Logistic回归  描述：  分类算法，回归是对一些数据点进行拟合，该拟合过程称为回归，这样的思想是用来做预测的。为什么能用来分类呢？ 假设有一个这样的函数，f(z) = 1/(1 + e^(-z)), 显然随着z 增大 f(z)的值逼于1; 随着z的减小，f(z) = 0。 如果把自变量Z的值范围扩大到，如-20 到 20， f(z)就是一条突变的0到1的很陡曲线。 结合机器学习 数据集(">
+<meta property="og:description" content="Logistic回归回归是对一些数据点进行拟合，该拟合过程称为回归，这样的思想是用来做预测的。为什么能用来分类呢？假设有一个这样的函数，名称为Sigmoid$$f(z) = {1 \over 1 + e^{-z}}$$ 该函数显然随着z 增大$ f(z)$的值逼于1; 随着z的减小，$f(z)$等于 0。 如果把自变量Z的值范围扩大到，如-20 到 20， f(z)就是一条突变的0到1的很陡曲线。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T11:59:47.664Z">
+<meta property="og:image" content="https://lics1216.github.io/images/20181113/logistics1.png">
+<meta property="og:image" content="https://lics1216.github.io/images/20181113/logistics2.png">
+<meta property="og:image" content="https://lics1216.github.io/images/20181113/logistics3.png">
+<meta property="og:updated_time" content="2019-10-17T13:45:50.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic回归">
-<meta name="twitter:description" content="Logistic回归  描述：  分类算法，回归是对一些数据点进行拟合，该拟合过程称为回归，这样的思想是用来做预测的。为什么能用来分类呢？ 假设有一个这样的函数，f(z) = 1/(1 + e^(-z)), 显然随着z 增大 f(z)的值逼于1; 随着z的减小，f(z) = 0。 如果把自变量Z的值范围扩大到，如-20 到 20， f(z)就是一条突变的0到1的很陡曲线。 结合机器学习 数据集(">
+<meta name="twitter:description" content="Logistic回归回归是对一些数据点进行拟合，该拟合过程称为回归，这样的思想是用来做预测的。为什么能用来分类呢？假设有一个这样的函数，名称为Sigmoid$$f(z) = {1 \over 1 + e^{-z}}$$ 该函数显然随着z 增大$ f(z)$的值逼于1; 随着z的减小，$f(z)$等于 0。 如果把自变量Z的值范围扩大到，如-20 到 20， f(z)就是一条突变的0到1的很陡曲线。">
+<meta name="twitter:image" content="https://lics1216.github.io/images/20181113/logistics1.png">
 
 
 
@@ -126,7 +130,7 @@
 
 
 
-  <title>Logistic回归 | Lcs's Notes</title>
+  <title>Logistic回归 | Lcs's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -330,8 +334,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-24T19:59:47+08:00">
-                2019-06-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-17T21:45:50+08:00">
+                2019-10-17
               </time>
             
           </span>
@@ -407,47 +411,23 @@
       
 
       
-        <ol>
-<li><p><a href="https://github.com/apachecn/MachineLearning/blob/master/docs/5.Logistic%E5%9B%9E%E5%BD%92.md" target="_blank" rel="noopener">Logistic回归</a></p>
+        <h4 id="Logistic回归"><a href="#Logistic回归" class="headerlink" title="Logistic回归"></a>Logistic回归</h4><p>回归是对一些数据点进行拟合，该拟合过程称为回归，这样的思想是用来做预测的。为什么能用来分类呢？假设有一个这样的函数，名称为Sigmoid<br>$$f(z) = {1 \over 1 + e^{-z}}$$</p>
+<p>该函数显然随着z 增大$ f(z)$的值逼于1; 随着z的减小，$f(z)$等于 0。 如果把自变量Z的值范围扩大到，如-20 到 20， f(z)就是一条突变的0到1的很陡曲线。</p>
+<p><img src="/images/20181113/logistics1.png" alt="duck1"></p>
+<p>假设现在有如下数据集(含特征和类别)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">特征1 x0    特征2 x1        类别</span><br><span class="line">-0.017612	14.053064	     0</span><br><span class="line">-1.395634	4.662541	     1</span><br><span class="line">-0.752157	6.538620	     0</span><br><span class="line">-1.322371	7.152853	     0</span><br><span class="line">0.423363	11.054677	     0</span><br></pre></td></tr></table></figure></p>
+<p>假设 f(z) 的自变量 $z = w_0x_0 + w_1x_1$，将 z 代入 f(z)，该z使得f(z)产生突变， 即可得到在0 &lt; f(z) &lt; 1 </p>
 <ul>
-<li><p><strong>描述</strong>：</p>
-<ul>
-<li><strong>分类算法</strong>，回归是对一些数据点进行拟合，该拟合过程称为回归，这样的思想是用来做预测的。为什么能用来分类呢？</li>
-<li>假设有一个这样的函数，f(z) = 1/(1 + e^(-z)), 显然随着z 增大 f(z)的值逼于1; 随着z的减小，f(z) = 0。 如果把自变量Z的值范围扩大到，如-20 到 20， f(z)就是一条突变的0到1的很陡曲线。</li>
-<li>结合机器学习 数据集(含特征和类别)  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">特征1 x0    特征2 x1        类别</span><br><span class="line">-0.017612	14.053064	     0</span><br><span class="line">-1.395634	4.662541	     1</span><br><span class="line">-0.752157	6.538620	     0</span><br><span class="line">-1.322371	7.152853	     0</span><br><span class="line">0.423363	11.054677	     0</span><br><span class="line"></span><br><span class="line">假设 f(z) 的自变量 z = w0*x0 + w1*x1    (w0,w1 就是接下来要求的!)</span><br><span class="line">将 z 代入 f(z)，该z使得f(z)产生突变， 即可得到在0 &lt; f(z) &lt; 1 </span><br><span class="line">规定 f(z) &lt; 0.5, 该数据 归为第一类</span><br><span class="line">规定 0.5 &lt; f(z), 该数据 归为第二类</span><br><span class="line"></span><br><span class="line">求 w0, w1 就是实现这一思想核心！</span><br></pre></td></tr></table></figure>
-</li>
+<li>规定 f(z) &lt; 0.5, 该数据归为第一类</li>
+<li>规定 0.5 &lt; f(z), 该数据归为第二类</li>
 </ul>
-</li>
-<li><p>相关数学知识：</p>
-</li>
-</ul>
-<ol>
-<li><p>梯度</p>
-<ul>
-<li>假设 z = f(x, y) 三维图像，类似一座山峰的表面图形，像一顶帽子的图像。</li>
-<li><strong>梯度</strong>：假设取山峰上一点 A(x0, y0, z0)，接下你想朝一个最陡峭的方向 往上爬。该最陡峭的方向即为 A 点的 梯度。</li>
-<li><p>梯度求法：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">z = f(x, y)</span><br><span class="line"></span><br><span class="line">a向量 = ( 函数f对x 求偏导， 函数f对y 求偏导)</span><br><span class="line"></span><br><span class="line">求在 A(x0, y0, z0) 的梯度为 将x0， y0 带入 a向量</span><br><span class="line"></span><br><span class="line">如： z = 2*x^2 + y^2</span><br><span class="line"></span><br><span class="line">a = (4x, 2y)</span><br><span class="line">A的 梯度为 (4x0, 2y0)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>移动步长</strong>：k</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A1 = (x0, y0) + k * a</span><br><span class="line"></span><br><span class="line">这时 沿着梯度方向a (最陡峭方向) 爬一定的长度，</span><br><span class="line">就到了新的一个点A1， 再按照该方法就可以 到新的点A2</span><br><span class="line"></span><br><span class="line">这样一直爬下去A3, A4.....An 就爬到了最高点An</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>疑问<ul>
-<li>求 w0, w1 是利用 迭代，为什么后一次迭代效果比前一次好。</li>
-<li>每一次迭代用了梯度，但是不理解，梯度在这里的用处！</li>
-<li>其他书籍有的，通过损失函数的概念，来求 w0,w1</li>
-</ul>
-</li>
-<li><p>运行代码</p>
-<p>​    </p>
-</li>
-</ul>
-</li>
-</ol>
+<p>所以求 $w_0$,$w_1$ 就是实现这一思想核心！            </p>
+<h4 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h4><p>假设$z=f(x, y)$三维图像类似一座山峰的表面图形，像一顶帽子的图像。假设取山峰上一点$A(x_0, y_0, z_0)$，接下你想朝一个最陡峭的方向往上爬。该最陡峭的方向即为 A 点的梯度，所以梯度是个向量</p>
+<p>梯度求法举例，假设有函数$z=f(x,y)$，梯度公式为</p>
+<p><img src="/images/20181113/logistics2.png" alt="duck1"></p>
+<p>假设$z = 2x^2 + y^2$，则$\nabla f(x,y) = (4x, 2y)$，求在 $A(x_0, y_0, z_0)$的梯度为，将$x_0$， $y_0$ 带入梯度向量。A的 梯度为 $(4x_0, 2y_0)$</p>
+<p>还有另外一个<strong>移动步长</strong>k的概念，从A点沿着梯度方向$\nabla f(x,y)$(最陡峭方向) 爬一定的长度，就到了新的一个点A1,$A_1(x, y)=(x_0, y_0)+k(4x_0, 2y_0)$。再按照该方法就可以到新的点A2，这样一直爬下去A3, A4…..An就爬到了最高点An</p>
+<h4 id="梯度法得W"><a href="#梯度法得W" class="headerlink" title="梯度法得W"></a>梯度法得W</h4><p>关于用梯度法求解系数w 的推导，<a href="https://zhuanlan.zhihu.com/p/44583106" target="_blank" rel="noopener">请看这篇理解 logistic 回归</a>。文中最后得出W和数据特征X，和类别Y(0或者1)的迭代关系式。</p>
+<p><img src="/images/20181113/logistics3.png" alt="duck1"></p>
 <p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
 
       
@@ -525,8 +505,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/15/随机森林/" rel="prev" title="随机森林">
-                随机森林 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/17/线性回归/" rel="prev" title="线性回归">
+                线性回归 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -582,8 +562,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -600,7 +589,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -661,6 +650,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logistic回归"><span class="nav-number">1.</span> <span class="nav-text">Logistic回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度"><span class="nav-number">2.</span> <span class="nav-text">梯度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度法得W"><span class="nav-number">3.</span> <span class="nav-text">梯度法得W</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1201,6 +1206,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 

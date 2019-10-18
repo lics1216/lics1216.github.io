@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lcs&#39;s Notes">
 <meta property="og:description" content="doc 是用来展示开发人员写的项目文档的服务，现在要添加一个md2pdf 的下载功能，下面说一下自己是怎样用wkhtmltox实现 md转 pdf doc 实现过程下面是开发文档展示的过程，只需看wkhtmltox 实现md 转pdf 可以忽略  文档写在仓库 docData，每次commit 时利用git-hook 触发http 请求给服务mcdoc api doc 服务会pull 文档到服务器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-30T13:23:00.788Z">
+<meta property="og:updated_time" content="2019-10-16T09:06:07.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wkhtmltox实现 md转 pdf">
 <meta name="twitter:description" content="doc 是用来展示开发人员写的项目文档的服务，现在要添加一个md2pdf 的下载功能，下面说一下自己是怎样用wkhtmltox实现 md转 pdf doc 实现过程下面是开发文档展示的过程，只需看wkhtmltox 实现md 转pdf 可以忽略  文档写在仓库 docData，每次commit 时利用git-hook 触发http 请求给服务mcdoc api doc 服务会pull 文档到服务器">
@@ -126,7 +126,7 @@
 
 
 
-  <title>wkhtmltox实现 md转 pdf | Lcs's Notes</title>
+  <title>wkhtmltox实现 md转 pdf | Lcs's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-30T21:23:00+08:00">
-                2019-09-30
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-16T17:06:07+08:00">
+                2019-10-16
               </time>
             
           </span>
@@ -432,10 +432,10 @@
 <li>需要给上面的html 标签加上css 样式，<a href="https://github.com/zhangjikai/markdown-css" target="_blank" rel="noopener">md csss 戳这里</a></li>
 <li><a href="https://github.com/mikehaertl/phpwkhtmltopdf" target="_blank" rel="noopener">wkthtmltox 的php 扩展</a></li>
 </ol>
-<p>wkhtmltopdf 本身是没有问题的，可能有的扩展不好用，使用扩展遇到问题，可以在issue 中查找解决方法。<strong>记得设置css 页面大小A4 纸，否则一旦超出宽度 pdf 显示不全哦！</strong></p>
+<p>wkhtmltopdf 本身是没有问题的，可能有的扩展不好用，使用扩展遇到问题，可以在issue 中查找解决方法。<strong>记得设置css 页面大小A4 纸，否则一旦超出宽度 pdf 显示不全哦！</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># A4 css</span><br><span class="line">$divStart = &quot;&lt;div class=\&quot;page\&quot;&gt;&quot;;</span><br><span class="line">$divStart = &quot;&lt;/div&gt;&quot;;</span><br><span class="line"></span><br><span class="line">.page &#123;</span><br><span class="line">    width: 21cm;</span><br><span class="line">    min-height: 29.7cm;</span><br><span class="line">    padding: 2cm;</span><br><span class="line">    margin: 1cm auto;</span><br><span class="line">    border: 1px #D3D3D3 solid;</span><br><span class="line">    border-radius: 5px;</span><br><span class="line">    background: white;</span><br><span class="line">    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 代码块设置换行 css</span><br><span class="line">pre &gt; code &#123;</span><br><span class="line">    white-space: pre-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>理解浏览器显示md 文件是把md 转成 html 标签，再加上样式。引擎也是起到同样得作用，明白这一点就可以避开安装引擎这个坑！</p>
 <h4 id="wxhtmltox-安装"><a href="#wxhtmltox-安装" class="headerlink" title="wxhtmltox 安装"></a>wxhtmltox 安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 1. 获取安装包</span><br><span class="line">wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz</span><br><span class="line"></span><br><span class="line"># 2. 解压到 /usr/local/wkhtmltox/</span><br><span class="line">tar -xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz -C /usr/local</span><br><span class="line"></span><br><span class="line"># 3. 添加path /usr/local/wkhtmltox/bin</span><br><span class="line">echo &apos;export PATH=/usr/local/wkhtmltox/bin:$PATH&apos; &gt;&gt; /etc/profile</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-<h4 id="php-实现"><a href="#php-实现" class="headerlink" title="php 实现"></a>php 实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">if (!is_dir($dirPDF)) &#123;</span><br><span class="line">    mkdir($dirPDF, 0755, true);</span><br><span class="line">&#125;</span><br><span class="line">// 生成HTML str， 人为加md css</span><br><span class="line">$res = MdDocHelper::getInstance()-&gt;getFileContent($app, $md);</span><br><span class="line">$content = MarkdownExtra::defaultTransform($res[&apos;data&apos;]);</span><br><span class="line">$content = str_replace(&apos;&lt;pre&gt;&apos;, &apos;&lt;pre class=&quot;prettyprint linenums&quot;&gt;&apos;, $content);</span><br><span class="line">$content = str_replace(&apos;&lt;a href=&apos;, &apos;&lt;a target=&quot;_blank&quot; href=&apos;, $content);</span><br><span class="line">$meta = &quot;&lt;meta http-equiv=\&quot;content-type\&quot; content=\&quot;text/html;charset=utf-8\&quot;&gt;&quot;;</span><br><span class="line">$mdCSS = config(&apos;mdcss&apos;);</span><br><span class="line">$html = $meta.$mdCSS.$content;</span><br><span class="line"></span><br><span class="line">// 开始转 pdf</span><br><span class="line">$pdf = new Pdf($html);</span><br><span class="line">$pdf-&gt;setOptions([</span><br><span class="line">    &apos;binary&apos; =&gt; config(&apos;mcdoc.wkhtmltopdfPath&apos;),</span><br><span class="line">]);</span><br><span class="line">if (!$pdf-&gt;saveAs($pathPDF)) &#123;</span><br><span class="line">    $error = $pdf-&gt;getError();</span><br><span class="line">    return [</span><br><span class="line">        &apos;res&apos; =&gt; 1,</span><br><span class="line">        &apos;msg&apos; =&gt; $error</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="php-实现"><a href="#php-实现" class="headerlink" title="php 实现"></a>php 实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">if (!is_dir($dirPDF)) &#123;</span><br><span class="line">    mkdir($dirPDF, 0755, true);</span><br><span class="line">&#125;</span><br><span class="line">// 生成HTML str， 人为加md css</span><br><span class="line">$res = MdDocHelper::getInstance()-&gt;getFileContent($app, $md);</span><br><span class="line">$content = MarkdownExtra::defaultTransform($res[&apos;data&apos;]);</span><br><span class="line">$content = str_replace(&apos;&lt;pre&gt;&apos;, &apos;&lt;pre class=&quot;prettyprint linenums&quot;&gt;&apos;, $content);</span><br><span class="line">$content = str_replace(&apos;&lt;a href=&apos;, &apos;&lt;a target=&quot;_blank&quot; href=&apos;, $content);</span><br><span class="line">$meta = &quot;&lt;meta http-equiv=\&quot;content-type\&quot;         </span><br><span class="line">$divStart = &quot;&lt;div class=\&quot;page\&quot;&gt;&quot;;</span><br><span class="line">$mdCSS = config(&apos;mdcss&apos;);</span><br><span class="line">$divEnd = &quot;&lt;/div&gt;&quot;;</span><br><span class="line">$html = $meta.$mdCSS.$divStart.$content.$divEnd;</span><br><span class="line"></span><br><span class="line">// 开始转 pdf</span><br><span class="line">$pdf = new Pdf($html);</span><br><span class="line">$pdf-&gt;setOptions([</span><br><span class="line">    &apos;binary&apos; =&gt; config(&apos;mcdoc.wkhtmltopdfPath&apos;),</span><br><span class="line">]);</span><br><span class="line">if (!$pdf-&gt;saveAs($pathPDF)) &#123;</span><br><span class="line">    $error = $pdf-&gt;getError();</span><br><span class="line">    return [</span><br><span class="line">        &apos;res&apos; =&gt; 1,</span><br><span class="line">        &apos;msg&apos; =&gt; $error</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
 
       
@@ -597,7 +597,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1214,6 +1214,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 

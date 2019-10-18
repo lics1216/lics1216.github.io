@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="k-means 聚类  描述： 聚类是无监督学习，训练数据集都是未添标签的(不知类别)。就连数据集最终要分成几类都是不知道的。 和分类区别，分类的目标事先已知。   算法： 数据集1234567891011121314151617181920212223242526272829303132331.658985	4.285136-3.453687	3.4243214.838138	-1.15153">
+<meta name="description" content="k-means 聚类k-means聚类是无监督学习，训练数据集都是未添标签的(不知类别)。就连数据集最终要分成几类都是不知道的。聚类和分类的不同是，后者必须对分类的目标事物必须是已知的。 聚类算法是根据样本之间的距离（相似度）来分类的，判断是否属于同一个簇。常见的计算距离的算法有欧式距离，曼哈顿距离和余弦相似性距离等。其中欧式距离，在二维平面上就是两点距离公式。 应用假设有如下数据集，现在要用k-">
 <meta name="keywords" content="k-means">
 <meta property="og:type" content="article">
 <meta property="og:title" content="k-means">
 <meta property="og:url" content="https://lics1216.github.io/2018/11/19/k-means/index.html">
 <meta property="og:site_name" content="Lcs&#39;s Notes">
-<meta property="og:description" content="k-means 聚类  描述： 聚类是无监督学习，训练数据集都是未添标签的(不知类别)。就连数据集最终要分成几类都是不知道的。 和分类区别，分类的目标事先已知。   算法： 数据集1234567891011121314151617181920212223242526272829303132331.658985	4.285136-3.453687	3.4243214.838138	-1.15153">
+<meta property="og:description" content="k-means 聚类k-means聚类是无监督学习，训练数据集都是未添标签的(不知类别)。就连数据集最终要分成几类都是不知道的。聚类和分类的不同是，后者必须对分类的目标事物必须是已知的。 聚类算法是根据样本之间的距离（相似度）来分类的，判断是否属于同一个簇。常见的计算距离的算法有欧式距离，曼哈顿距离和余弦相似性距离等。其中欧式距离，在二维平面上就是两点距离公式。 应用假设有如下数据集，现在要用k-">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T11:59:47.664Z">
+<meta property="og:image" content="https://lics1216.github.io/images/20181119/k-means1.png">
+<meta property="og:updated_time" content="2019-10-18T04:26:55.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k-means">
-<meta name="twitter:description" content="k-means 聚类  描述： 聚类是无监督学习，训练数据集都是未添标签的(不知类别)。就连数据集最终要分成几类都是不知道的。 和分类区别，分类的目标事先已知。   算法： 数据集1234567891011121314151617181920212223242526272829303132331.658985	4.285136-3.453687	3.4243214.838138	-1.15153">
+<meta name="twitter:description" content="k-means 聚类k-means聚类是无监督学习，训练数据集都是未添标签的(不知类别)。就连数据集最终要分成几类都是不知道的。聚类和分类的不同是，后者必须对分类的目标事物必须是已知的。 聚类算法是根据样本之间的距离（相似度）来分类的，判断是否属于同一个簇。常见的计算距离的算法有欧式距离，曼哈顿距离和余弦相似性距离等。其中欧式距离，在二维平面上就是两点距离公式。 应用假设有如下数据集，现在要用k-">
+<meta name="twitter:image" content="https://lics1216.github.io/images/20181119/k-means1.png">
 
 
 
@@ -126,7 +128,7 @@
 
 
 
-  <title>k-means | Lcs's Notes</title>
+  <title>k-means | Lcs's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -330,8 +332,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-24T19:59:47+08:00">
-                2019-06-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-18T12:26:55+08:00">
+                2019-10-18
               </time>
             
           </span>
@@ -407,35 +409,25 @@
       
 
       
-        <ol>
-<li><p>k-means 聚类</p>
-<ul>
-<li><strong>描述</strong>：<ul>
-<li>聚类是无监督学习，训练数据集都是未添标签的(不知类别)。就连数据集最终要分成几类都是不知道的。</li>
-<li>和分类区别，分类的目标事先已知。</li>
-</ul>
-</li>
-<li><strong>算法</strong>：<ol>
-<li>数据集<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1.658985	4.285136</span><br><span class="line">-3.453687	3.424321</span><br><span class="line">4.838138	-1.151539</span><br><span class="line">-5.379713	-3.362104</span><br><span class="line">0.972564	2.924086</span><br><span class="line">-3.567919	1.531611</span><br><span class="line">0.450614	-3.302219</span><br><span class="line">-3.487105	-1.724432</span><br><span class="line">2.668759	1.594842</span><br><span class="line">-3.156485	3.191137</span><br><span class="line">3.165506	-3.999838</span><br><span class="line">-2.786837	-3.099354</span><br><span class="line">4.208187	2.984927</span><br><span class="line">-2.123337	2.943366</span><br><span class="line">0.704199	-0.479481</span><br><span class="line">............</span><br><span class="line">     </span><br><span class="line">         假设 图为：</span><br><span class="line">         |</span><br><span class="line">    2.0  |                   ..    .</span><br><span class="line">         |                    .     .     ..</span><br><span class="line">    1.5  |                  .     ..</span><br><span class="line">         |                  .. .</span><br><span class="line">    1.0  |                      .   . .</span><br><span class="line">         |     .             . .</span><br><span class="line">    0.5  | .. .   .</span><br><span class="line">         | .. .   .  .</span><br><span class="line">    0.0  |   .   .  .</span><br><span class="line">         |    . .  .</span><br><span class="line">    -0.5 |     .</span><br><span class="line">         |</span><br><span class="line">    -1.0 |_______________________________________ </span><br><span class="line">    -0.2  0.0  0.2  0.4  0.6  0.8  1.0   1.2</span><br></pre></td></tr></table></figure>
-</li>
+        <h4 id="k-means-聚类"><a href="#k-means-聚类" class="headerlink" title="k-means 聚类"></a>k-means 聚类</h4><p>k-means聚类是<strong>无监督学习</strong>，训练数据集都是未添标签的(不知类别)。就连数据集最终要分成几类都是不知道的。聚类和分类的不同是，后者必须对分类的目标事物必须是已知的。</p>
+<p>聚类算法是根据样本之间的距离（相似度）来分类的，判断是否属于同一个簇。常见的计算距离的算法有<strong>欧式距离</strong>，曼哈顿距离和余弦相似性距离等。其中欧式距离，在二维平面上就是两点距离公式。</p>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>假设有如下数据集，现在要用k-means 聚类把它进行分类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1.658985	4.285136</span><br><span class="line">-3.453687	3.424321</span><br><span class="line">4.838138	-1.151539</span><br><span class="line">-5.379713	-3.362104</span><br><span class="line">0.972564	2.924086</span><br><span class="line">-3.567919	1.531611</span><br><span class="line">0.450614	-3.302219</span><br><span class="line">-3.487105	-1.724432</span><br><span class="line">2.668759	1.594842</span><br><span class="line">-3.156485	3.191137</span><br><span class="line">3.165506	-3.999838</span><br><span class="line">-2.786837	-3.099354</span><br><span class="line">4.208187	2.984927</span><br><span class="line">-2.123337	2.943366</span><br><span class="line">0.704199	-0.479481</span><br><span class="line">............</span><br></pre></td></tr></table></figure></p>
+<p>k-means的算法核心是</p>
+<ol>
+<li>把上面数据放在 二维矩阵dataSet</li>
+<li>指定想把数据集分为 k 类</li>
+<li>随机生成 k个质心$A_1(x_1, y_1)$,$A_2(x_2, y_2)$….$A_n(x_n, y_n)$，生成方法是选出矩阵第一列$min_1$, $max_1$，选出第二列$min_2$,$max_2$，在$[min_1$,$max_1]$ 随机产生$x_1$，在[$min_2$,$max_2]$生成$y_1$，得出$A_1(x_1, y_1)$。同理生成其他质心</li>
+<li>遍历全部数据点，离哪个质心距离最近，数据就归为那类。建立一个二维矩阵存储各个数据分类情况和误差（离质心距离）</li>
+<li>更新质心：计算每个类所有点的均值作为质心</li>
+<li>重新遍历全部数据点，若没有一个数据归类改变isChange = false，则聚类结束</li>
 </ol>
-</li>
-</ul>
-<ol start="2">
-<li><p>算法核心</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1. dataSet: 把上面数据放在 二维矩阵dataSet</span><br><span class="line">2. 指定 你想把 数据集分为 k 类</span><br><span class="line">3. 随机产生 k 个质心，A1(x1, y1)、A2(x2, y2)、.....An(xn, yn)</span><br><span class="line">    3.1 产生方法,选出矩阵第一列 min1, max1</span><br><span class="line">         选出第二列 min2，max2,</span><br><span class="line">    3.2 在 min1-max1 随机产生x1,在 min2-max2 </span><br><span class="line">         产生 y1, A1(x1, y1)</span><br><span class="line">         </span><br><span class="line">4. 遍历全部数据点，离哪个质心距离最近，数据就归为那类 </span><br><span class="line">  建立一个二维矩阵，存储各个数据 分类情况 和 误差（离质心距离）</span><br><span class="line">  </span><br><span class="line">   </span><br><span class="line">5. 更新质心：计算每个类所有点的均值作为质心</span><br><span class="line"></span><br><span class="line">6. 重新 遍历全部数据点， isChange = false ， </span><br><span class="line">    若没有一个数据归类 改变，则聚类结束。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>结果</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">结果分为4类为：</span><br><span class="line">     |</span><br><span class="line">2.0  |                   ..    .</span><br><span class="line">     |                    .     .       ..</span><br><span class="line">1.5  |                  .  +   ..          ..</span><br><span class="line">     |                  .. .          ...</span><br><span class="line">1.0  |                               . . # . .</span><br><span class="line">     |     .                        . .</span><br><span class="line">0.5  | .. .   .</span><br><span class="line">     | ..&amp;...     .  .</span><br><span class="line">0.0  |   .       .  .</span><br><span class="line">     |           . * . </span><br><span class="line">-0.5 |             .</span><br><span class="line">     |</span><br><span class="line">-1.0 |_______________________________________ </span><br><span class="line">-0.2  0.0  0.2  0.4  0.6  0.8  1.0   1.2</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>二分K-均值算法</p>
-<ul>
-<li>选择哪一个簇进行划分，能最大程度降低SSE(误差平方和)，即各点距质心最小</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
+<p>最后聚类结束之后的结果</p>
+<p><img src="/images/20181119/k-means1.png" alt="duck1"></p>
+<h4 id="二分-k-means"><a href="#二分-k-means" class="headerlink" title="二分 k-means"></a>二分 k-means</h4><p>二分k-means 是对k-meas 的改进</p>
+<p>参考文章</p>
+<blockquote>
+<p><a href="https://github.com/apachecn/AiLearning/blob/master/docs/ml/10.k-means%E8%81%9A%E7%B1%BB.md" target="_blank" rel="noopener"> K-Means（K-均值）聚类算法</a></p>
+</blockquote>
 <p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
 
       
@@ -503,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/17/回归和树回归/" rel="next" title="回归和树回归">
-                <i class="fa fa-chevron-left"></i> 回归和树回归
+              <a href="/2018/11/17/线性回归/" rel="next" title="线性回归">
+                <i class="fa fa-chevron-left"></i> 线性回归
               </a>
             
           </div>
@@ -570,8 +562,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -588,7 +589,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -649,6 +650,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#k-means-聚类"><span class="nav-number">1.</span> <span class="nav-text">k-means 聚类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二分-k-means"><span class="nav-number">3.</span> <span class="nav-text">二分 k-means</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1189,6 +1206,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 

@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="web 安全一直是个话题，常见的包括防范crsf攻击、sql注入，对存储服务器的敏感数据如用户信息进行加密处理；防止程序攻网络资源，使用验证码进行识别；对于垃圾信息，敏感信息进行过滤在存储等。 crsf 防范对crsf 不太清楚的同学可以戳这里，laravel 的解决方式是， api 认证很多时候我们发送请求都是b2s，就是客户端给服务端发送请求，但有时也需要在后端请求另外一个服即s2s。比如利用">
+<meta name="description" content="web 安全一直是个话题，常见的包括防范crsf攻击、sql注入，对存储在服务器的敏感数据如用户信息进行加密处理；防止程序攻网络资源，使用验证码进行识别；对于垃圾信息，敏感信息进行过滤在存储等。 csrf 防范前段时间在laravel框架下写了一个上传excel的功能，请求被认为是csrf攻击被拦截了。于是就花时间了解什么是csrf(跨站请求伪造)，对crsf不太清楚的同学可以戳这里。 larav">
 <meta name="keywords" content="web 安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="web 安全">
 <meta property="og:url" content="https://lics1216.github.io/2019/01/29/web 安全/index.html">
 <meta property="og:site_name" content="Lcs&#39;s Notes">
-<meta property="og:description" content="web 安全一直是个话题，常见的包括防范crsf攻击、sql注入，对存储服务器的敏感数据如用户信息进行加密处理；防止程序攻网络资源，使用验证码进行识别；对于垃圾信息，敏感信息进行过滤在存储等。 crsf 防范对crsf 不太清楚的同学可以戳这里，laravel 的解决方式是， api 认证很多时候我们发送请求都是b2s，就是客户端给服务端发送请求，但有时也需要在后端请求另外一个服即s2s。比如利用">
+<meta property="og:description" content="web 安全一直是个话题，常见的包括防范crsf攻击、sql注入，对存储在服务器的敏感数据如用户信息进行加密处理；防止程序攻网络资源，使用验证码进行识别；对于垃圾信息，敏感信息进行过滤在存储等。 csrf 防范前段时间在laravel框架下写了一个上传excel的功能，请求被认为是csrf攻击被拦截了。于是就花时间了解什么是csrf(跨站请求伪造)，对crsf不太清楚的同学可以戳这里。 larav">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-01T03:09:36.989Z">
+<meta property="og:updated_time" content="2019-10-16T09:06:07.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web 安全">
-<meta name="twitter:description" content="web 安全一直是个话题，常见的包括防范crsf攻击、sql注入，对存储服务器的敏感数据如用户信息进行加密处理；防止程序攻网络资源，使用验证码进行识别；对于垃圾信息，敏感信息进行过滤在存储等。 crsf 防范对crsf 不太清楚的同学可以戳这里，laravel 的解决方式是， api 认证很多时候我们发送请求都是b2s，就是客户端给服务端发送请求，但有时也需要在后端请求另外一个服即s2s。比如利用">
+<meta name="twitter:description" content="web 安全一直是个话题，常见的包括防范crsf攻击、sql注入，对存储在服务器的敏感数据如用户信息进行加密处理；防止程序攻网络资源，使用验证码进行识别；对于垃圾信息，敏感信息进行过滤在存储等。 csrf 防范前段时间在laravel框架下写了一个上传excel的功能，请求被认为是csrf攻击被拦截了。于是就花时间了解什么是csrf(跨站请求伪造)，对crsf不太清楚的同学可以戳这里。 larav">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>web 安全 | Lcs's Notes</title>
+  <title>web 安全 | Lcs's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-01T11:09:36+08:00">
-                2019-10-01
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-16T17:06:07+08:00">
+                2019-10-16
               </time>
             
           </span>
@@ -407,8 +407,11 @@
       
 
       
-        <p>web 安全一直是个话题，常见的包括防范crsf攻击、sql注入，对存储服务器的敏感数据如用户信息进行加密处理；防止程序攻网络资源，使用验证码进行识别；对于垃圾信息，敏感信息进行过滤在存储等。</p>
-<h4 id="crsf-防范"><a href="#crsf-防范" class="headerlink" title="crsf 防范"></a>crsf 防范</h4><p>对crsf 不太清楚的同学可以<a href="https://www.jianshu.com/p/e825e67fcf28" target="_blank" rel="noopener">戳这里</a>，laravel 的解决方式是，</p>
+        <p>web 安全一直是个话题，常见的包括防范crsf攻击、sql注入，对存储在服务器的敏感数据如用户信息进行加密处理；防止程序攻网络资源，使用验证码进行识别；对于垃圾信息，敏感信息进行过滤在存储等。</p>
+<h4 id="csrf-防范"><a href="#csrf-防范" class="headerlink" title="csrf 防范"></a>csrf 防范</h4><p>前段时间在laravel框架下写了一个上传excel的功能，请求被认为是csrf攻击被拦截了。于是就花时间了解什么是csrf(跨站请求伪造)，对crsf不太清楚的同学可以<a href="https://www.jianshu.com/p/e825e67fcf28" target="_blank" rel="noopener">戳这里</a>。</p>
+<p>laravel框架对前端的每一次请求都会返回一个cookie，key为XSRF-TOKEN，接下来的请求要在头部携带前一次返回的cookie 才能通过csrf 验证。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 前端实现</span><br><span class="line"><span class="tag">&lt;<span class="name">el-upload</span></span></span><br><span class="line"><span class="tag"><span class="attr">ref</span>=<span class="string">'upload'</span></span></span><br><span class="line"><span class="tag"><span class="attr">action</span>=<span class="string">"/xx/addData"</span></span></span><br><span class="line"><span class="tag"><span class="attr">:headers</span>=<span class="string">"headers"</span></span></span><br><span class="line"><span class="tag"><span class="attr">:limit</span>=<span class="string">"1"</span></span></span><br><span class="line"><span class="tag"><span class="attr">:show-file-list</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag"><span class="attr">:on-progress</span>=<span class="string">"xx"</span></span></span><br><span class="line"><span class="tag"><span class="attr">:on-success</span>=<span class="string">"xx"</span></span></span><br><span class="line"><span class="tag"><span class="attr">:on-error</span>=<span class="string">"xx"</span></span></span><br><span class="line"><span class="tag"><span class="attr">:accept</span>=<span class="string">"uploadAccept"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-tooltip</span> <span class="attr">class</span>=<span class="string">"item"</span> <span class="attr">effect</span>=<span class="string">"dark"</span> <span class="attr">content</span>=<span class="string">"只能上传csv/xlsx且不超过2G"</span> <span class="attr">placement</span>=<span class="string">"top"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">size</span>=<span class="string">"small"</span> <span class="attr">type</span>=<span class="string">"primary"</span>&gt;</span>上传<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-tooltip</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-upload</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这个上传excel文件应用element ui组件，被认为是csrf攻击是未在请求头部携带相应的cookie，由于其他请求是通过axios发起的，内部会自动实现，所以能通过安全认证。可以这样解决<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">headers: &#123;<span class="string">'X-XSRF-TOKEN'</span>: <span class="keyword">this</span>.getCookie(<span class="string">'XSRF-TOKEN'</span>)&#125;</span><br><span class="line"></span><br><span class="line"># 获取本地的cookie</span><br><span class="line">getCookie(name) &#123;</span><br><span class="line">    <span class="keyword">let</span> cookiesList = <span class="built_in">document</span>.cookie.split(<span class="string">';'</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> cookie <span class="keyword">of</span> cookiesList) &#123;</span><br><span class="line">        <span class="keyword">let</span> arr = cookie.split(<span class="string">'='</span>);</span><br><span class="line">        <span class="keyword">if</span> (arr[<span class="number">0</span>] === name) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">decodeURIComponent</span>(arr[<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>因为开发者不能获取其他域名下的cookie，这样是可以防范csrf的</strong> </p>
 <h4 id="api-认证"><a href="#api-认证" class="headerlink" title="api 认证"></a>api 认证</h4><p>很多时候我们发送请求都是b2s，就是客户端给服务端发送请求，但有时也需要在后端请求另外一个服即s2s。比如利用php guzzlehttp/guzzle http客户端，这必定涉及api 验证。这里我用的方式是</p>
 <ol>
 <li>双方先约定加密key 值，请求方携带参数、对参数加密的sign</li>
@@ -483,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/20/规范代码/" rel="next" title="规范代码">
-                <i class="fa fa-chevron-left"></i> 规范代码
+              <a href="/2019/01/20/laravel 利用redis 的发布订阅保持数据一致性/" rel="next" title="laravel 利用redis 的发布订阅保持数据一致性">
+                <i class="fa fa-chevron-left"></i> laravel 利用redis 的发布订阅保持数据一致性
               </a>
             
           </div>
@@ -573,7 +576,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -644,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#crsf-防范"><span class="nav-number">1.</span> <span class="nav-text">crsf 防范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#api-认证"><span class="nav-number">2.</span> <span class="nav-text">api 认证</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#csrf-防范"><span class="nav-number">1.</span> <span class="nav-text">csrf 防范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#api-认证"><span class="nav-number">2.</span> <span class="nav-text">api 认证</span></a></li></ol></div>
             
 
           </div>
@@ -1190,6 +1193,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 

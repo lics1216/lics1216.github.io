@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ML,">
+  <meta name="keywords" content="回归,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="入门机器学习  作用：机器学习是一门人工智能学科，是用数据或以往的经验，以此优化计算机程序的性能标准。 应用：数据挖掘、计算机视觉、自然语言处理、搜索引擎、证券市场分析、语音识别、战略游戏等 学习场景 模式识别：很古老，过时。环境与客体统称为“模式” 机器学习：给计算机输入一些数据(采集)，学习数据（学习步骤明确），获得新技能。 深度学习：是机器学习新领域，模拟人脑进行分析学习的神经网络，解释数">
-<meta name="keywords" content="ML">
+<meta name="description" content="线性回归回归是用来预测数值型的目标值，数据集是连续型的，用线性回归找到最佳拟合直线。从一大堆数据中求出回归方程是我们的任务。假设一个样本数据放在矩阵$x_1$中，$y_1$是结果，回归系数放在向量$w$ 中。 $x_1 = \left[ \begin{matrix}  1 \\\ 4 \\\ 3 \\\  3\\ \end{matrix} \right]$，$w = \left[ \begin{m">
+<meta name="keywords" content="回归">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习介绍">
-<meta property="og:url" content="https://lics1216.github.io/2018/11/05/机器学习简介/index.html">
+<meta property="og:title" content="线性回归">
+<meta property="og:url" content="https://lics1216.github.io/2018/11/17/线性回归/index.html">
 <meta property="og:site_name" content="Lcs&#39;s Notes">
-<meta property="og:description" content="入门机器学习  作用：机器学习是一门人工智能学科，是用数据或以往的经验，以此优化计算机程序的性能标准。 应用：数据挖掘、计算机视觉、自然语言处理、搜索引擎、证券市场分析、语音识别、战略游戏等 学习场景 模式识别：很古老，过时。环境与客体统称为“模式” 机器学习：给计算机输入一些数据(采集)，学习数据（学习步骤明确），获得新技能。 深度学习：是机器学习新领域，模拟人脑进行分析学习的神经网络，解释数">
+<meta property="og:description" content="线性回归回归是用来预测数值型的目标值，数据集是连续型的，用线性回归找到最佳拟合直线。从一大堆数据中求出回归方程是我们的任务。假设一个样本数据放在矩阵$x_1$中，$y_1$是结果，回归系数放在向量$w$ 中。 $x_1 = \left[ \begin{matrix}  1 \\\ 4 \\\ 3 \\\  3\\ \end{matrix} \right]$，$w = \left[ \begin{m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T11:59:47.669Z">
+<meta property="og:updated_time" content="2019-10-18T03:15:55.804Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习介绍">
-<meta name="twitter:description" content="入门机器学习  作用：机器学习是一门人工智能学科，是用数据或以往的经验，以此优化计算机程序的性能标准。 应用：数据挖掘、计算机视觉、自然语言处理、搜索引擎、证券市场分析、语音识别、战略游戏等 学习场景 模式识别：很古老，过时。环境与客体统称为“模式” 机器学习：给计算机输入一些数据(采集)，学习数据（学习步骤明确），获得新技能。 深度学习：是机器学习新领域，模拟人脑进行分析学习的神经网络，解释数">
+<meta name="twitter:title" content="线性回归">
+<meta name="twitter:description" content="线性回归回归是用来预测数值型的目标值，数据集是连续型的，用线性回归找到最佳拟合直线。从一大堆数据中求出回归方程是我们的任务。假设一个样本数据放在矩阵$x_1$中，$y_1$是结果，回归系数放在向量$w$ 中。 $x_1 = \left[ \begin{matrix}  1 \\\ 4 \\\ 3 \\\  3\\ \end{matrix} \right]$，$w = \left[ \begin{m">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://lics1216.github.io/2018/11/05/机器学习简介/">
+  <link rel="canonical" href="https://lics1216.github.io/2018/11/17/线性回归/">
 
 
 
 
 
-  <title>机器学习介绍 | Lcs's Notes</title>
+  <title>线性回归 | Lcs's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lics1216.github.io/2018/11/05/机器学习简介/">
+    <link itemprop="mainEntityOfPage" href="https://lics1216.github.io/2018/11/17/线性回归/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lcs">
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">机器学习介绍</h1>
+          <h1 class="post-title" itemprop="name headline">线性回归</h1>
         
 
         <div class="post-meta">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-05T00:00:00+08:00">
-                2018-11-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-17T00:00:00+08:00">
+                2018-11-17
               </time>
             
 
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-24T19:59:47+08:00">
-                2019-06-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-18T11:15:55+08:00">
+                2019-10-18
               </time>
             
           </span>
@@ -378,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/05/机器学习简介/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/05/机器学习简介/" itemprop="commentCount"></span>
+                <a href="/2018/11/17/线性回归/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/17/线性回归/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,81 +407,10 @@
       
 
       
-        <ol>
-<li><a href="http://www.apachecn.org/map/145.html" target="_blank" rel="noopener">入门机器学习</a> <ul>
-<li><strong>作用</strong>：机器学习是一门人工智能学科，是用数据或以往的经验，以此优化计算机程序的性能标准。</li>
-<li><strong>应用</strong>：数据挖掘、计算机视觉、自然语言处理、搜索引擎、证券市场分析、语音识别、战略游戏等</li>
-<li><strong>学习场景</strong><ul>
-<li><strong>模式识别</strong>：很古老，过时。环境与客体统称为“模式”</li>
-<li><strong>机器学习</strong>：给计算机输入一些数据(采集)，学习数据（学习步骤明确），获得新技能。</li>
-<li><strong>深度学习</strong>：是机器学习新领域，模拟人脑进行分析学习的神经网络，解释数据（图像、声音、文本）。<ul>
-<li><strong>机器学习基础</strong></li>
-<li>微积分、统计学/概率论、线性代数</li>
-<li>python 语言</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>机器学习<strong>主要任务</strong></p>
-<ul>
-<li><strong>分类</strong>：将实例数据划分类别，二分类(如，邮件是否为垃圾邮箱)，多分类(手写数字自动识别)</li>
-<li><strong>回归</strong>：预测数值型数据(股票价格预测，房屋价格预测)</li>
-<li><strong>聚类</strong>：在无监督学习中，将数据集分成由类似的对象组成多个类的过程称为聚类。</li>
-<li><strong>密度计算</strong>：通过样本分布的紧密程度，来估计与分组的相似性。</li>
-</ul>
-</li>
-<li><p><strong>学习类型（后面深入理解再补充）</strong></p>
-<ul>
-<li><strong>监督学习</strong><ul>
-<li>必须确定目标变量的值，以便机器学习算法可以发现特征和目标变量之间的关系。在监督学习中，给定一组数据，我们知道正确的输出结果应该是什么样子，并且知道在输入和输出之间有着一个特定的关系。 (包括：分类和回归)</li>
-</ul>
-</li>
-<li><strong>非监督学习</strong><ul>
-<li>在机器学习，无监督学习的问题是，在未加标签的数据中，试图找到隐藏的结构。因为提供给学习者的实例是未标记的，因此没有错误或报酬信号来评估潜在的解决方案。</li>
-<li>非监督学习包括的类型：聚类、密度估计</li>
-</ul>
-</li>
-<li><strong>强化学习</strong><ul>
-<li>训练决策：程序在某一情况下尝试所有的可能行动，记录不同行动的结果并试着找出最好的一次尝试来做决定。如，马尔可夫决策类型</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>算法</p>
-<ul>
-<li><strong>监督学习(分类)</strong>：<ul>
-<li>k-近邻算法</li>
-<li>决策树</li>
-<li>朴素贝叶斯</li>
-<li>Logistic回归</li>
-<li>支持向量机</li>
-<li>集成方法-随机深林和Adaboost</li>
-</ul>
-</li>
-<li><strong>监督学习(回归)</strong>：<ul>
-<li>预测数值型数据</li>
-<li>树回归</li>
-</ul>
-</li>
-<li><strong>非监督学习</strong><ul>
-<li>K-means聚类</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>机器学习<strong>开发流程</strong><ul>
-<li><strong>收集数据</strong>：收集样本数据</li>
-<li><strong>准备数据</strong>：注意数据的格式</li>
-<li><strong>分析数据</strong>：为了确保数据集中没有垃圾数据</li>
-<li><strong>选定、训练算法[算法核心]</strong>：监督或者无监督</li>
-<li><strong>测试算法[算法核心]</strong>：评估算法效果</li>
-<li><strong>使用算法</strong>：将机器学习算法转为应用程序</li>
-</ul>
-</li>
-</ol>
-<p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
+        <h4 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h4><p>回归是用来预测数值型的目标值，数据集是连续型的，用线性回归找到最佳拟合直线。从一大堆数据中求出回归方程是我们的任务。假设一个样本数据放在矩阵$x_1$中，$y_1$是结果，回归系数放在向量$w$ 中。</p>
+<p>$x_1 = \left[ \begin{matrix}  1 \\\ 4 \\\ 3 \\\  3\\ \end{matrix} \right]$，$w = \left[ \begin{matrix}  w_0 \\\ w_1 \\\ w_2 \\\  w_3\\ \end{matrix} \right]$</p>
+<p>则$y_1 - x_1^Tw$ 就是在该样本的预测误差，即拟合值和实际值的误差。在使得全部数据集误差最小的情况下求出系数，防止误差的正负相互抵消，利用平方的形式求和。可得误差表达式<br>$\sum_{i=1}^m (y_i - x_i^Tw)^2$，我们称这个函数为损失函数（loss function）。这种求回归方程的方法称最小二乘法。</p>
+<h4 id="求损失函数最值"><a href="#求损失函数最值" class="headerlink" title="求损失函数最值"></a>求损失函数最值</h4><p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
 
       
     </div>
@@ -535,7 +464,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ML/" rel="tag"># ML</a>
+            <a href="/tags/回归/" rel="tag"># 回归</a>
           
         </div>
       
@@ -548,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/26/工作总结/" rel="next" title="项目合作总结">
-                <i class="fa fa-chevron-left"></i> 项目合作总结
+              <a href="/2018/11/13/logistic回归/" rel="next" title="Logistic回归">
+                <i class="fa fa-chevron-left"></i> Logistic回归
               </a>
             
           </div>
@@ -558,8 +487,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/07/K-近邻算法/" rel="prev" title="K-近邻算法">
-                K-近邻算法 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/19/k-means/" rel="prev" title="k-means">
+                k-means <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -615,8 +544,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -633,7 +571,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -694,6 +632,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性回归"><span class="nav-number">1.</span> <span class="nav-text">线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求损失函数最值"><span class="nav-number">2.</span> <span class="nav-text">求损失函数最值</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1234,6 +1188,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 

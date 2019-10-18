@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="朴素贝叶斯  描述：分类算法，一个新数据出现，是类A的概率为P(A)，属于类B概率p(B)，若p(A) &amp;gt; p(B)，则新数据归A类，反之B类 应用：文本分类，屏蔽社区留言板的侮辱性言论   公式推导  条件概率公式 1p(x/c) = p(x,c)/p(c)  乘法公式 1p(x,c) = p(x/c)P(c)  贝叶斯公式 123p(c/x) = p(c,x)/p(x) = P(x,c">
+<meta name="description" content="朴素贝叶斯朴素贝叶斯是分类算法，一个新数据x出现，是类a的概率为$p(a/x)$，属于类b概率$p(b/x)$  若$p(a/x) &amp;gt; p(b/x)$，则x归为类a 若$p(a/x) &amp;lt; P(b/x)$，则为类b  要直接比较 $p(a/x)$， $p(b/x)$ 的大小是很难的，我们可借助条件概率进行转化。先理解什么是条件概率，$$p(a/x) = {p(a,x)  \over p(">
 <meta name="keywords" content="朴素贝叶斯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="朴素贝叶斯">
 <meta property="og:url" content="https://lics1216.github.io/2018/11/11/朴素贝叶斯/index.html">
 <meta property="og:site_name" content="Lcs&#39;s Notes">
-<meta property="og:description" content="朴素贝叶斯  描述：分类算法，一个新数据出现，是类A的概率为P(A)，属于类B概率p(B)，若p(A) &amp;gt; p(B)，则新数据归A类，反之B类 应用：文本分类，屏蔽社区留言板的侮辱性言论   公式推导  条件概率公式 1p(x/c) = p(x,c)/p(c)  乘法公式 1p(x,c) = p(x/c)P(c)  贝叶斯公式 123p(c/x) = p(c,x)/p(x) = P(x,c">
+<meta property="og:description" content="朴素贝叶斯朴素贝叶斯是分类算法，一个新数据x出现，是类a的概率为$p(a/x)$，属于类b概率$p(b/x)$  若$p(a/x) &amp;gt; p(b/x)$，则x归为类a 若$p(a/x) &amp;lt; P(b/x)$，则为类b  要直接比较 $p(a/x)$， $p(b/x)$ 的大小是很难的，我们可借助条件概率进行转化。先理解什么是条件概率，$$p(a/x) = {p(a,x)  \over p(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T11:59:47.669Z">
+<meta property="og:updated_time" content="2019-10-17T09:28:52.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="朴素贝叶斯">
-<meta name="twitter:description" content="朴素贝叶斯  描述：分类算法，一个新数据出现，是类A的概率为P(A)，属于类B概率p(B)，若p(A) &amp;gt; p(B)，则新数据归A类，反之B类 应用：文本分类，屏蔽社区留言板的侮辱性言论   公式推导  条件概率公式 1p(x/c) = p(x,c)/p(c)  乘法公式 1p(x,c) = p(x/c)P(c)  贝叶斯公式 123p(c/x) = p(c,x)/p(x) = P(x,c">
+<meta name="twitter:description" content="朴素贝叶斯朴素贝叶斯是分类算法，一个新数据x出现，是类a的概率为$p(a/x)$，属于类b概率$p(b/x)$  若$p(a/x) &amp;gt; p(b/x)$，则x归为类a 若$p(a/x) &amp;lt; P(b/x)$，则为类b  要直接比较 $p(a/x)$， $p(b/x)$ 的大小是很难的，我们可借助条件概率进行转化。先理解什么是条件概率，$$p(a/x) = {p(a,x)  \over p(">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>朴素贝叶斯 | Lcs's Notes</title>
+  <title>朴素贝叶斯 | Lcs's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-24T19:59:47+08:00">
-                2019-06-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-17T17:28:52+08:00">
+                2019-10-17
               </time>
             
           </span>
@@ -407,53 +407,37 @@
       
 
       
-        <ol>
-<li><p><a href="https://github.com/apachecn/MachineLearning/blob/master/docs/4.%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF.md" target="_blank" rel="noopener">朴素贝叶斯</a></p>
+        <h4 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h4><p>朴素贝叶斯是分类算法，一个新数据x出现，是类a的概率为$p(a/x)$，属于类b概率$p(b/x)$</p>
 <ul>
-<li><strong>描述</strong>：分类算法，一个新数据出现，是类A的概率为P(A)，属于类B概率p(B)，若p(A) &gt; p(B)，则新数据归A类，反之B类</li>
-<li><strong>应用</strong>：文本分类，屏蔽社区留言板的侮辱性言论</li>
+<li>若$p(a/x) &gt; p(b/x)$，则x归为类a</li>
+<li>若$p(a/x) &lt; P(b/x)$，则为类b</li>
 </ul>
-<ol>
-<li><p>公式推导</p>
+<p>要直接比较 $p(a/x)$， $p(b/x)$ 的大小是很难的，我们可借助条件概率进行转化。先理解什么是条件概率，<br>$$p(a/x) = {p(a,x)  \over p(x)} $$</p>
+<p>这样就可以得乘法公式，<br>$$p(a,x) = p(a/x)p(x)$$</p>
+<p>再把$p(a/x)$进行转换可得，<br>$$p(a/x) = {p(a,x) \over p(x)} = {p(x,a) \over p(x)} = {p(x/a)p(a) \over p(x)}$$</p>
+<p>因此比较就变成了<br>$$p(a/x) = {p(x/a)p(a) \over p(x)}$$<br>$$p(b/x) = {p(x/b)p(b) \over p(x)}$$</p>
+<p>要比较他们的大小，就是计算出</p>
 <ul>
-<li><p>条件概率公式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p(x/c) = p(x,c)/p(c)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>乘法公式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p(x,c) = p(x/c)P(c)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>贝叶斯公式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p(c/x) = p(c,x)/p(x) = P(x,c)/p(x) = p(x/c)p(c)/p(x)</span><br><span class="line"></span><br><span class="line">p(c/x) = p(x/c)p(c)/p(x)</span><br></pre></td></tr></table></figure>
-</li>
+<li>$p(a)$，类别a出现的概率</li>
+<li>$p(b)$，类别b出现的概率</li>
+<li>$p(x/a)$，类别a出现时样本x出现的概率</li>
+<li>$p(x/b)$，类别b出现时样本x出现的概率</li>
 </ul>
-</li>
-<li><p>算法应用</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">p(c1/w) = p(w/c1)p(c1)/p(w)</span><br></pre></td></tr></table></figure>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">p(c0/w) = p(w/c0)p(c0)/p(w)</span><br></pre></td></tr></table></figure>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p(c1/w) 代表 w言论出现时为侮辱性言论c1的概率，c0 代表非侮辱性</span><br><span class="line">判断w是c1 或者 c0 ， 实则比较 p(c1/w)，p(c0/w)大小</span><br><span class="line">比较等式右边，分母相同，比较  p(w/c1)p(c1)， p(w/c0)p(c0)</span><br><span class="line"></span><br><span class="line">p(w/c1)代表 侮辱性言论出现该新言论的概率，下面详细解释</span><br><span class="line">p(c1) 出现侮辱性言论的概率</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>收集数据：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">postingList = [[&apos;my&apos;, &apos;dog&apos;, &apos;has&apos;, &apos;flea&apos;, &apos;problems&apos;, &apos;help&apos;, &apos;please&apos;], </span><br><span class="line">               [&apos;maybe&apos;, &apos;not&apos;, &apos;take&apos;, &apos;him&apos;, &apos;to&apos;, &apos;dog&apos;, &apos;park&apos;, &apos;stupid&apos;],</span><br><span class="line">               [&apos;my&apos;, &apos;dalmation&apos;, &apos;is&apos;, &apos;so&apos;, &apos;cute&apos;, &apos;I&apos;, &apos;love&apos;, &apos;him&apos;],</span><br><span class="line">               [&apos;stop&apos;, &apos;posting&apos;, &apos;stupid&apos;, &apos;worthless&apos;, &apos;garbage&apos;],</span><br><span class="line">               [&apos;mr&apos;, &apos;licks&apos;, &apos;ate&apos;, &apos;my&apos;, &apos;steak&apos;, &apos;how&apos;, &apos;to&apos;, &apos;stop&apos;, &apos;him&apos;],</span><br><span class="line">               [&apos;quit&apos;, &apos;buying&apos;, &apos;worthless&apos;, &apos;dog&apos;, &apos;food&apos;, &apos;stupid&apos;]]</span><br><span class="line">classVec = [0, 1, 0, 1, 0, 1]</span><br><span class="line">假设每一行是一条言论</span><br><span class="line">classvec 代表言论类别</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>准备数据：</p>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>接下来用朴素贝叶斯在文本分类，屏蔽社区留言板的侮辱性言论的应用作为例子，解释上面四个概率的求法。假设数据集如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 言论集</span><br><span class="line">postingList = [</span><br><span class="line">[&apos;my&apos;, &apos;dog&apos;, &apos;has&apos;, &apos;flea&apos;, &apos;problems&apos;, &apos;help&apos;, &apos;please&apos;], </span><br><span class="line">[&apos;maybe&apos;, &apos;not&apos;, &apos;take&apos;, &apos;him&apos;, &apos;to&apos;, &apos;dog&apos;, &apos;park&apos;, &apos;stupid&apos;],</span><br><span class="line">[&apos;my&apos;, &apos;dalmation&apos;, &apos;is&apos;, &apos;so&apos;, &apos;cute&apos;, &apos;I&apos;, &apos;love&apos;, &apos;him&apos;],</span><br><span class="line">[&apos;stop&apos;, &apos;posting&apos;, &apos;stupid&apos;, &apos;worthless&apos;, &apos;garbage&apos;],</span><br><span class="line">[&apos;mr&apos;, &apos;licks&apos;, &apos;ate&apos;, &apos;my&apos;, &apos;steak&apos;, &apos;how&apos;, &apos;to&apos;, &apos;stop&apos;, &apos;him&apos;],</span><br><span class="line">[&apos;quit&apos;, &apos;buying&apos;, &apos;worthless&apos;, &apos;dog&apos;, &apos;food&apos;, &apos;stupid&apos;]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 1代表侮辱性言论，0 非侮辱性</span><br><span class="line">classVec = [0, 1, 0, 1, 0, 1]</span><br></pre></td></tr></table></figure></p>
+<p>要判断一个样本数据是否侮辱性言论，先统计全部言论去重之后的词汇，再得出每条言论基于全部词汇的词频矩阵<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">词汇集= [&apos;word1&apos;,&apos;word2&apos;,‘word3’..,&apos;wordn&apos;]</span><br><span class="line"></span><br><span class="line"># 第一列的2代表word1在言论1中出现2次</span><br><span class="line">言论1：  [2, 0, 1, ....,4]</span><br><span class="line">言论2：  [3, 2, 0, ....,2]   </span><br><span class="line">......</span><br><span class="line">言论n：  [0, 2, 2, ....,0]   </span><br><span class="line"></span><br><span class="line">总侮辱言论：[45, 122, 232, 0,.....,90]</span><br><span class="line">总非侮辱言论：[123, 23, 23, 2,.....,23]</span><br></pre></td></tr></table></figure></p>
+<p>假设a类别为侮辱性言论，b类别为非侮辱性言论，言论总数为N，a总数量n1，b总数量n2。此时可以求得，</p>
 <ul>
-<li>统计全部言论，去重之后的词汇，词汇集= [‘词1’,’词2’,…,’词n’]</li>
-<li>对每条言论，基于词汇集， 统计每个词出现次数， 未出现写0，出现+1 </li>
-<li>分类侮辱性言论、非侮辱性言论来统计，出现词数量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">词汇集： [&apos;词1&apos;，&apos;词2&apos;,&apos;词3&apos;,&apos;词4&apos;,....,&apos;词n&apos;]</span><br><span class="line">言论1：  [2, 0, 1, 9,....,4]</span><br><span class="line">言论2：  [3, 2, 0, 0,....,2]   </span><br><span class="line">......</span><br><span class="line">言论n：  [0, 2, 2, 2,....,0]   </span><br><span class="line"></span><br><span class="line">总侮辱言论：[45, 122, 232, 0,.....,90]</span><br><span class="line">总非侮辱言论：[123, 23, 23, 2,.....,23]</span><br><span class="line"></span><br><span class="line">侮辱性言论各个词出现概率：总侮辱言论/总侮辱言论中出现的词汇总个数n1， [45, 122, 232, 0,.....,90]/n1</span><br><span class="line">即下面的 [p(F1/c1)、p(F2/c1)、....p(Fn/c1)]</span><br><span class="line"></span><br><span class="line">非侮辱性言论各个词出现概率：总侮辱言论/总侮辱言论中出现的词汇总个数n0，[123, 23, 23, 2,.....,23]/n0</span><br><span class="line">即下面的 [p(F1/c0)、p(F2/c0)、....p(Fn/c0)]</span><br><span class="line"></span><br><span class="line">p(c1) = 总侮辱性言论数/总言论数</span><br><span class="line">p(c0) = 总非侮辱性言论数/总言论数</span><br><span class="line"></span><br><span class="line">言论1, 词1出现2次....</span><br><span class="line">p(w/c1), w言论里很多词F1、F2、F3、F4.....Fn，且这些词出现相互独立。</span><br><span class="line">p(w/c1) = p(F1/c1)p(F2/c1)....p(Fn/c1)</span><br><span class="line">p(w/c0) = p(F1/c0)p(F2/c0)....p(Fn/c0)</span><br><span class="line"></span><br><span class="line">至此，p(w/c1)p(c1), p(w/c0)p(c0)都是已知量</span><br></pre></td></tr></table></figure>
-</li>
+<li>$p(a) = {n1 \over N}$</li>
+<li>$p(b) = {n2 \over N}$</li>
 </ul>
-</li>
-<li><p>测试数据</p>
-<ul>
-<li>防止p(Fi/c1) = 0， 词汇计数初始值1，总词汇初始值2，即[123, 23, 23, 2,…..,23]+1 / (n0+2)</li>
-<li>防止p(Fi/c1) * p(Fj/c1)….p(Fk/c1) = 0，采用对数，即 log [123, 23, 23, 2,…..,23]+1 / (n0+2)</li>
-<li>上面类似矩阵数乘运算</li>
-</ul>
-</li>
-<li>使用算法即可</li>
-</ol>
-</li>
-</ol>
+<p>至于$p(x/a)$，要求a类别出现时x样本出现的概率，x是由很多词汇构成的。<strong>朴素贝叶斯算法的朴素二字正是假设各个特征之间是相互独立的，即每个词汇的出现是不会相互影响的；并且认为每个特征同等重要。</strong>因此求得侮辱性言论出现时每个词汇出现的概率为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># n0=sum([45, 122, 232, 0,.....,90]),即侮辱性言论集中总词数</span><br><span class="line">[45, 122, 232, 0,.....,90]/n0</span><br></pre></td></tr></table></figure></p>
+<p>假设x样本包含词汇为 xword1,xword2,….xwordi…xwordn，侮辱性言论出现时对应词汇出现的概率为p(xword1)，p(xword2)，p(xwordi)…….p(xwordn)<br>$$p(x/a) = p(xword1)p(xword2)…p(xwordi)…p(xwordn)$$</p>
+<p>同理可得$p(x/b)$，至以上四个概率都是已知量。这样就可以用朴素贝叶斯模型进行分类。要注意的是，防止有词汇概率为 0， 词汇计数初始值1，总词汇初始值2，即<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[45, 122, 232, 0,.....,90]+1 / (n0+2)</span><br></pre></td></tr></table></figure></p>
+<p>防止$p(xword1)p(xword2)…p(xwordi)…p(xwordn)=0$，采用自然对数</p>
+<p>参考文献</p>
+<blockquote>
+<p><a href="https://github.com/apachecn/AiLearning/blob/master/docs/ml/4.%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF.md" target="_blank" rel="noopener">基于概率论的分类方法：朴素贝叶斯</a></p>
+</blockquote>
 <p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
 
       
@@ -521,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/09/决策树/" rel="next" title="决策树算法">
-                <i class="fa fa-chevron-left"></i> 决策树算法
+              <a href="/2018/11/09/决策树/" rel="next" title="决策树">
+                <i class="fa fa-chevron-left"></i> 决策树
               </a>
             
           </div>
@@ -588,8 +572,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -606,7 +599,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -667,6 +660,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#朴素贝叶斯"><span class="nav-number">1.</span> <span class="nav-text">朴素贝叶斯</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1207,6 +1216,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 

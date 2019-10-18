@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lcs&#39;s Notes">
 <meta property="og:description" content="sql 常用理解 groupby / havingsql 分组查询使用格式12# A/B 是分组的列，f 为聚合函数，having 后面跟聚合函数select A, B, f(C) from table where [xx] groupby A, B having xxx sql 语句先执行条件筛选where，再根据A/B 分组，分组之后的中间结果相当于下面那样这样，再执行having、selec">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-30T13:23:00.786Z">
+<meta property="og:updated_time" content="2019-10-16T09:06:07.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql 常用">
 <meta name="twitter:description" content="sql 常用理解 groupby / havingsql 分组查询使用格式12# A/B 是分组的列，f 为聚合函数，having 后面跟聚合函数select A, B, f(C) from table where [xx] groupby A, B having xxx sql 语句先执行条件筛选where，再根据A/B 分组，分组之后的中间结果相当于下面那样这样，再执行having、selec">
@@ -126,7 +126,7 @@
 
 
 
-  <title>sql 常用 | Lcs's Notes</title>
+  <title>sql 常用 | Lcs's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-30T21:23:00+08:00">
-                2019-09-30
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-16T17:06:07+08:00">
+                2019-10-16
               </time>
             
           </span>
@@ -424,7 +424,15 @@
 <p>全连接<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mysql 里面没有full join</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> game <span class="keyword">as</span> a <span class="keyword">full</span> <span class="keyword">outer</span> <span class="keyword">join</span> player <span class="keyword">as</span> b <span class="keyword">on</span> a.playerId = b.playerId</span><br></pre></td></tr></table></figure></p>
 <p>交叉连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">select * from game as a cross join player as b order by a.playerId;</span><br><span class="line">+-----+--------------+----------+----------+------------+-----+</span><br><span class="line">| gid | gameName     | playerId | playerId | playerName | gid |</span><br><span class="line">+-----+--------------+----------+----------+------------+-----+</span><br><span class="line">|   1 | 王者荣耀      |        1 |        1 | playerA    |   1 |</span><br><span class="line">|   1 | 王者荣耀      |        1 |        2 | playerB    |   2 |</span><br><span class="line">|   1 | 王者荣耀      |        1 |        5 | playerE    |   5 |</span><br><span class="line">|   2 | 吃鸡游戏      |        2 |        2 | playerB    |   2 |</span><br><span class="line">|   2 | 吃鸡游戏      |        2 |        5 | playerE    |   5 |</span><br><span class="line">|   2 | 吃鸡游戏      |        2 |        1 | playerA    |   1 |</span><br><span class="line">|   3 | 月圆之夜      |        3 |        1 | playerA    |   1 |</span><br><span class="line">|   3 | 月圆之夜      |        3 |        2 | playerB    |   2 |</span><br><span class="line">|   3 | 月圆之夜      |        3 |        5 | playerE    |   5 |</span><br><span class="line">|   4 | 元气骑士      |        4 |        1 | playerA    |   1 |</span><br><span class="line">|   4 | 元气骑士      |        4 |        2 | playerB    |   2 |</span><br><span class="line">|   4 | 元气骑士      |        4 |        5 | playerE    |   5 |</span><br><span class="line">+-----+--------------+----------+----------+------------+-----+</span><br></pre></td></tr></table></figure></p>
 <p>laravel 实现等值连接<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="function"><span class="keyword">function</span> <span class="title">getData</span><span class="params">($params, $page, $pageSize)</span></span>&#123;</span><br><span class="line">    $joinWhere = [</span><br><span class="line">        [<span class="string">'a.game_id'</span>, <span class="string">'='</span>, $params[<span class="string">'pack'</span>]</span><br><span class="line">    ];</span><br><span class="line">    $offset = ($page - <span class="number">1</span>) * $pageSize;</span><br><span class="line">        </span><br><span class="line">    $where = [];    </span><br><span class="line">    <span class="keyword">self</span>::selectRaw(<span class="string">'a.ad_id, b.ad_platform'</span>)</span><br><span class="line">         -&gt;join(<span class="string">'b'</span>, <span class="function"><span class="keyword">function</span><span class="params">($join)</span> <span class="title">use</span> <span class="params">($joinWhere)</span></span>&#123;</span><br><span class="line">            $join-&gt;on(<span class="string">'a.ad_id'</span>, <span class="string">'='</span>, <span class="string">'b.ad_id'</span>)</span><br><span class="line">                 -&gt;where($joinWhere);</span><br><span class="line">         &#125;)</span><br><span class="line">        -&gt;where($where)</span><br><span class="line">        -&gt;offset($offset)-&gt;limit($pageSize)</span><br><span class="line">        -&gt;get()-&gt;toArray();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><h4 id="数据库权限"><a href="#数据库权限" class="headerlink" title="数据库权限"></a>数据库权限</h4><p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>我们都知道给表加上索引之后，查询速度会变快。为了在不同的数据库引擎下使用好索引，花时间理解了一下索引背后的原理，与之前学过的计算机基础知识联系起来。</p>
+<p>可以阅读下面文章对数据库索引有比较深入的理解</p>
+<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/23624390" target="_blank" rel="noopener">比较简单的讲解了数据库索引的作用</a></li>
+<li><a href="https://blog.csdn.net/suifeng3051/article/details/52669644" target="_blank" rel="noopener"><strong>比较底层解释数据库引擎采用的索引结构</strong></a></li>
+<li><a href="https://juejin.im/post/5b1b3b60e51d4506c556b00a" target="_blank" rel="noopener"><strong>联系计算机组成原理</strong></a></li>
+<li><a href="https://blog.csdn.net/u014745069/article/details/80466917" target="_blank" rel="noopener"><strong>mysql 索引的实际应用</strong></a></li>
+</ol>
+<h4 id="数据库权限"><a href="#数据库权限" class="headerlink" title="数据库权限"></a>数据库权限</h4><p>欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！</p>
 
       
     </div>
@@ -501,8 +509,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/20/laravel 利用redis 的发布订阅保持数据一致性/" rel="prev" title="laravel 利用redis 的发布订阅保持数据一致性">
-                laravel 利用redis 的发布订阅保持数据一致性 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/20/规范代码/" rel="prev" title="规范代码">
+                规范代码 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -585,7 +593,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1202,6 +1210,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 

@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="保持数据一致性项目服务之间共用配置信息可以存储在远程的redis，怎样保存数据的一致性是个问题。可以使用redis 的发布订阅功能及时同步数据，思路  数据有变化的服务更新远程redis，并publish key 值到频道 订阅了数据的服务就会收到信息并去同步数据  可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravle 这样实现1234567891011121314">
+<meta name="description" content="保持数据一致性项目服务之间共用配置信息可以存储在远程的redis，怎样保存数据的一致性是个问题。可以使用redis 的发布订阅功能及时同步数据，思路  数据有变化的服务更新远程redis，并publish key 值到频道 订阅了数据的服务就会收到信息并去同步数据  可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravel 这样实现1234567891011121314">
 <meta name="keywords" content="发布订阅">
 <meta property="og:type" content="article">
 <meta property="og:title" content="laravel 利用redis 的发布订阅保持数据一致性">
 <meta property="og:url" content="https://lics1216.github.io/2019/01/20/laravel 利用redis 的发布订阅保持数据一致性/index.html">
 <meta property="og:site_name" content="Lcs&#39;s Notes">
-<meta property="og:description" content="保持数据一致性项目服务之间共用配置信息可以存储在远程的redis，怎样保存数据的一致性是个问题。可以使用redis 的发布订阅功能及时同步数据，思路  数据有变化的服务更新远程redis，并publish key 值到频道 订阅了数据的服务就会收到信息并去同步数据  可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravle 这样实现1234567891011121314">
+<meta property="og:description" content="保持数据一致性项目服务之间共用配置信息可以存储在远程的redis，怎样保存数据的一致性是个问题。可以使用redis 的发布订阅功能及时同步数据，思路  数据有变化的服务更新远程redis，并publish key 值到频道 订阅了数据的服务就会收到信息并去同步数据  可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravel 这样实现1234567891011121314">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lics1216.github.io/images/20190120/subscribe1.png">
-<meta property="og:updated_time" content="2019-09-30T13:23:00.786Z">
+<meta property="og:updated_time" content="2019-10-16T09:06:07.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="laravel 利用redis 的发布订阅保持数据一致性">
-<meta name="twitter:description" content="保持数据一致性项目服务之间共用配置信息可以存储在远程的redis，怎样保存数据的一致性是个问题。可以使用redis 的发布订阅功能及时同步数据，思路  数据有变化的服务更新远程redis，并publish key 值到频道 订阅了数据的服务就会收到信息并去同步数据  可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravle 这样实现1234567891011121314">
+<meta name="twitter:description" content="保持数据一致性项目服务之间共用配置信息可以存储在远程的redis，怎样保存数据的一致性是个问题。可以使用redis 的发布订阅功能及时同步数据，思路  数据有变化的服务更新远程redis，并publish key 值到频道 订阅了数据的服务就会收到信息并去同步数据  可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravel 这样实现1234567891011121314">
 <meta name="twitter:image" content="https://lics1216.github.io/images/20190120/subscribe1.png">
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>laravel 利用redis 的发布订阅保持数据一致性 | Lcs's Notes</title>
+  <title>laravel 利用redis 的发布订阅保持数据一致性 | Lcs's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -147,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -332,8 +332,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-30T21:23:00+08:00">
-                2019-09-30
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-16T17:06:07+08:00">
+                2019-10-16
               </time>
             
           </span>
@@ -414,7 +414,7 @@
 <li>数据有变化的服务更新远程redis，并publish key 值到频道</li>
 <li>订阅了数据的服务就会收到信息并去同步数据</li>
 </ol>
-<p>可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravle 这样实现<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># controller </span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">updateConfig</span><span class="params">(Request $request)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 其他逻辑...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 分发任务到队列</span></span><br><span class="line">    cacheJob::dispatch(<span class="string">'setCacheData'</span>, $request-&gt;all());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令创建任务 php artisan make:job cacheJob</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">cacheJob</span> <span class="keyword">implements</span> <span class="title">ShouldQueue</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($callback, $arguments)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;callback =$callback;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;arguments =$arguments;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">       call_user_func(<span class="keyword">$this</span>-&gt;callback, <span class="keyword">$this</span>-&gt;arguments);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># setCacheData</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setCacheData</span><span class="params">($params)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// set....</span></span><br><span class="line">        $value = $params[<span class="string">'data'</span>];</span><br><span class="line">        <span class="keyword">$this</span>-&gt;redis = <span class="keyword">$this</span>-&gt;getRedis();</span><br><span class="line">        <span class="keyword">$this</span>-&gt;redis-&gt;set(<span class="string">'dataKey'</span>, $value);</span><br><span class="line">        <span class="comment">// publish 比如频道名test</span></span><br><span class="line">        <span class="keyword">$this</span>-&gt;redis-&gt;publish(<span class="string">'test'</span>, <span class="string">'dataKey'</span>);        </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以把更新操作加到任务队列，这样就可以把业务和redis 处理分开。用laravel 这样实现<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># controller </span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">updateConfig</span><span class="params">(Request $request)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 其他逻辑...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 分发任务到队列</span></span><br><span class="line">    cacheJob::dispatch(<span class="string">'setCacheData'</span>, $request-&gt;all());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令创建任务 php artisan make:job cacheJob</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">cacheJob</span> <span class="keyword">implements</span> <span class="title">ShouldQueue</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($callback, $arguments)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;callback =$callback;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;arguments =$arguments;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">       call_user_func(<span class="keyword">$this</span>-&gt;callback, <span class="keyword">$this</span>-&gt;arguments);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># setCacheData</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setCacheData</span><span class="params">($params)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// set....</span></span><br><span class="line">        $value = $params[<span class="string">'data'</span>];</span><br><span class="line">        <span class="keyword">$this</span>-&gt;redis = <span class="keyword">$this</span>-&gt;getRedis();</span><br><span class="line">        <span class="keyword">$this</span>-&gt;redis-&gt;set(<span class="string">'dataKey'</span>, $value);</span><br><span class="line">        <span class="comment">// publish 比如频道名test</span></span><br><span class="line">        <span class="keyword">$this</span>-&gt;redis-&gt;publish(<span class="string">'test'</span>, <span class="string">'dataKey'</span>);        </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>接下来再启动php artisan queue:work 去处理队列里面的任务。可以用supervisor 管理该进程，设置随系统启动，启动的进程个数。</p>
 <p>那些订阅远程redis test 频道的客户端就会收到同步信息，可以在需要订阅数据的服务所在机器上简单建一个订阅服务，一旦收到信息就同步。如下图</p>
 <p><img src="/images/20190120/subscribe1.png" alt="subscribe1"></p>
@@ -486,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/12/sql 常用/" rel="next" title="sql 常用">
-                <i class="fa fa-chevron-left"></i> sql 常用
+              <a href="/2019/01/20/规范代码/" rel="next" title="规范代码">
+                <i class="fa fa-chevron-left"></i> 规范代码
               </a>
             
           </div>
@@ -496,8 +496,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/20/规范代码/" rel="prev" title="规范代码">
-                规范代码 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/29/web 安全/" rel="prev" title="web 安全">
+                web 安全 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -580,7 +580,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1197,6 +1197,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 
