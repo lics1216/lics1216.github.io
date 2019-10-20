@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[过滤垃圾评论]]></title>
+    <url>%2F2019%2F04%2F12%2F%E8%BF%87%E6%BB%A4%E5%9E%83%E5%9C%BE%E8%AF%84%E8%AE%BA%2F</url>
+    <content type="text"><![CDATA[最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理 处理评论内容html 反转义内容、繁体转简体、去除标点符号 并选出长度大于5 的评论 去除重复三次以上的评论 接下来我们手动标记了1000条评论数据（这个样本有点少，至少要10000条的），0代表无用评论，1代表普通评论。分类模型选用了逻辑回归，但是如何表达样本数据使其适用分类模型是重要考虑得。我们尝试了四种表示方法 词袋模型，就是基于样本预料集的词频矩阵，各样本维度相同，元素是对应词的词频 tf-idf，利用tf-idf 优化词袋模型，只用认为是样本关键词来表示样本，而不是全部词汇 word2vec，用向量表示每个词汇，求出样本全部词汇的平均值向量表示该样本 端到端方式，利用卷积神经网络CNN学习语法特征 词袋模型词袋模型就是用词汇出现的次数来表示每个词，忽略了词汇在句子中出现的次数，只关心词出现的次数。实现是先求出全部样本的语料集，在得出每个样本基于语料集的词频矩阵。 用词袋模型表示样本之后，可以可视化观察类别分布，看是否明显分离。语料的维度很大，可能上万，利用PCA特征降维技术把数据降到2个维度。 可以看到分类效果并不明显。接下来看看分类模型的效果怎么样。1234567from sklearn.linear_model import LogisticRegression# 逻辑回归 分类器clf = LogisticRegression(C=30.0, class_weight=&apos;balanced&apos;, solver=&apos;newton-cg&apos;, multi_class=&apos;multinomial&apos;, n_jobs=-1, random_state=40);clf.fit(X_train_counts, y_train);y_predicted_counts = clf.predict(X_test_counts);y_predicted_counts; 结合混淆矩阵来检验模型 1accuracy = 0.886, precision = 0.888, recall = 0.886, f1 = 0.887 我们还可以把逻辑回归模型系数的大小看成词汇的权重，系数越大代表词的权重越大。选择影响分类权重最大的词汇，看是否和实际情况相符。1234567891011121314151617181920212223&#123;&apos;bottom&apos;: [ (-1.9233468753654832, &apos;想玩过&apos;), (-1.9699934849413354, &apos;东西&apos;), (-1.9936101307589726, &apos;一科&apos;), (-2.0586707932196653, &apos;完整版&apos;), (-2.2143741219571784, &apos;第六感&apos;), (-2.2944339277405317, &apos;平台&apos;), (-2.296290346516122, &apos;张立根&apos;), (-2.5400863161740292, &apos;全过&apos;), (-2.6306392117308213, &apos;f2&apos;), (-3.1548797624472003, &apos;cnm&apos;)], &apos;tops&apos;: [ (2.1516471108530144, &apos;lajibamxigyegei&apos;), (2.1803090306315083, &apos;界面&apos;), (2.211154149794893, &apos;根本&apos;), (2.2950592487795909, &apos;下载&apos;), (2.507806444700754, &apos;广告&apos;), (2.513095684570573, &apos;不错&apos;), (2.8654346669109865, &apos;好难&apos;), (2.9219171750081423, &apos;样儿&apos;), (3.092310924958777, &apos;老是&apos;), (3.2120104179278735, &apos;不能&apos;) ]&#125; tf-idf词频逆文档（tf-idf）是找出样本关键词的一种算法，它认为出现频率最高的词就是样本关键词，为了排除那些常用词比如我、的、也的干扰，还必须是在其他样本出现频率较低的词。据此可得$tf-idf$的表达式，词汇$w$在样本出现频率$n$，样本总词汇$N$，样本总数$D$，包含$w$的样本总数$D_in$，$$tf-idf={n \over N} \log_2{D \over (1 + D_in)}$$ tf-idf 对词袋模型的优化之后，分类模型的准确率有少量改善。详见源码。从效果来看感觉词袋模型不太适合短评论。 word2vec用上面词频表示词汇的方法很容易遇到语料中缺省的词，这样模型就没法进行分类。Word2Vec 是一种为每个单词生成词向量的技术。通过阅读大量文本，它能够学到并记住那些倾向于在相似语境中出现的词汇。经过足够多的数据训练，词汇表中的每个单词都会生成一个300维的向量，由意思相近的单词组成。 我使用word2vec表示词汇，要先训练自己的语料库。用向量表示每个词汇，求出样本全部词汇向量的平均值表示该样本。还是用PCA降维技术可视化到界面观察类别分布情况。 可以看到类别区分更加明显，分类器分类效果也有改善。 CNN前面介绍了快速高效地获得句子嵌入的方法，然而由于省略词汇的顺序，我们也忽略了句子中所有的语法信息。CNN 能够考虑单词的顺序，能很好地学习到句子中哪些单词的序列特征影响到目标预测。 参考文献 8个步骤，上手解决90%的 NLP 问题 欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！]]></content>
+      <categories>
+        <category>数据处理</category>
+        <category>提取数据特征</category>
+      </categories>
+      <tags>
+        <tag>过滤垃圾评论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[web 安全]]></title>
-    <url>%2F2019%2F01%2F29%2Fweb%20%E5%AE%89%E5%85%A8%2F</url>
+    <url>%2F2019%2F03%2F15%2Fweb%20%E5%AE%89%E5%85%A8%2F</url>
     <content type="text"><![CDATA[web 安全一直是个话题，常见的包括防范crsf攻击、sql注入，对存储在服务器的敏感数据如用户信息进行加密处理；防止程序攻网络资源，使用验证码进行识别；对于垃圾信息，敏感信息进行过滤在存储等。 csrf 防范前段时间在laravel框架下写了一个上传excel的功能，请求被认为是csrf攻击被拦截了。于是就花时间了解什么是csrf(跨站请求伪造)，对crsf不太清楚的同学可以戳这里。 laravel框架对前端的每一次请求都会返回一个cookie，key为XSRF-TOKEN，接下来的请求要在头部携带前一次返回的cookie 才能通过csrf 验证。123456789101112131415# 前端实现&lt;el-uploadref='upload'action="/xx/addData":headers="headers":limit="1":show-file-list="false":on-progress="xx":on-success="xx":on-error="xx":accept="uploadAccept"&gt; &lt;el-tooltip class="item" effect="dark" content="只能上传csv/xlsx且不超过2G" placement="top"&gt; &lt;el-button size="small" type="primary"&gt;上传&lt;/el-button&gt; &lt;/el-tooltip&gt;&lt;/el-upload&gt; 这个上传excel文件应用element ui组件，被认为是csrf攻击是未在请求头部携带相应的cookie，由于其他请求是通过axios发起的，内部会自动实现，所以能通过安全认证。可以这样解决12345678910111213headers: &#123;'X-XSRF-TOKEN': this.getCookie('XSRF-TOKEN')&#125;# 获取本地的cookiegetCookie(name) &#123; let cookiesList = document.cookie.split(';'); for (let cookie of cookiesList) &#123; let arr = cookie.split('='); if (arr[0] === name) &#123; return decodeURIComponent(arr[1]); &#125; &#125; return '';&#125; 因为开发者不能获取其他域名下的cookie，这样是可以防范csrf的 api 认证很多时候我们发送请求都是b2s，就是客户端给服务端发送请求，但有时也需要在后端请求另外一个服即s2s。比如利用php guzzlehttp/guzzle http客户端，这必定涉及api 验证。这里我用的方式是 双方先约定加密key 值，请求方携带参数、对参数加密的sign 接收方对参数重新加密一次，再对比sign，检查参数是否被篡改 在php 中是这样实现的，12345678910111213# 利用 hash_hmac sha256 算法，返回 params 加密后 的sign 字符串private function makeSign($params = [])&#123; ksort($params); $str = ''; foreach ($params as $k =&gt; $v) &#123; if(!is_null($v)) &#123; $str .= '#' . $k . '|' . $v; &#125; &#125; // appkey 是加密时用的key return hash_hmac("sha256", $str, $this-&gt;appkey);&#125; 小程序开发请求微信服务端api，也是要先获取请求的调用凭证 accessToken，获取这个凭证需要提供该小程序的appid、appAppSecret，凭证也是有时限性的。微信也对用户的信息进行加密后返回，比如运动步数，开发者必须请求加密密钥才能把信息解密。 欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！]]></content>
       <categories>
         <category>web</category>
@@ -10,6 +22,18 @@
       </categories>
       <tags>
         <tag>web 安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[规范代码]]></title>
+    <url>%2F2019%2F02%2F20%2F%E8%A7%84%E8%8C%83%E4%BB%A3%E7%A0%81%2F</url>
+    <content type="text"><![CDATA[返回结果处理返回结果有，后端向其他服务请求、后台给前端返回结果12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849# 后台向其他服务请求$result = curlGet($url);if ($result) &#123; $rs = json_decode($result, true); return $rs;&#125; else &#123; return false;&#125;# 后台给前端返回public function returnResult($res)&#123; if ($res) &#123; if ($res['ret'] == 0) &#123; // 0 返回成功，返回data，携带 msg 默认是"success" return returnData($res['data']); &#125; // 1 返回失败，携带msg return returnError($res['data']); &#125; return returnError('请求其他服务接口失败');&#125;# 返回结果封装function returnError($msg = 'error', $ret = 1, $status = 200, $type = 0)&#123; return buildResponse($ret, $msg, $status, $type);&#125;function returnData($data, $ret = 0, $msg = 'success', $type = 0)&#123; return buildResponse($ret, $msg, 200, $type, $data);&#125;function buildResponse($ret = 0, $msg = '', $status = 200, $type, $data = array())&#123; $info = array( 'ret' =&gt; $ret, 'msg' =&gt; $msg ); if ($data) &#123; $info['data'] = $data; &#125; if ($type) &#123; return response(json_encode($info, $type), $status)-&gt;header('Content-Type', 'application/json'); &#125; else &#123; return response(json_encode($info), $status)-&gt;header('Content-Type', 'application/json'); &#125;&#125; controller/model 职责明确controller处理请求携带的参数，model返回的数据库数据。在model 就是直接利用参数，对数据库的操作。比如1234567# controller 判断参数timesif (!isset($params['times']) || count($params['times']) != 2 || $params['times'][0] &gt; $params['times'][1]) &#123; return '时间选择错误';&#125; # 毫秒转秒 millisecondToSecond = 1000$params['times'][0] = intval($params['times'][0] / config('constants.millisecondToSecond')); 有时还在controller/model 中间再加一层，在Repositories 目录文件中对model 取出的数据进一步处理。其他controller 要使用，就先在Providers 绑定interface—&gt;实现类, laravel会通过controller 构造函数注入给它。 欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！]]></content>
+      <categories>
+        <category>改善代码</category>
+        <category>重构</category>
+      </categories>
+      <tags>
+        <tag>规范代码</tag>
       </tags>
   </entry>
   <entry>
@@ -22,18 +46,6 @@
       </categories>
       <tags>
         <tag>发布订阅</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[规范代码]]></title>
-    <url>%2F2019%2F01%2F20%2F%E8%A7%84%E8%8C%83%E4%BB%A3%E7%A0%81%2F</url>
-    <content type="text"><![CDATA[返回结果处理返回结果有，后端向其他服务请求、后台给前端返回结果12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849# 后台向其他服务请求$result = curlGet($url);if ($result) &#123; $rs = json_decode($result, true); return $rs;&#125; else &#123; return false;&#125;# 后台给前端返回public function returnResult($res)&#123; if ($res) &#123; if ($res['ret'] == 0) &#123; // 0 返回成功，返回data，携带 msg 默认是"success" return returnData($res['data']); &#125; // 1 返回失败，携带msg return returnError($res['data']); &#125; return returnError('请求其他服务接口失败');&#125;# 返回结果封装function returnError($msg = 'error', $ret = 1, $status = 200, $type = 0)&#123; return buildResponse($ret, $msg, $status, $type);&#125;function returnData($data, $ret = 0, $msg = 'success', $type = 0)&#123; return buildResponse($ret, $msg, 200, $type, $data);&#125;function buildResponse($ret = 0, $msg = '', $status = 200, $type, $data = array())&#123; $info = array( 'ret' =&gt; $ret, 'msg' =&gt; $msg ); if ($data) &#123; $info['data'] = $data; &#125; if ($type) &#123; return response(json_encode($info, $type), $status)-&gt;header('Content-Type', 'application/json'); &#125; else &#123; return response(json_encode($info), $status)-&gt;header('Content-Type', 'application/json'); &#125;&#125; controller/model 职责明确controller处理请求携带的参数，model返回的数据库数据。在model 就是直接利用参数，对数据库的操作。比如1234567# controller 判断参数timesif (!isset($params['times']) || count($params['times']) != 2 || $params['times'][0] &gt; $params['times'][1]) &#123; return '时间选择错误';&#125; # 毫秒转秒 millisecondToSecond = 1000$params['times'][0] = intval($params['times'][0] / config('constants.millisecondToSecond')); 有时还在controller/model 中间再加一层，在Repositories 目录文件中对model 取出的数据进一步处理。其他controller 要使用，就先在Providers 绑定interface—&gt;实现类, laravel会通过controller 构造函数注入给它。 欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！]]></content>
-      <categories>
-        <category>改善代码</category>
-        <category>重构</category>
-      </categories>
-      <tags>
-        <tag>规范代码</tag>
       </tags>
   </entry>
   <entry>
@@ -132,18 +144,6 @@
       <tags>
         <tag>策略模式</tag>
         <tag>观察者模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[过滤垃圾评论]]></title>
-    <url>%2F2018%2F11%2F28%2F%E8%BF%87%E6%BB%A4%E5%9E%83%E5%9C%BE%E8%AF%84%E8%AE%BA%2F</url>
-    <content type="text"><![CDATA[欢迎大家给我留言，提建议，指出错误，一起讨论学习技术的感受！]]></content>
-      <categories>
-        <category>数据处理</category>
-        <category>提取数据特征</category>
-      </categories>
-      <tags>
-        <tag>过滤垃圾评论</tag>
       </tags>
   </entry>
   <entry>
