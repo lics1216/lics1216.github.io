@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除标">
+<meta name="description" content="最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除">
 <meta name="keywords" content="过滤垃圾评论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="过滤垃圾评论">
 <meta property="og:url" content="https://lics1216.github.io/2019/04/12/过滤垃圾评论/index.html">
 <meta property="og:site_name" content="Lcs&#39;s Notes">
-<meta property="og:description" content="最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除标">
+<meta property="og:description" content="最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lics1216.github.io/images/20190412/cleanComment1.png">
 <meta property="og:image" content="https://lics1216.github.io/images/20190412/cleanComment2.png">
 <meta property="og:image" content="https://lics1216.github.io/images/20190412/cleanComment3.png">
-<meta property="og:updated_time" content="2019-10-20T08:19:39.909Z">
+<meta property="og:updated_time" content="2019-10-20T08:40:15.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="过滤垃圾评论">
-<meta name="twitter:description" content="最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除标">
+<meta name="twitter:description" content="最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除">
 <meta name="twitter:image" content="https://lics1216.github.io/images/20190412/cleanComment1.png">
 
 
@@ -334,7 +334,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-20T16:19:39+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-20T16:40:15+08:00">
                 2019-10-20
               </time>
             
@@ -411,30 +411,30 @@
       
 
       
-        <p>最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我在这其中的一系列尝试，<a href>处理代码戳这里</a></p>
-<h4 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h4><p>我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理</p>
+        <p>最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，<a href="https://github.com/lics1216/game_comment_clean" target="_blank" rel="noopener">处理代码戳这里</a></p>
+<h4 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h4><p>我们先从渠道<strong>应用宝</strong>里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理</p>
 <ul>
 <li>处理评论内容html 反转义内容、繁体转简体、去除标点符号</li>
 <li>并选出长度大于5 的评论</li>
 <li>去除重复三次以上的评论</li>
 </ul>
-<p>接下来我们手动标记了1000条评论数据（这个样本有点少，至少要10000条的），0代表无用评论，1代表普通评论。分类模型选用了逻辑回归，但是如何表达样本数据使其适用分类模型是重要考虑得。我们尝试了四种表示方法</p>
+<p>接下来我们手动标记了1000条评论数据（这个样本有点少，至少要10000条的），0代表无用评论，1代表普通评论。分类模型选用了<strong>逻辑回归方法</strong>，但是如何表达样本数据使其适用分类模型是重要考虑得。我们尝试了四种表示方法</p>
 <ul>
 <li>词袋模型，就是基于样本预料集的词频矩阵，各样本维度相同，元素是对应词的词频</li>
 <li>tf-idf，利用tf-idf 优化词袋模型，只用认为是样本关键词来表示样本，而不是全部词汇</li>
 <li>word2vec，用向量表示每个词汇，求出样本全部词汇的平均值向量表示该样本</li>
 <li>端到端方式，利用卷积神经网络CNN学习语法特征</li>
 </ul>
-<h4 id="词袋模型"><a href="#词袋模型" class="headerlink" title="词袋模型"></a>词袋模型</h4><p>词袋模型就是用词汇出现的次数来表示每个词，忽略了词汇在句子中出现的次数，只关心词出现的次数。实现是先求出全部样本的语料集，在得出每个样本基于语料集的词频矩阵。</p>
-<p>用词袋模型表示样本之后，可以可视化观察类别分布，看是否明显分离。语料的维度很大，可能上万，利用PCA特征降维技术把数据降到2个维度。</p>
+<h4 id="词袋模型"><a href="#词袋模型" class="headerlink" title="词袋模型"></a>词袋模型</h4><p>词袋模型就是用词汇出现的次数来表示每个词，忽略了词汇在句子中出现的顺序，只关心词出现的次数。要求先得到全部样本的语料集，再求出每个样本基于语料集的词频矩阵。</p>
+<p>用词袋模型表示样本之后，可视化数据观察类别分布是否明显。语料的维度很大要利用PCA特征降维技术把数据降到2个维度。</p>
 <p><img src="/images/20190412/cleanComment1.png" alt="cleanComment"></p>
-<p>可以看到分类效果并不明显。接下来看看分类模型的效果怎么样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import LogisticRegression</span><br><span class="line"># 逻辑回归 分类器</span><br><span class="line">clf = LogisticRegression(C=30.0, class_weight=&apos;balanced&apos;, solver=&apos;newton-cg&apos;, </span><br><span class="line">                         multi_class=&apos;multinomial&apos;, n_jobs=-1, random_state=40);</span><br><span class="line">clf.fit(X_train_counts, y_train);</span><br><span class="line">y_predicted_counts = clf.predict(X_test_counts);</span><br><span class="line">y_predicted_counts;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到分类效果并不明显。接下来看看分类模型的效果怎么样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import LogisticRegression</span><br><span class="line"># 逻辑回归 分类器</span><br><span class="line">clf = LogisticRegression(C=30.0, class_weight=&apos;balanced&apos;, solver=&apos;newton-cg&apos;, </span><br><span class="line">                         multi_class=&apos;multinomial&apos;, n_jobs=-1, random_state=40);</span><br><span class="line"></span><br><span class="line">clf.fit(X_train_counts, y_train);</span><br><span class="line">y_predicted_counts = clf.predict(X_test_counts);</span><br><span class="line">y_predicted_counts;</span><br></pre></td></tr></table></figure></p>
 <p>结合混淆矩阵来检验模型</p>
 <p><img src="/images/20190412/cleanComment2.png" alt="cleanComment"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">accuracy = 0.886, precision = 0.888, recall = 0.886, f1 = 0.887</span><br></pre></td></tr></table></figure>
 <p>我们还可以把逻辑回归模型系数的大小看成词汇的权重，系数越大代表词的权重越大。选择影响分类权重最大的词汇，看是否和实际情况相符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;bottom&apos;: [</span><br><span class="line">  (-1.9233468753654832, &apos;想玩过&apos;),</span><br><span class="line">  (-1.9699934849413354, &apos;东西&apos;),</span><br><span class="line">  (-1.9936101307589726, &apos;一科&apos;),</span><br><span class="line">  (-2.0586707932196653, &apos;完整版&apos;),</span><br><span class="line">  (-2.2143741219571784, &apos;第六感&apos;),</span><br><span class="line">  (-2.2944339277405317, &apos;平台&apos;),</span><br><span class="line">  (-2.296290346516122, &apos;张立根&apos;),</span><br><span class="line">  (-2.5400863161740292, &apos;全过&apos;),</span><br><span class="line">  (-2.6306392117308213, &apos;f2&apos;),</span><br><span class="line">  (-3.1548797624472003, &apos;cnm&apos;)],</span><br><span class="line"> &apos;tops&apos;: [</span><br><span class="line">  (2.1516471108530144, &apos;lajibamxigyegei&apos;),</span><br><span class="line">  (2.1803090306315083, &apos;界面&apos;),</span><br><span class="line">  (2.211154149794893, &apos;根本&apos;),</span><br><span class="line">  (2.2950592487795909, &apos;下载&apos;),</span><br><span class="line">  (2.507806444700754, &apos;广告&apos;),</span><br><span class="line">  (2.513095684570573, &apos;不错&apos;),</span><br><span class="line">  (2.8654346669109865, &apos;好难&apos;),</span><br><span class="line">  (2.9219171750081423, &apos;样儿&apos;),</span><br><span class="line">  (3.092310924958777, &apos;老是&apos;),</span><br><span class="line">  (3.2120104179278735, &apos;不能&apos;)</span><br><span class="line">  ]&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="tf-idf"><a href="#tf-idf" class="headerlink" title="tf-idf"></a>tf-idf</h4><p>词频逆文档（tf-idf）是找出样本关键词的一种算法，它认为出现频率最高的词就是样本关键词，为了排除那些常用词比如我、的、也的干扰，还必须是在其他样本出现频率较低的词。据此可得$tf-idf$的表达式，词汇$w$在样本出现频率$n$，样本总词汇$N$，样本总数$D$，包含$w$的样本总数$D_in$，<br>$$tf-idf={n \over N} \log_2{D \over (1 + D_in)}$$</p>
-<p>tf-idf 对词袋模型的优化之后，分类模型的准确率有少量改善。详见源码。从效果来看感觉词袋模型不太适合短评论。</p>
+<h4 id="tf-idf"><a href="#tf-idf" class="headerlink" title="tf-idf"></a>tf-idf</h4><p>词频逆文档（tf-idf）是找出样本关键词的一种算法，它认为出现频率最高的词就是样本关键词，为了排除那些常用词比如我、的、也的干扰，还必须是在其他样本出现频率较低的词。据此可得$tf-idf$的表达式，词汇$w$在样本出现频率$n$，样本总词汇$N$，样本总数$D$，包含$w$的样本总数$D_{in}$，<br>$$tf-idf={n \over N} \log_2{D \over (1 + D_{in})}$$</p>
+<p>tf-idf 对词袋模型的优化之后，分类模型的准确率有少量改善。详见源码。<strong>从效果来看感觉词袋模型不太适合短评论。</strong></p>
 <h4 id="word2vec"><a href="#word2vec" class="headerlink" title="word2vec"></a>word2vec</h4><p>用上面词频表示词汇的方法很容易遇到语料中缺省的词，这样模型就没法进行分类。Word2Vec 是一种为每个单词生成词向量的技术。通过阅读大量文本，它能够学到并记住那些倾向于在相似语境中出现的词汇。经过足够多的数据训练，词汇表中的每个单词都会生成一个300维的向量，由意思相近的单词组成。</p>
 <p>我使用word2vec表示词汇，要先训练自己的语料库。用向量表示每个词汇，求出样本全部词汇向量的平均值表示该样本。还是用PCA降维技术可视化到界面观察类别分布情况。</p>
 <p><img src="/images/20190412/cleanComment3.png" alt="cleanComment"></p>
