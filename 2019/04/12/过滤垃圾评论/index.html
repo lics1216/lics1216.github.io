@@ -79,21 +79,22 @@
 
 
 
-<meta name="description" content="最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除">
+<meta name="description" content="我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除标点">
 <meta name="keywords" content="过滤垃圾评论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="过滤垃圾评论">
 <meta property="og:url" content="https://lics1216.github.io/2019/04/12/过滤垃圾评论/index.html">
 <meta property="og:site_name" content="Lcs&#39;s Notes">
-<meta property="og:description" content="最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除">
+<meta property="og:description" content="我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除标点">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lics1216.github.io/images/20190412/cleanComment1.png">
 <meta property="og:image" content="https://lics1216.github.io/images/20190412/cleanComment2.png">
 <meta property="og:image" content="https://lics1216.github.io/images/20190412/cleanComment3.png">
-<meta property="og:updated_time" content="2019-10-20T08:40:15.725Z">
+<meta property="og:image" content="https://lics1216.github.io/images/20190412/cleanComment4.png">
+<meta property="og:updated_time" content="2019-10-30T02:03:17.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="过滤垃圾评论">
-<meta name="twitter:description" content="最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除">
+<meta name="twitter:description" content="我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，处理代码戳这里 预处理我们先从渠道应用宝里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理  处理评论内容html 反转义内容、繁体转简体、去除标点">
 <meta name="twitter:image" content="https://lics1216.github.io/images/20190412/cleanComment1.png">
 
 
@@ -334,8 +335,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-20T16:40:15+08:00">
-                2019-10-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-30T10:03:17+08:00">
+                2019-10-30
               </time>
             
           </span>
@@ -411,7 +412,7 @@
       
 
       
-        <p>最近我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，<a href="https://github.com/lics1216/game_comment_clean" target="_blank" rel="noopener">处理代码戳这里</a></p>
+        <p>我们想搭建一个关于游戏的推荐系统，给用户推荐有趣、好玩的游戏。起初在还没有用户的情况下一般采用基于内容推荐，然而要还原游戏的真实面貌，清洗垃圾评论是必不可少的。下面讲讲我们在这其中的一系列尝试，<a href="https://github.com/lics1216/game_comment_clean" target="_blank" rel="noopener">处理代码戳这里</a></p>
 <h4 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h4><p>我们先从渠道<strong>应用宝</strong>里面获取了很多游戏的数据，其中包括评论、用户评分。这些评论有内容简短、重复出现等特点。因此我们先进行了预处理</p>
 <ul>
 <li>处理评论内容html 反转义内容、繁体转简体、去除标点符号</li>
@@ -439,7 +440,9 @@
 <p>我使用word2vec表示词汇，要先训练自己的语料库。用向量表示每个词汇，求出样本全部词汇向量的平均值表示该样本。还是用PCA降维技术可视化到界面观察类别分布情况。</p>
 <p><img src="/images/20190412/cleanComment3.png" alt="cleanComment"></p>
 <p>可以看到类别区分更加明显，分类器分类效果也有改善。</p>
-<h4 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h4><p>前面介绍了快速高效地获得句子嵌入的方法，然而由于省略词汇的顺序，我们也忽略了句子中所有的语法信息。CNN 能够考虑单词的顺序，能很好地学习到句子中哪些单词的序列特征影响到目标预测。</p>
+<h4 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h4><p>前面介绍了快速高效地获得句子嵌入的方法，然而由于省略词汇的顺序，我们也忽略了句子中所有的语法信息。CNN 能够考虑单词的顺序，能很好地学习到句子中哪些单词的序列特征影响到目标预测。<a href="https://github.com/lics1216/game_comment_clean" target="_blank" rel="noopener">处理代码戳这里</a></p>
+<p>效果如下，</p>
+<p><img src="/images/20190412/cleanComment4.png" alt="cleanComment"></p>
 <p>参考文献</p>
 <blockquote>
 <p><a href="https://zhuanlan.zhihu.com/p/34120684" target="_blank" rel="noopener">8个步骤，上手解决90%的 NLP 问题</a></p>
