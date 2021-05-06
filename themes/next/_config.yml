@@ -409,8 +409,8 @@ gitalk:
   enable: true
   github_user: lics1216
   github_repo: lics1216.github.io
-  ClientID: a96f72ebd1936d522a75
-  ClientSecret: 0344577ca68fcf037bb31f588aff6fbae1a9df65
+  client_id: a96f72ebd1936d522a75
+  client_secret: 0344577ca68fcf037bb31f588aff6fbae1a9df65
   admin: lics1216
   labels: 'gitalk'
   distractionFreeMode: true
