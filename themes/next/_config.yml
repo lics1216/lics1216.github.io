@@ -136,7 +136,7 @@ scheme: Pisces
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
   GitHub: https://github.com/lics1216 || github
-  E-Mail: mailto:670159244@qq.com || envelope
+  E-Mail: mailto:lics1216@163.com || envelope
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
@@ -386,7 +386,7 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: true
+  enable: false
   appid:  ntlAvDXzYVgJmMbEytDJc6U2-gzGzoHsz
   appkey:  nbMDVxcDOJ910Pe8KBpx9mPg
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
@@ -406,12 +406,13 @@ valine:
 #livere_uid: xxxx
 
 gitalk:
-  enable: false
-  githubID: lcs1234567
-  repo: lcs1234567.github.io
+  enable: true
+  github_user: lics1216
+  github_repo: lics1216.github.io
   ClientID: a96f72ebd1936d522a75
-  ClientSecret: c32eba11522f60334313bafcb4fe74684ca02c01
-  adminUser: lcs1234567
+  ClientSecret: 0344577ca68fcf037bb31f588aff6fbae1a9df65
+  admin: lics1216
+  labels: 'gitalk'
   distractionFreeMode: true
 
 # Gitment
