@@ -617,6 +617,32 @@
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+  
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<!-- END LOCAL -->
+ 
+    
+      <script type="text/javascript">
+      function renderGitalk(){
+        var gitalk = new Gitalk({
+            owner: 'lics1216',
+            repo: 'lics1216.github.io',
+            clientID: 'a96f72ebd1936d522a75',
+            clientSecret: '0344577ca68fcf037bb31f588aff6fbae1a9df65',
+            admin: 'lics1216',
+            
+              distractionFreeMode: 'true'
+            
+            });
+        gitalk.render('gitalk-container');
+      }
+      renderGitalk();
+      </script>
+    
+ 
+
 
 
 
