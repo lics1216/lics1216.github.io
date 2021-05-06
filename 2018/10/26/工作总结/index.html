@@ -892,7 +892,7 @@
             repo: 'lics1216.github.io',
             clientID: 'a96f72ebd1936d522a75',
             clientSecret: '0344577ca68fcf037bb31f588aff6fbae1a9df65',
-			id: md5(location.pathname),
+			id: (location.pathname).split("/").pop().substring(0, 49),
             admin: 'lics1216',
             
               distractionFreeMode: 'true'
